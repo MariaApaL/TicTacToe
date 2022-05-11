@@ -4,4 +4,6 @@ module edu.proyectofinal.tictactoe {
 
     opens edu.proyectofinal.tictactoe to javafx.fxml;
     exports edu.proyectofinal.tictactoe;
+    exports edu.proyectofinal.tictactoe.controller;
+    opens edu.proyectofinal.tictactoe.controller to javafx.fxml;
 }
