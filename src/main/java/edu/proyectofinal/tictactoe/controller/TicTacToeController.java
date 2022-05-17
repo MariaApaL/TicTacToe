@@ -1,0 +1,164 @@
+package edu.proyectofinal.tictactoe.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
+
+public class TicTacToeController implements Initializable {
+
+  // Añadimos los botones del 1 al 9
+    @FXML
+    private Button b1;
+
+    @FXML
+    private Button b2;
+
+    @FXML
+    private Button b3;
+
+    @FXML
+    private Button b4;
+
+    @FXML
+    private Button b5;
+
+    @FXML
+    private Button b6;
+
+    @FXML
+    private Button b7;
+
+    @FXML
+    private Button b8;
+
+    @FXML
+    private Button b9;
+
+    // Este texto irá cambiando entre el título y la victoria de uno de los jugadores.
+    @FXML
+    private Text changingText;
+
+    // Estos dos textos nos informa de los jugadores.
+    @FXML
+    private Text playerX;
+
+    @FXML
+    private Text playerO;
+
+
+    // Inicializamos el turno.
+    private int turn =0;
+
+    //Inicializamos dos contadores de partidas ganadas de jugadores.
+    //ESTO HABRIA QUE PONERLO COMO UN TEXTO Y QUE TE TRANSFORMARA EL TEXTO EN NUMERO. BICHEAR.
+    private int pX=0;
+    private int pO=0;
+
+    //Creamos un ArrayList con los botones
+    ArrayList<Button> buttons;
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        buttons = new ArrayList<>();
+        buttons.add(b1);
+        buttons.add(b2);
+        buttons.add(b3);
+        buttons.add(b4);
+        buttons.add(b5);
+        buttons.add(b6);
+        buttons.add(b7);
+        buttons.add(b8);
+        buttons.add(b9);
+
+        //Con esto hacemos los botones clickeables
+        buttons.forEach(button -> {
+            setupButton(button);
+            button.setFocusTraversable(false);
+        });
+
+    }
+
+
+    @FXML
+    public void restartGame(ActionEvent event){
+        buttons.forEach(this::restartButton);
+        changingText.setText("TIC TAC TOE");
+
+    }
+
+    public void restartButton(Button button){
+        button.setDisable(false);
+        button.setText("");
+
+    }
+
+    private void setupButton(Button button) {
+        button.setOnMouseClicked(mouseEvent -> {
+            choosePlayer(button);
+            button.setDisable(true);
+            checkGame();
+        });
+    }
+
+
+
+     public void choosePlayer(Button button){
+        if(turn%2==0){
+            button.setText("X");
+            turn=1;
+        }else{
+            button.setText("O");
+            turn=0;
+        }
+     }
+
+    public void checkGame(){
+            for (int i = 0; i < 8; i++) {
+                String line = switch (i) {
+                    case 0-> b1.getText() + b2.getText() + b3.getText();
+                    case 1 -> b4.getText() + b5.getText() + b6.getText();
+                    case 2 -> b7.getText() + b8.getText() + b9.getText();
+                    case 3 -> b1.getText() + b5.getText() + b9.getText();
+                    case 4 -> b3.getText() + b5.getText() + b7.getText();
+                    case 5 -> b1.getText() + b4.getText() + b7.getText();
+                    case 6 -> b2.getText() + b5.getText() + b8.getText();
+                    case 7 -> b3.getText() + b6.getText() + b9.getText();
+                    default -> null;
+                };
+
+                //X winner
+                if (line.equals("XXX")) {
+                    changingText.setText("PLAYER X WON");
+                  pX++;
+                   playerX.setText("Player(X): "+pX);
+                }
+
+                //O winner
+                else if (line.equals("OOO")) {
+                   changingText.setText("PLAYER O WON");
+                    pO++;
+                   playerO.setText("Player(O): "+pO);
+                }
+
+
+
+            }
+        }
+
+
+
+
+
+}
+
+
+
