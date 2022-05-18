@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class TicTacToeController implements Initializable {
 
-  // Añadimos los botones del 1 al 9
+    // Añadimos los botones del 1 al 9
     @FXML
     private Button b1;
 
@@ -41,6 +42,9 @@ public class TicTacToeController implements Initializable {
     @FXML
     private Button b9;
 
+    @FXML
+    private FlowPane buttonBoard;
+
     // Este texto irá cambiando entre el título y la victoria de uno de los jugadores.
     @FXML
     private Text changingText;
@@ -54,16 +58,17 @@ public class TicTacToeController implements Initializable {
 
 
     // Inicializamos el turno.
-    private int turn =0;
+    private int turn = 0;
 
     //Inicializamos dos contadores de partidas ganadas de jugadores.
     //ESTO HABRIA QUE PONERLO COMO UN TEXTO Y QUE TE TRANSFORMARA EL TEXTO EN NUMERO. BICHEAR.
-    private int pX=0;
-    private int pO=0;
+    private int pX = 0;
+    private int pO = 0;
 
+
+    private boolean endOfGame;
     //Creamos un ArrayList con los botones
     ArrayList<Button> buttons;
-
 
 
     @Override
@@ -89,15 +94,16 @@ public class TicTacToeController implements Initializable {
 
 
     @FXML
-    public void restartGame(ActionEvent event){
+    public void restartGame(ActionEvent event) {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
 
     }
 
-    public void restartButton(Button button){
+    public void restartButton(Button button) {
         button.setDisable(false);
         button.setText("");
+
 
     }
 
@@ -105,60 +111,63 @@ public class TicTacToeController implements Initializable {
         button.setOnMouseClicked(mouseEvent -> {
             choosePlayer(button);
             button.setDisable(true);
-            checkGame();
+            checkGame(button);
         });
     }
 
 
-
-     public void choosePlayer(Button button){
-        if(turn%2==0){
+    public void choosePlayer(Button button) {
+        if (turn % 2 == 0) {
             button.setText("X");
-            turn=1;
-        }else{
+            turn = 1;
+        } else {
             button.setText("O");
-            turn=0;
+            turn = 0;
         }
-     }
+    }
 
-    public void checkGame(){
-            for (int i = 0; i < 8; i++) {
-                String line = switch (i) {
-                    case 0-> b1.getText() + b2.getText() + b3.getText();
-                    case 1 -> b4.getText() + b5.getText() + b6.getText();
-                    case 2 -> b7.getText() + b8.getText() + b9.getText();
-                    case 3 -> b1.getText() + b5.getText() + b9.getText();
-                    case 4 -> b3.getText() + b5.getText() + b7.getText();
-                    case 5 -> b1.getText() + b4.getText() + b7.getText();
-                    case 6 -> b2.getText() + b5.getText() + b8.getText();
-                    case 7 -> b3.getText() + b6.getText() + b9.getText();
-                    default -> null;
-                };
+    public void checkGame(Button button) {
+        for (int i = 0; i < 8; i++) {
+            String line = switch (i) {
+                case 0 -> b1.getText() + b2.getText() + b3.getText();
+                case 1 -> b4.getText() + b5.getText() + b6.getText();
+                case 2 -> b7.getText() + b8.getText() + b9.getText();
+                case 3 -> b1.getText() + b5.getText() + b9.getText();
+                case 4 -> b3.getText() + b5.getText() + b7.getText();
+                case 5 -> b1.getText() + b4.getText() + b7.getText();
+                case 6 -> b2.getText() + b5.getText() + b8.getText();
+                case 7 -> b3.getText() + b6.getText() + b9.getText();
+                default -> null;
+            };
 
-                //X winner
-                if (line.equals("XXX")) {
-                    changingText.setText("PLAYER X WON");
-                  pX++;
-                   playerX.setText("Player(X): "+pX);
-                }
+            //X winner
+            if (line.equals("XXX")) {
+                changingText.setText("PLAYER X WON");
+                pX++;
+                playerX.setText("Player(X): " + pX);
+                buttonBoard.setDisable(true);
 
-                //O winner
-                else if (line.equals("OOO")) {
-                   changingText.setText("PLAYER O WON");
-                    pO++;
-                   playerO.setText("Player(O): "+pO);
-                }
+            }
 
+            //O winner
+            else if (line.equals("OOO")) {
+                changingText.setText("PLAYER O WON");
+                pO++;
+                playerO.setText("Player(O): " + pO);
+                buttonBoard.setDisable(true);
 
 
             }
         }
-
-
-
-
-
+    }
 }
+
+
+
+
+
+
+
 
 
 
