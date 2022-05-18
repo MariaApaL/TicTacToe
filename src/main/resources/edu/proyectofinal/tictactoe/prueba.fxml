@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="369.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.PruebaController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="46.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE AN OPTION" textAlignment="CENTER" wrappingWidth="397.4700164794922">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="newGame" layoutX="159.0" layoutY="132.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="151.0" text="New Game" />
+      <Button fx:id="ranking" layoutX="159.0" layoutY="208.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="151.0" text="Ranking" />
+      <Button fx:id="backChoose" layoutX="195.0" layoutY="296.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" text="Back" />
+   </children>
+</AnchorPane>

@@ -17,11 +17,18 @@ public class App extends Application {
 
     @Override
     public void start(Stage tictactoe) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("tictactoe.fxml"));
-        tictactoe.setTitle("Tictactoe");
-        tictactoe.setScene(new Scene(root));
-        tictactoe.show();
+
+//para probar las interfaces , simplemente cambiar el nombre del fxml
+
+            Parent root = FXMLLoader.load(getClass().getResource("prueba.fxml"));
+
+
+            tictactoe.setTitle("Tictactoe");
+            tictactoe.setScene(new Scene(root));
+            tictactoe.show();
+
     }
+
 
 
     public static void main(String[] args) {

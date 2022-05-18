@@ -1,15 +1,21 @@
 package edu.proyectofinal.tictactoe.controller;
 
+import edu.proyectofinal.tictactoe.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class TicTacToeController implements Initializable {
@@ -43,6 +49,12 @@ public class TicTacToeController implements Initializable {
     private Button b9;
 
     @FXML
+    private Button newGame;
+
+    @FXML
+    private Button backButton;
+
+    @FXML
     private FlowPane buttonBoard;
 
     // Este texto irá cambiando entre el título y la victoria de uno de los jugadores.
@@ -65,10 +77,16 @@ public class TicTacToeController implements Initializable {
     private int pX = 0;
     private int pO = 0;
 
-
-    private boolean endOfGame;
     //Creamos un ArrayList con los botones
     ArrayList<Button> buttons;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+
+
+
 
 
     @Override
@@ -161,6 +179,9 @@ public class TicTacToeController implements Initializable {
             }
         }
     }
+
+
+
 }
 
 

@@ -26,7 +26,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="restartButton" layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#restartGame" text="Restart" />
+      <Button fx:id="restartButton" layoutX="193.0" layoutY="359.0" mnemonicParsing="false" onAction="#restartGame" text="Restart" />
       <Text fx:id="playerX" fontSmoothingType="LCD" layoutX="14.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player(X):" textAlignment="CENTER" wrappingWidth="77.33333333333326">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -37,5 +37,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Text>
+      <Button fx:id="backButton" layoutX="351.0" layoutY="359.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="53.0" text="Back" />
    </children>
 </AnchorPane>
