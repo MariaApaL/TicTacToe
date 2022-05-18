@@ -103,6 +103,7 @@ public class TicTacToeController implements Initializable {
     public void restartButton(Button button) {
         button.setDisable(false);
         button.setText("");
+        buttonBoard.setDisable(false);
 
 
     }
