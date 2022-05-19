@@ -11,17 +11,17 @@ import java.sql.SQLException;
 
 public class UserManagerImpl implements UserManager {
 
-    public boolean findUser(Connection con, String name, String pass) {
+    public boolean findUser(Connection con, String player_name, String password) {
         //prepare SQL statement
         String sql = "select * "
-                + "from users "
-                + "where username = ? and password = ?";
+                + "from PLAYERS "
+                + "where PLAYER_NAME = ? and PASSWORD = ?";
 
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             //Add Parameters
-            stmt.setString(1, name);
-            stmt.setString(2, pass);
+            stmt.setString(1, player_name);
+            stmt.setString(2, password);
             // Queries the DB
             ResultSet result = stmt.executeQuery();
             // Set before first registry before going through it.

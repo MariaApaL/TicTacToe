@@ -1,4 +1,5 @@
 package edu.proyectofinal.tictactoe.controller;
+
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,39 +29,40 @@ import java.util.ResourceBundle;
 public class ViewLoginController<User> implements Initializable {
 
 
+    @FXML
+    private TextField txtUser;
 
+    @FXML
+    private PasswordField txtPassword;
 
-        @FXML
-        private TextField txtUser;
+    //@FXML
+    //private Label message;
 
-        @FXML
-        private PasswordField txtPassword;
-
-        @FXML
-        private Button btnLogin;
+    @FXML
+    private Button btnLogin;
 
     private UserService userService;
 
-        @FXML
-        private void eventKey(KeyEvent event){
+    @FXML
+    private void eventKey(KeyEvent event) {
 
 
-            if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
-                if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
-                    lblMessage.setText("Login successful.");
-                    System.out.println("MÉTODO VALIDATE");
-                } else {
-                    lblMessage.setText("User not found.");
-                }
-            } else {
-                lblMessage.setText("Fill in username and password.");
+        if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
+            if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
+                //  message.setText("Login successful.");
+                System.out.println("MÉTODO VALIDATE");
+            } /*else {
+                //  message.setText("User not found.");
             }
-
-
+        } else {
+            lblMessage.setText("Fill in username and password.");*/
         }
 
 
-        }
+    }
+
+
+
 /*
         @FXML
         private void eventAction(ActionEvent event){
@@ -103,47 +105,47 @@ public class ViewLoginController<User> implements Initializable {
 
 */
 
-        /**
-         * Initializes the controller class.
-         */
-        @Override
-        public void initialize(URL url, ResourceBundle rb) {
-            // TODO
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+
+    private void loadStage(String url, Event event) {
+
+        try {
+
+            //((Node)(event.getSource())).getScene().getWindow().hide();
+
+
+            Object eventSource = event.getSource();
+            Node sourceAsNode = (Node) eventSource;
+            Scene oldScene = sourceAsNode.getScene();
+            Window window = oldScene.getWindow();
+            Stage stage = (Stage) window;
+            stage.hide();
+
+            Parent root = FXMLLoader.load(getClass().getResource(url));
+            Scene scene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.show();
+
+            newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Platform.exit();
+                }
+            });
+
+        } catch (IOException ex) {
+            System.out.println("Hola");
         }
-
-        private void loadStage(String url, Event event){
-
-            try {
-
-                //((Node)(event.getSource())).getScene().getWindow().hide();
-
-
-                Object eventSource = event.getSource();
-                Node sourceAsNode = (Node) eventSource ;
-                Scene oldScene = sourceAsNode.getScene();
-                Window window = oldScene.getWindow();
-                Stage stage = (Stage) window ;
-                stage.hide();
-
-                Parent root = FXMLLoader.load(getClass().getResource(url));
-                Scene scene = new Scene(root);
-                Stage newStage = new Stage();
-                newStage.setScene(scene);
-                newStage.show();
-
-                newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                    @Override
-                    public void handle(WindowEvent event) {
-                        Platform.exit();
-                    }
-                });
-
-            } catch (IOException ex) {
-                System.out.println("Hola");
-            }
-
-        }
-
 
     }
+
+
+}
 

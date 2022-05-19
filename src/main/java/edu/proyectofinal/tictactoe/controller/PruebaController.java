@@ -18,7 +18,9 @@ public class PruebaController implements Initializable {
         App.setStage("tictactoe");
     }
 
-
+    public void switchToLogin(ActionEvent event) throws IOException{
+        App.setStage("loginInterface");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
