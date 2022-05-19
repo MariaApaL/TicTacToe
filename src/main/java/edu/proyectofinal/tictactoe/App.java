@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage login) throws IOException {
 
-//para probar las interfaces , simplemente cambiar el nombre del fxml
+        //para probar las interfaces , simplemente cambiar el nombre del fxml
 
         login.setTitle("Tictactoe");
         this.stage = login;

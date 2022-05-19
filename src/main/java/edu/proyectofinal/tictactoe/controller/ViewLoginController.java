@@ -1,4 +1,5 @@
 package edu.proyectofinal.tictactoe.controller;
+import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -24,7 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewLoginController<UserDAO> implements Initializable {
+public class ViewLoginController<User> implements Initializable {
 
 
 
@@ -38,25 +39,25 @@ public class ViewLoginController<UserDAO> implements Initializable {
         @FXML
         private Button btnLogin;
 
+    private UserService userService;
+
         @FXML
         private void eventKey(KeyEvent event){
 
-            Object evt = event.getSource();
 
-            if(evt.equals(txtUser)){
-
-                if(event.getCharacter().equals(" ")){
-                    event.consume();
+            if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
+                if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
+                    lblMessage.setText("Login successful.");
+                    System.out.println("MÉTODO VALIDATE");
+                } else {
+                    lblMessage.setText("User not found.");
                 }
-
-            }else if(evt.equals(txtPassword)){
-
-                if(event.getCharacter().equals(" ")){
-                    event.consume();
-                }
-
+            } else {
+                lblMessage.setText("Fill in username and password.");
             }
 
+
+        }
 
 
         }
@@ -70,10 +71,10 @@ public class ViewLoginController<UserDAO> implements Initializable {
 
                 if(!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()){
 
-                    String user = txtUser.getText();
-                    String pass = txtPassword.getText();
+                    String player_name = txtUser.getText();
+                    String password = txtPassword.getText();
 
-                    int state = model.login(user, pass);
+                    int state = model.login(player_name, password);
 
                     if(state!=-1){
 
