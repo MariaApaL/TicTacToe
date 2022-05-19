@@ -22,31 +22,7 @@ public class TicTacToeController implements Initializable {
 
     // Añadimos los botones del 1 al 9
     @FXML
-    private Button b1;
-
-    @FXML
-    private Button b2;
-
-    @FXML
-    private Button b3;
-
-    @FXML
-    private Button b4;
-
-    @FXML
-    private Button b5;
-
-    @FXML
-    private Button b6;
-
-    @FXML
-    private Button b7;
-
-    @FXML
-    private Button b8;
-
-    @FXML
-    private Button b9;
+    private Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
 
     @FXML
     private Button newGame;
@@ -83,6 +59,14 @@ public class TicTacToeController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+
+
+    public void switchToMenu(ActionEvent event) throws IOException{
+        App.setStage("prueba");
+    }
+
+
 
 
 
@@ -159,7 +143,7 @@ public class TicTacToeController implements Initializable {
                 default -> null;
             };
 
-            //X winner
+
             if (line.equals("XXX")) {
                 changingText.setText("PLAYER X WON");
                 pX++;
@@ -168,7 +152,7 @@ public class TicTacToeController implements Initializable {
 
             }
 
-            //O winner
+
             else if (line.equals("OOO")) {
                 changingText.setText("PLAYER O WON");
                 pO++;
