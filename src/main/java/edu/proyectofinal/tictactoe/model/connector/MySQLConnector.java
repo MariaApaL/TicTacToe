@@ -12,6 +12,7 @@ public class MySQLConnector {
 
     @Setter
     @Getter
+    static
     Properties prop = new Properties();
 
     public MySQLConnector() {
@@ -29,7 +30,7 @@ public class MySQLConnector {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
+    public static Connection getMySQLConnection() throws ClassNotFoundException, SQLException {
         try {
 
             //Indicates which driver is going to be used.
@@ -48,7 +49,7 @@ public class MySQLConnector {
      * Obtains the URL to connect to a MySQL DDBB.
      * @return an URL
      */
-    private String getURL() {
+    private static String getURL() {
         //jdbc:mysql://localhost:3306/world?user=sa&password=12345678&useSSL=false;
         return new StringBuilder().append(prop.getProperty(MySQLConstants.URL_PREFIX))
                 .append(prop.getProperty(MySQLConstants.URL_HOST)).append(":")
@@ -69,4 +70,6 @@ public class MySQLConnector {
         System.out.println(connection.getCatalog());
     }
 
-}
+
+
+    }

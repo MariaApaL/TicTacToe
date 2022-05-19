@@ -18,7 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-
+import edu.proyectofinal.tictactoe.model.dao.User;
 import javax.swing.*;
 
 
@@ -63,7 +63,7 @@ public class ViewLoginController<User> implements Initializable {
 
 
 
-/*
+
         @FXML
         private void eventAction(ActionEvent event){
 
@@ -76,7 +76,7 @@ public class ViewLoginController<User> implements Initializable {
                     String player_name = txtUser.getText();
                     String password = txtPassword.getText();
 
-                    int state = model.login(player_name, password);
+                    int state = User.login(player_name,password);
 
                     if(state!=-1){
 
@@ -103,7 +103,7 @@ public class ViewLoginController<User> implements Initializable {
 
         }
 
-*/
+
 
     /**
      * Initializes the controller class.
