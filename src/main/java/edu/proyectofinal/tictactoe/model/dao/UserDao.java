@@ -11,22 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @Getter
 @Setter
 @ToString
-public class User {
+public class UserDao {
     int idplayer;
     String player_name;
     String password;
 
-    public User() {
+    public UserDao() {
 
     }
 
-    public User(ResultSet result) {
+    public UserDao(ResultSet result) {
         try {
             this.idplayer = result.getInt("idplayer");
             this.player_name = result.getString("player_name");
@@ -36,12 +34,12 @@ public class User {
         }
     }
 
-    public User(int id, String username, String password) {
+    public UserDao(int id, String username, String password) {
         this.idplayer=id;
         this.player_name=username;
         this.password=password;
     }
-    public int login (String user, String password){
+    public static int login(String user, String password){
 
         Connection connection = null;
         PreparedStatement pst;
@@ -54,7 +52,7 @@ public class User {
 
             if(connection!=null){
 
-                String sql = "SELECT * FROM usuarios WHERE BINARY user=? AND pass=AES_ENCRYPT(?, 'key')";
+                String sql = "SELECT * FROM player WHERE playername=? AND password=?";
 
                 pst = connection.prepareStatement(sql);
                 pst.setString(1, user);

@@ -1,5 +1,9 @@
 package edu.proyectofinal.tictactoe.controller;
 
+import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.excepciones.exception;
+import edu.proyectofinal.tictactoe.model.dao.UserDao;
+import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -18,7 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-import edu.proyectofinal.tictactoe.model.dao.User;
+
 import javax.swing.*;
 
 
@@ -26,8 +30,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewLoginController<User> implements Initializable {
+public class ViewLoginController implements Initializable {
 
+private UserDao model=new UserDao();
 
     @FXML
     private TextField txtUser;
@@ -43,48 +48,34 @@ public class ViewLoginController<User> implements Initializable {
 
     private UserService userService;
 
+
+
     @FXML
-    private void eventKey(KeyEvent event) {
-
-
-        if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
-            if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
-                //  message.setText("Login successful.");
-                System.out.println("MÉTODO VALIDATE");
-            } /*else {
-                //  message.setText("User not found.");
-            }
-        } else {
-            lblMessage.setText("Fill in username and password.");*/
+    private void eventKey(ActionEvent event) throws exception, IOException {
+        String player_name = txtUser.getText();
+        String password = txtPassword.getText();
+        if( userService.validateUser(player_name, password)){
+            App.setStage("tictactoe");
         }
 
+/*
+        if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
+            if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
+                String player_name = txtUser.getText();
+                String password = txtPassword.getText();
+                if( player_name != null && password != null){
 
-    }
 
 
-
-
-        @FXML
-        private void eventAction(ActionEvent event){
-
-            Object evt = event.getSource();
-
-            if(evt.equals(btnLogin)){
-
-                if(!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()){
-
-                    String player_name = txtUser.getText();
-                    String password = txtPassword.getText();
-
-                    int state = User.login(player_name,password);
+                    int state = model.login(player_name,password);
 
                     if(state!=-1){
 
                         if(state == 1){
 
-                            JOptionPane.showMessageDialog(null, "Datos correctos puede ingresar al sistema");
 
-                            loadStage("/view/ViewPrincipal.fxml", event);
+
+                            App.setStage("tictactoe");
 
                         }else{
                             JOptionPane.showMessageDialog(null, "Error al iniciar sesión datos de acceso incorrectos",
@@ -99,9 +90,17 @@ public class ViewLoginController<User> implements Initializable {
                             "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 }
 
-            }
 
+            } else {
+                System.out.println("User not found.");
+            }
+        } else {
+            System.out.println("Fill in username and password.");
         }
+*/
+    }
+
+
 
 
 
@@ -110,22 +109,17 @@ public class ViewLoginController<User> implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+userService=new UserService(new UserManagerImpl());
     }
 
     private void loadStage(String url, Event event) {
 
         try {
 
-            //((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
 
 
-            Object eventSource = event.getSource();
-            Node sourceAsNode = (Node) eventSource;
-            Scene oldScene = sourceAsNode.getScene();
-            Window window = oldScene.getWindow();
-            Stage stage = (Stage) window;
-            stage.hide();
+
 
             Parent root = FXMLLoader.load(getClass().getResource(url));
             Scene scene = new Scene(root);

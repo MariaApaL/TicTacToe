@@ -1,7 +1,7 @@
 package edu.proyectofinal.tictactoe.model.manager.impl;
 
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
-import edu.proyectofinal.tictactoe.model.dao.User;
+import edu.proyectofinal.tictactoe.model.dao.UserDao;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.Connection;
@@ -14,8 +14,8 @@ public class UserManagerImpl implements UserManager {
     public boolean findUser(Connection con, String player_name, String password) {
         //prepare SQL statement
         String sql = "select * "
-                + "from PLAYERS "
-                + "where PLAYER_NAME = ? and PASSWORD = ?";
+                + "from PLAYER "
+                + "where PLAYERNAME = ? and PASSWORD = ?";
 
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -28,7 +28,7 @@ public class UserManagerImpl implements UserManager {
             result.beforeFirst();
 
             // Initialize variable
-            User user = null;
+            UserDao user = null;
 
             return result.next();
 

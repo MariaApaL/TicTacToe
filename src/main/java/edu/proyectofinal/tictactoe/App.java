@@ -23,7 +23,7 @@ public class App extends Application {
 
         login.setTitle("Tictactoe");
         this.stage = login;
-        setStage("prueba");
+        setStage("loginInterface");
 
 
     }

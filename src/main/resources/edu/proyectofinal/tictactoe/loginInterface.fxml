@@ -28,7 +28,7 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextField prefHeight="17.0" prefWidth="261.0">
+                <TextField fx:id="txtUser" prefHeight="17.0" prefWidth="261.0">
                     <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                     </VBox.margin>
@@ -41,12 +41,12 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <PasswordField>
+                <PasswordField fx:id="txtPassword">
                     <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                     </VBox.margin>
                 </PasswordField>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="285.0" text="Log in">
+                <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#eventKey" prefHeight="25.0" prefWidth="285.0" text="Log in">
                     <VBox.margin>
                         <Insets left="80.0" right="80.0" top="20.0" />
                     </VBox.margin>
@@ -86,7 +86,7 @@
                         <Insets left="10.0" right="10.0" top="15.0" />
                     </VBox.margin>
                 </PasswordField>
-                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="327.0" text="Sign in">
+                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="327.0" text="Register">
                     <VBox.margin>
                         <Insets left="80.0" right="80.0" top="20.0" />
                     </VBox.margin>
