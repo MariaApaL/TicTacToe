@@ -1,5 +1,6 @@
 package edu.proyectofinal.tictactoe.service;
 
+import edu.proyectofinal.tictactoe.excepciones.exception;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.Connection;
@@ -26,4 +27,35 @@ public class UserService {
         }
 
     }
-}
+
+    public int insertUserReg(String username, String password) throws SQLException,ClassNotFoundException{
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.insertUser(con, username, password);
+
+
+
+
+        }
+
+/*
+    public boolean validateInsertPlayer(String username, String password) throws exception {
+       try(Connection con = userManager.getConnector().getMySQLConnection()){
+           userManager.insertUser(con, username, password);
+            return userManager.findUser(con, username, password);
+       }catch(SQLException | ClassNotFoundException e){}
+
+        return validateUser(username, password);
+*/
+       /*
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+
+             return userManager.findUser(con, username, password);
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+*/
+    }
+    }

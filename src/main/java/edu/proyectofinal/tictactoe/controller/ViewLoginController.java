@@ -28,6 +28,7 @@ import javax.swing.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ViewLoginController implements Initializable {
@@ -36,15 +37,23 @@ private UserDao model=new UserDao();
 
     @FXML
     private TextField txtUser;
+    @FXML
+    private TextField userRegister;
 
     @FXML
     private PasswordField txtPassword;
+    @FXML
+    private PasswordField PasswordRegister;
 
     //@FXML
     //private Label message;
 
     @FXML
     private Button btnLogin;
+    @FXML
+    private Button btnRegister;
+
+
 
     private UserService userService;
 
@@ -99,6 +108,27 @@ private UserDao model=new UserDao();
         }
 */
     }
+
+    @FXML
+    private void eventKeyRegister(ActionEvent event) throws exception, IOException{
+        String player_name = userRegister.getText();
+        String password = PasswordRegister.getText();
+
+
+        try {
+            int createdUser = userService.insertUserReg(player_name, password);
+            if (createdUser > 0) {
+                App.setStage("tictactoe");
+            } else {
+               System.out.println("user not registered correctly");
+            }
+        } catch ( ClassNotFoundException | SQLException e) {
+        System.out.println("Error");
+        }
+    }
+
+
+
 
 
 

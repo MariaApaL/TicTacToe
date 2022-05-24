@@ -8,4 +8,6 @@ public interface UserManager {
     public boolean findUser(Connection con, String player_name, String password);
 
     public MySQLConnector getConnector();
+
+    public int insertUser(Connection con, String player_name, String password);
 }
