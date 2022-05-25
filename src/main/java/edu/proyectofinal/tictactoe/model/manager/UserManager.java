@@ -18,5 +18,7 @@ public interface UserManager {
     public boolean deleteUser(Connection con) throws SQLException;
 
     public List ranking(Connection con) throws SQLException;
+
+
 }
 

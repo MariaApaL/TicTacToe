@@ -5,6 +5,7 @@ import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
 
@@ -54,5 +55,10 @@ public class UserService {
         }
     }
 
+    public List ranking() throws SQLException, ClassNotFoundException{
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.ranking(con);
+        }
+    }
 
     }

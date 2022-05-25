@@ -111,29 +111,38 @@ public class UserManagerImpl implements UserManager {
     @Override
     public List ranking(Connection con) throws SQLException {
         String sql = "select player_name from PLAYER  order  by  num_game desc limit 10";
-       try(Statement stmt=con.createStatement()){
-           ResultSet result = stmt.executeQuery(sql);
-           result.beforeFirst();
+        try(Statement stmt=con.createStatement()){
+            ResultSet result = stmt.executeQuery(sql);
+            result.beforeFirst();
 
-           List players = new ArrayList();
+            List players = new ArrayList();
 
-           while (result.next()) {
-               int a=0;
-               players.add(String.valueOf((result)));
+            while (result.next()) {
+                int a=0;
+                players.add(String.valueOf((result)));
 
-           }
+            }
 
             return players;
 
-       }catch(SQLException e) {
-        e.printStackTrace();
-           return null;
-       }
+        }catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public MySQLConnector getConnector() {
         return new MySQLConnector();
     }
+
+
+
+
+
+
+
+
+
 
 }
