@@ -19,7 +19,7 @@ public class UserManagerImpl implements UserManager {
             //Add Parameters
             stmt.setString(1, player_name);
             stmt.setString(2, password);
-            int affectedRows = stmt.executeUpdate();
+
 
 
             // Queries the DB
@@ -74,6 +74,18 @@ public class UserManagerImpl implements UserManager {
 
 
         }
+    }
+
+    public boolean updateNumGame(Connection con, String name){
+        String sql="Update player set num_game= (num_game +1)where player_name=?";
+
+        try(PreparedStatement stmt=con.prepareStatement(sql)){
+            stmt.setString(1, name);
+            return stmt.executeUpdate() > 0;
+
+        }catch(SQLException e){}
+        return false;
+
     }
 
     @Override

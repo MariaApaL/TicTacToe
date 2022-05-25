@@ -16,6 +16,7 @@ public class PruebaController implements Initializable {
 
     public void switchToTictactoe(ActionEvent event) throws IOException{
         App.setStage("tictactoe");
+
     }
 
     public void switchToLogin(ActionEvent event) throws IOException{

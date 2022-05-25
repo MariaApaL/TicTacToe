@@ -15,6 +15,14 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage stage;
+    private static String namePlayer;
+
+    public static String getNamePlayer(){
+        return namePlayer;
+    }
+    public static void setNamePlayer(String name){
+        namePlayer=name;
+    }
 
     @Override
     public void start(Stage login) throws IOException {

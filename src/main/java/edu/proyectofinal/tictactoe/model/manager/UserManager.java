@@ -10,4 +10,6 @@ public interface UserManager {
     public MySQLConnector getConnector();
 
     public int insertUser(Connection con, String player_name, String password);
+
+    public boolean updateNumGame(Connection con, String name);
 }

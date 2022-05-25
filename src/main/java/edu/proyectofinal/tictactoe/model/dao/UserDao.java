@@ -16,13 +16,20 @@ import java.sql.PreparedStatement;
 @Setter
 @ToString
 public class UserDao {
-    int idplayer;
-    String player_name;
-    String password;
+     int idplayer;
+     String player_name;
+     String password;
 
     public UserDao() {
 
+
     }
+
+    public String getName(){
+        return player_name;
+
+    }
+
 
     public UserDao(ResultSet result) {
         try {
@@ -34,8 +41,8 @@ public class UserDao {
         }
     }
 
-    public UserDao(int id, String username, String password) {
-        this.idplayer=id;
+    public UserDao( String username, String password) {
+
         this.player_name=username;
         this.password=password;
     }

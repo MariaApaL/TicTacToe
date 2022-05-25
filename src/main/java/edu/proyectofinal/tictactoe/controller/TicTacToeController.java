@@ -1,6 +1,9 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.model.dao.UserDao;
+import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
+import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -56,10 +60,9 @@ public class TicTacToeController implements Initializable {
     //Creamos un ArrayList con los botones
     ArrayList<Button> buttons;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
+
+    private UserService userService;
 
 
     public void switchToMenu(ActionEvent event) throws IOException{
@@ -92,13 +95,22 @@ public class TicTacToeController implements Initializable {
             button.setFocusTraversable(false);
         });
 
+        userService= new UserService(new UserManagerImpl());
+
     }
 
 
     @FXML
-    public void restartGame(ActionEvent event) {
+    public void restartGame(ActionEvent event) throws SQLException, ClassNotFoundException {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
+        String playerName=App.getNamePlayer();
+               /* if(usuario.getTxtUser()!=null) {
+                    playerName = usuario.getUser();
+                }if(usuario.getUserRegister()!=null){playerName=usuario.getUserRegister();}
+
+      */
+        userService.newGame(playerName);
 
     }
 

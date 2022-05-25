@@ -33,29 +33,17 @@ public class UserService {
             return userManager.insertUser(con, username, password);
 
 
-
-
         }
 
-/*
-    public boolean validateInsertPlayer(String username, String password) throws exception {
-       try(Connection con = userManager.getConnector().getMySQLConnection()){
-           userManager.insertUser(con, username, password);
-            return userManager.findUser(con, username, password);
-       }catch(SQLException | ClassNotFoundException e){}
-
-        return validateUser(username, password);
-*/
-       /*
-        try (Connection con = userManager.getConnector().getMySQLConnection()) {
-
-             return userManager.findUser(con, username, password);
+    }
 
 
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
+    public boolean newGame(String name) throws SQLException, ClassNotFoundException{
+
+        try(Connection con=userManager.getConnector().getMySQLConnection()){
+            return userManager.updateNumGame(con, name);
         }
-*/
+
+
     }
     }

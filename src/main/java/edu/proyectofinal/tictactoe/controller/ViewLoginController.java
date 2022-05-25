@@ -33,17 +33,28 @@ import java.util.ResourceBundle;
 
 public class ViewLoginController implements Initializable {
 
-private UserDao model=new UserDao();
+
 
     @FXML
-    private TextField txtUser;
+    private  TextField txtUser;
     @FXML
     private TextField userRegister;
+
+
+
+
+
+
+
+
+
 
     @FXML
     private PasswordField txtPassword;
     @FXML
     private PasswordField PasswordRegister;
+
+
 
     //@FXML
     //private Label message;
@@ -59,12 +70,24 @@ private UserDao model=new UserDao();
 
 
 
+
+
+
+
+
+
+
+
+
     @FXML
-    private void eventKey(ActionEvent event) throws exception, IOException {
+    private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
         if( userService.validateUser(player_name, password)){
-            App.setStage("tictactoe");
+            userService.newGame(player_name);
+            App.setNamePlayer(player_name);
+            App.setStage("tictactoe" );
+
         }
 
 /*
@@ -118,7 +141,13 @@ private UserDao model=new UserDao();
         try {
             int createdUser = userService.insertUserReg(player_name, password);
             if (createdUser > 0) {
+                App.setNamePlayer(player_name);
+                userService.newGame(player_name);
                 App.setStage("tictactoe");
+
+
+
+
             } else {
                System.out.println("user not registered correctly");
             }
