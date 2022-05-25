@@ -84,7 +84,7 @@ public class ViewLoginController implements Initializable {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
         if( userService.validateUser(player_name, password)){
-            userService.newGame(player_name);
+
             App.setNamePlayer(player_name);
             App.setStage("tictactoe" );
 
@@ -142,7 +142,7 @@ public class ViewLoginController implements Initializable {
             int createdUser = userService.insertUserReg(player_name, password);
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
-                userService.newGame(player_name);
+
                 App.setStage("tictactoe");
 
 

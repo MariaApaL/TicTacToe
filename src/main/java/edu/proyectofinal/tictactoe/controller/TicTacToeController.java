@@ -105,12 +105,13 @@ public class TicTacToeController implements Initializable {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
         String playerName=App.getNamePlayer();
+        userService.newGame(playerName);
                /* if(usuario.getTxtUser()!=null) {
                     playerName = usuario.getUser();
                 }if(usuario.getUserRegister()!=null){playerName=usuario.getUserRegister();}
 
       */
-        userService.newGame(playerName);
+
 
     }
 
