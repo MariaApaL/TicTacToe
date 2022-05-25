@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 
@@ -40,14 +41,11 @@ public class ViewLoginController implements Initializable {
     @FXML
     private TextField userRegister;
 
+    @FXML
+    private TextField textLogin;
 
-
-
-
-
-
-
-
+    @FXML
+    private TextField textJoin;
 
     @FXML
     private PasswordField txtPassword;
@@ -83,53 +81,14 @@ public class ViewLoginController implements Initializable {
     private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
-        if( userService.validateUser(player_name, password)){
+        if (userService.validateUser(player_name, password)) {
             userService.newGame(player_name);
             App.setNamePlayer(player_name);
-            App.setStage("tictactoe" );
+            App.setStage("prueba");
 
-        }
-
-/*
-        if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
-            if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
-                String player_name = txtUser.getText();
-                String password = txtPassword.getText();
-                if( player_name != null && password != null){
-
-
-
-                    int state = model.login(player_name,password);
-
-                    if(state!=-1){
-
-                        if(state == 1){
-
-
-
-                            App.setStage("tictactoe");
-
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Error al iniciar sesión datos de acceso incorrectos",
-                                    "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                        }
-
-                    }
-
-
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error al iniciar sesión datos de acceso incorrectos",
-                            "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                }
-
-
-            } else {
-                System.out.println("User not found.");
-            }
         } else {
-            System.out.println("Fill in username and password.");
+            // textLogin.setText("Incorrect User or Password");
         }
-*/
     }
 
     @FXML
@@ -143,12 +102,13 @@ public class ViewLoginController implements Initializable {
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
                 userService.newGame(player_name);
-                App.setStage("tictactoe");
+                App.setStage("prueba");
 
 
 
 
             } else {
+               // textJoin.setText("User not registered correctly");
                System.out.println("user not registered correctly");
             }
         } catch ( ClassNotFoundException | SQLException e) {
@@ -157,45 +117,18 @@ public class ViewLoginController implements Initializable {
     }
 
 
-
-
-
-
-
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-userService=new UserService(new UserManagerImpl());
+
+
+        userService=new UserService(new UserManagerImpl());
     }
 
-    private void loadStage(String url, Event event) {
+    public void deleteUser(ActionEvent event){
 
-        try {
-
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-
-
-
-
-            Parent root = FXMLLoader.load(getClass().getResource(url));
-            Scene scene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setScene(scene);
-            newStage.show();
-
-            newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Platform.exit();
-                }
-            });
-
-        } catch (IOException ex) {
-            System.out.println("Hola");
-        }
 
     }
 
