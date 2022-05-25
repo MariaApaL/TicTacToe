@@ -23,6 +23,10 @@ public class PruebaController implements Initializable {
         App.setStage("loginInterface");
     }
 
+    public void switchToRanking(ActionEvent event) throws IOException{
+        App.setStage("rankingInterface");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
