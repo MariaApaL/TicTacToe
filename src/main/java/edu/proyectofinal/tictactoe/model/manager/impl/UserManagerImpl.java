@@ -110,7 +110,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public List ranking(Connection con) throws SQLException {
-        String sql = "select player_name,  from PLAYER  order  by  num_game desc limit 10";
+        String sql = "select player_name, num_game  from PLAYER  order  by  num_game desc limit 10";
         try(Statement stmt=con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
             result.beforeFirst();
