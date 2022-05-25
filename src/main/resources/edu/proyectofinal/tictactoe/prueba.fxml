@@ -13,7 +13,7 @@
          </font>
       </Text>
       <Button fx:id="newGame" layoutX="159.0" layoutY="132.0" mnemonicParsing="false" onAction="#switchToTictactoe" prefHeight="48.0" prefWidth="151.0" text="New Game" />
-      <Button fx:id="ranking" layoutX="159.0" layoutY="208.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="151.0" text="Ranking" />
+      <Button fx:id="ranking" layoutX="159.0" layoutY="208.0" mnemonicParsing="false" onAction="#switchToRanking" prefHeight="48.0" prefWidth="151.0" text="Ranking" />
       <Button fx:id="backChoose" layoutX="195.0" layoutY="296.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="28.0" prefWidth="80.0" text="Back" />
    </children>
 </AnchorPane>
