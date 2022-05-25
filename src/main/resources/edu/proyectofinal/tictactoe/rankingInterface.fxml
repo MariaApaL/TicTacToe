@@ -14,8 +14,8 @@
          <children>
             <TableView prefHeight="200.0" prefWidth="223.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Rank" />
-                <TableColumn prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="rank" prefWidth="75.0" text="Rank" />
+                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
                   <TableColumn prefWidth="75.0" text="Wins" />
               </columns>
             </TableView>
