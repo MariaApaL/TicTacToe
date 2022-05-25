@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,9 +38,9 @@ public class App extends Application {
 
         //para probar las interfaces , simplemente cambiar el nombre del fxml
 
-        login.setTitle("Tictactoe");
+        login.setTitle("TicTacToe");
         this.stage = login;
-        setStage("loginInterface");
+        setStage("start");
 
 
     }
@@ -52,6 +53,7 @@ public class App extends Application {
         stage.setScene(new Scene(root));
         stage.show();
 
+       // Image image = new Image(src/main/resources/static/img/icon.png);
 
     }
 

@@ -96,7 +96,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public boolean deleteUser(Connection con) throws SQLException {
-        String sql = "DELETE player city WHERE player_name = ?";
+        String sql = "DELETE player WHERE player_name = ?";
         try (PreparedStatement stmt= con.prepareStatement(sql)){
 
             stmt.setString(1, App.getNamePlayer());
