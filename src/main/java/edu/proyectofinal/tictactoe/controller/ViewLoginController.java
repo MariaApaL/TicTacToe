@@ -70,15 +70,6 @@ public class ViewLoginController implements Initializable {
 
 
 
-
-
-
-
-
-
-
-
-
     @FXML
     private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
@@ -86,50 +77,10 @@ public class ViewLoginController implements Initializable {
         if( userService.validateUser(player_name, password)){
             userService.newGame(player_name);
             App.setNamePlayer(player_name);
-            App.setStage("tictactoe" );
+            App.setStage("prueba");
 
         }
 
-/*
-        if (!txtUser.getText().isEmpty() && !txtPassword.getText().isEmpty()) {
-            if (userService.validateUser(txtUser.getText(), txtPassword.getText())) {
-                String player_name = txtUser.getText();
-                String password = txtPassword.getText();
-                if( player_name != null && password != null){
-
-
-
-                    int state = model.login(player_name,password);
-
-                    if(state!=-1){
-
-                        if(state == 1){
-
-
-
-                            App.setStage("tictactoe");
-
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Error al iniciar sesión datos de acceso incorrectos",
-                                    "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                        }
-
-                    }
-
-
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error al iniciar sesión datos de acceso incorrectos",
-                            "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-                }
-
-
-            } else {
-                System.out.println("User not found.");
-            }
-        } else {
-            System.out.println("Fill in username and password.");
-        }
-*/
     }
 
     @FXML
@@ -159,45 +110,14 @@ public class ViewLoginController implements Initializable {
 
 
 
-
-
-
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-userService=new UserService(new UserManagerImpl());
+            userService=new UserService(new UserManagerImpl());
     }
 
-    private void loadStage(String url, Event event) {
-
-        try {
-
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-
-
-
-
-            Parent root = FXMLLoader.load(getClass().getResource(url));
-            Scene scene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setScene(scene);
-            newStage.show();
-
-            newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Platform.exit();
-                }
-            });
-
-        } catch (IOException ex) {
-            System.out.println("Hola");
-        }
-
-    }
 
 
 }

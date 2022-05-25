@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -20,6 +22,7 @@ public class App extends Application {
     private static String password;
 
     public static String getNamePlayer(){
+
         return namePlayer;
     }
     public static void setNamePlayer(String name){
@@ -27,9 +30,11 @@ public class App extends Application {
     }
 
     public static String getPassword(){
+
         return password;
     }
     public static void setPassword(String pass){
+
         password=pass;
     }
 
