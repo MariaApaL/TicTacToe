@@ -1,10 +1,16 @@
 package edu.proyectofinal.tictactoe.model.manager.impl;
 
+import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 import edu.proyectofinal.tictactoe.model.dao.UserDao;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
+import javafx.collections.ArrayChangeListener;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserManagerImpl implements UserManager {
 
@@ -86,6 +92,43 @@ public class UserManagerImpl implements UserManager {
         }catch(SQLException e){}
         return false;
 
+    }
+
+    @Override
+    public boolean deleteUser(Connection con) throws SQLException {
+        String sql = "DELETE player city WHERE player_name = ?";
+        try (PreparedStatement stmt= con.prepareStatement(sql)){
+
+            stmt.setString(1, App.getNamePlayer());
+            return stmt.executeUpdate() > 0;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    public List ranking(Connection con) throws SQLException {
+        String sql = "select player_name from PLAYER  order  by  num_game desc limit 10";
+       try(Statement stmt=con.createStatement()){
+           ResultSet result = stmt.executeQuery(sql);
+           result.beforeFirst();
+
+           List players = new ArrayList();
+
+           while (result.next()) {
+               int a=0;
+               players.add(String.valueOf((result)));
+
+           }
+
+            return players;
+
+       }catch(SQLException e) {
+        e.printStackTrace();
+           return null;
+       }
     }
 
     @Override

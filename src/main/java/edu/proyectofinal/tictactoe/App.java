@@ -16,12 +16,20 @@ public class App extends Application {
     private static Scene scene;
     private static Stage stage;
     private static String namePlayer;
+    private static String password;
 
     public static String getNamePlayer(){
         return namePlayer;
     }
     public static void setNamePlayer(String name){
         namePlayer=name;
+    }
+
+    public static String getPassword(){
+        return password;
+    }
+    public static void setPassword(String pass){
+        password=pass;
     }
 
     @Override

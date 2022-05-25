@@ -46,4 +46,13 @@ public class UserService {
 
 
     }
+
+    public boolean deleteUser() throws SQLException, ClassNotFoundException {
+
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.deleteUser(con);
+        }
+    }
+
+
     }
