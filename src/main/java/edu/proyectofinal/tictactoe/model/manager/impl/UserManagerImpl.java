@@ -79,16 +79,16 @@ public class UserManagerImpl implements UserManager {
 
         }
     }
-
-    public boolean updateNumGame(Connection con, String name){
+    @Override
+    public boolean updateNumGame(Connection con, String name) throws SQLException{
         String sql="Update player set num_game= (num_game +1)where player_name=?";
 
         try(PreparedStatement stmt=con.prepareStatement(sql)){
             stmt.setString(1, name);
             return stmt.executeUpdate() > 0;
 
-        }catch(SQLException e){}
-        return false;
+        }catch(SQLException e){
+        return false;}
 
     }
 
@@ -108,7 +108,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public List ranking(Connection con) throws SQLException {
-        String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
+        String sql = "select player_name, num_game  from PLAYER  order  by  num_game desc limit 10";
         try(Statement stmt=con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
             result.beforeFirst();
@@ -120,7 +120,7 @@ public class UserManagerImpl implements UserManager {
                 players.add(String.valueOf((result)));
 
             }
-            App.setRankingNumGame(players);
+
             return players;
 
         }catch(SQLException e) {
@@ -129,26 +129,31 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
-    @Override
-    public List rankingNumGame(Connection con) throws SQLException {
-        String sql = "select num_game  from PLAYER  order  by  num_game desc limit 10";
-        try(Statement stmt=con.createStatement()){
+    public int numGame(Connection con) throws SQLException {
+        String sql = "select num_game  from PLAYER  where player_name=?";
+        try(PreparedStatement stmt=con.prepareStatement(sql)){
+            stmt.setString(1, App.getNamePlayer());
             ResultSet result = stmt.executeQuery(sql);
             result.beforeFirst();
 
-            List numGame = new ArrayList();
-
-            while (result.next()) {
-                int a=0;
-                numGame.add(String.valueOf((result)));
-
-            }
-            App.setRankingName(numGame);
-            return numGame;
+            return result.getInt(1);
 
         }catch(SQLException e) {
             e.printStackTrace();
-            return null;
+            return 0;
+        }
+    }
+
+    public boolean updateSuggestions (Connection con, String suggestions){
+        String sql="Update player set quejas= ? where player_name=?";
+
+        try(PreparedStatement stmt=con.prepareStatement(sql)){
+            stmt.setString(1, suggestions);
+            stmt.setString(2, App.getNamePlayer() );
+            return stmt.executeUpdate() > 0;
+
+        }catch(SQLException e){
+        return false;
         }
     }
 

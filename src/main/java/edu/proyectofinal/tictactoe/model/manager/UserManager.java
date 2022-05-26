@@ -9,18 +9,21 @@ import java.util.List;
 public interface UserManager {
     public boolean findUser(Connection con, String player_name, String password);
 
-    List rankingNumGame(Connection con) throws SQLException;
+
 
     public MySQLConnector getConnector();
 
-    public int insertUser(Connection con, String player_name, String password);
+    public int insertUser(Connection con, String player_name, String password)throws SQLException;
 
-    public boolean updateNumGame(Connection con, String name);
+    public boolean updateNumGame(Connection con, String name)throws SQLException;
 
     public boolean deleteUser(Connection con) throws SQLException;
 
     public List ranking(Connection con) throws SQLException;
 
+    public int numGame(Connection con)throws SQLException;
+
+    public boolean updateSuggestions (Connection con, String suggestions);
 
 }
 
