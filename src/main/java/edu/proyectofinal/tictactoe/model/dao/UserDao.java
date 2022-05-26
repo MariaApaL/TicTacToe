@@ -15,16 +15,16 @@ import java.sql.PreparedStatement;
 @Getter
 @Setter
 @ToString
+
 public class UserDao {
      int idplayer;
      String player_name;
      String password;
+     int num_game;
 
     public UserDao() {
 
     }
-
-
 
     public String getName(){
         return player_name;
@@ -37,6 +37,7 @@ public class UserDao {
             this.idplayer = result.getInt("idplayer");
             this.player_name = result.getString("player_name");
             this.password = result.getString("password");
+            this.num_game = result.getInt("num_game");
         } catch (SQLException e) {
             e.printStackTrace();
         }

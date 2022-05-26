@@ -1,8 +1,12 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.model.dao.UserDao;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,39 +33,12 @@ public class RankingController implements Initializable {
     private Button b1;
 
     @FXML
-    private TableColumn<?,?> rank;
-
-    @FXML
-    private TableColumn<?,?> name;
-
-    @FXML
-    private
-
-    @FXML
     private Button playAgain;
 
-   private TableView table = new TableView();
+    @FXML
+    private TableView <UserDao>  table;
 
-
-    public void start(Stage primaryStage) {
-
-        Group group = new Group();
-
-        TableColumn rank = new TableColumn("rank");
-        TableColumn name = new TableColumn("Name");
-        TableColumn wins = new TableColumn("Wins");
-
-        table.getColumns().addAll(rank,name,wins);
-
-        Scene scene = new Scene(group, 300,250);
-
-        ((Group)scene.getRoot()).getChildren().add(table);
-
-        primaryStage.setTitle("");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-    }
+    ObservableList <UserDao> ranking = FXCollections.observableArrayList();
 
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
@@ -77,20 +55,11 @@ public class RankingController implements Initializable {
         userService.ranking();
     }
 
-    public void rankingTable(){
-
-        for(int i=1; i<10;i++ ){
-
-
-
-
-        }
-
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
+
+
     }
 }

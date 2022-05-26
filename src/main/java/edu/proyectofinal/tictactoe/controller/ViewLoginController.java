@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
@@ -37,19 +38,12 @@ public class ViewLoginController implements Initializable {
 
     @FXML
     private  TextField txtUser;
-    @FXML
-    private TextField userRegister;
 
     @FXML
     private PasswordField txtPassword;
-    @FXML
-    private PasswordField PasswordRegister;
 
     @FXML
-    private TextField textJoin;
-    @FXML
-    private TextField textLogin;
-
+    private Text textLogin;
 
 
     private UserService userService;
@@ -60,13 +54,13 @@ public class ViewLoginController implements Initializable {
     private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
-        textLogin.setText("Insert your user name");
+       textLogin.setText("Insert your user name");
 
 
         if( userService.validateUser(player_name, password)){
             userService.newGame(player_name);
             App.setNamePlayer(player_name);
-            textLogin.setText("CORRECT USER");
+           textLogin.setText("CORRECT USER");
             App.setStage("prueba");
 
 
@@ -75,37 +69,6 @@ public class ViewLoginController implements Initializable {
         }
 
     }
-
-    @FXML
-    private void eventKeyRegister(ActionEvent event) throws exception, IOException{
-        String player_name = userRegister.getText();
-        String password = PasswordRegister.getText();
-        textJoin.setText("Insert a user name");
-
-
-        try {
-            int createdUser = userService.insertUserReg(player_name, password);
-            if (createdUser > 0) {
-                App.setNamePlayer(player_name);
-                userService.newGame(player_name);
-                textJoin.setText("Insert a user name");
-                App.setStage("tictactoe");
-
-
-
-
-            } else {
-
-                textJoin.setText("User not registered correctly");
-               System.out.println("user not registered correctly");
-            }
-        } catch ( ClassNotFoundException | SQLException e) {
-        System.out.println("Error");
-        }
-    }
-
-
-
 
     /**
      * Initializes the controller class.
