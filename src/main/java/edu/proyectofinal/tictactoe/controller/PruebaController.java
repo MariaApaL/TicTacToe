@@ -21,9 +21,6 @@ import java.util.ResourceBundle;
 public class PruebaController implements Initializable {
 
 
-    @FXML
-    private AnchorPane anchorPane;
-
     private UserService userService;
 
 
@@ -34,12 +31,16 @@ public class PruebaController implements Initializable {
 
     }
 
-    public void switchToLogin(ActionEvent event) throws IOException{
-        App.setStage("loginInterface");
+    public void switchToStart(ActionEvent event) throws IOException{
+        App.setStage("start");
     }
 
     public void switchToRanking(ActionEvent event) throws IOException{
         App.setStage("rankingInterface");
+    }
+
+    public void switchToSecondMenu(ActionEvent event) throws IOException {
+        App.setStage("secondmenuInterface");
     }
 
     @Override
@@ -47,39 +48,5 @@ public class PruebaController implements Initializable {
         userService= new UserService(new UserManagerImpl());
     }
 
-    public void deleteUser(ActionEvent event) throws SQLException, ClassNotFoundException {
 
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("Delete User");
-    alert.setHeaderText("You're about to delete your user");
-    alert.setContentText("ARE YOU SURE MAH BRU?");
-
-    Stage stage;
-
-            if(alert.showAndWait().get() == ButtonType.OK){
-                stage = (Stage) anchorPane.getScene().getWindow();
-                System.out.println("You successfully deleted it!");
-                stage.close();
-            }
-       // userService.deleteUser();
-
-    }
-
-    public void logoutUser(ActionEvent event) throws SQLException, ClassNotFoundException {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Log out");
-        alert.setHeaderText("You're about to log out");
-        alert.setContentText("ARE YOU SURE MAH BRU?");
-
-        Stage stage;
-
-        if(alert.showAndWait().get() == ButtonType.OK){
-            stage = (Stage) anchorPane.getScene().getWindow();
-            System.out.println("You successfully logged out!");
-            stage.close();
-        }
-        // userService.deleteUser();
-
-    }
 }
