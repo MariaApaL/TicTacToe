@@ -15,33 +15,48 @@ import java.sql.PreparedStatement;
 @Getter
 @Setter
 @ToString
-public class UserDao {
-     int idplayer;
-     String player_name;
+public class Player {
+    public int getIdPlayer() {
+        return idPlayer;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getNumGame() {
+        return numGame;
+    }
+
+    int idPlayer;
+     String playerName;
      String password;
-
-    public UserDao() {
-
-    }
+     int numGame;
 
 
 
-    public String getName(){
-        return player_name;
-
-    }
 
 
-    public UserDao(ResultSet result) {
+
+
+
+
+
+    public Player(ResultSet result) {
         try {
-            this.idplayer = result.getInt("idplayer");
-            this.player_name = result.getString("player_name");
+            this.idPlayer = result.getInt("idplayer");
+            this.playerName = result.getString("player_name");
             this.password = result.getString("password");
+            this.numGame=result.getInt("num_game");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+/*
     public UserDao( String username, String password) {
 
         this.player_name=username;
@@ -100,5 +115,7 @@ public class UserDao {
         return state;
 
     }
+    */
+
 
 }
