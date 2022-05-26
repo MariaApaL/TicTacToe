@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * JavaFX App
@@ -20,6 +21,28 @@ public class App extends Application {
     private static Stage stage;
     private static String namePlayer;
     private static String password;
+
+
+
+    private static List RankingName;
+    private static List RankingNumGame;
+
+    public static List getRankingName() {
+        return RankingName;
+    }
+
+    public static List getRankingNumGame() {
+        return RankingNumGame;
+    }
+    public static void setRankingName(List rankingName) {
+        RankingName = rankingName;
+    }
+
+    public static void setRankingNumGame(List rankingNumGame) {
+        RankingNumGame = rankingNumGame;
+    }
+
+
 
     public static String getNamePlayer(){
 

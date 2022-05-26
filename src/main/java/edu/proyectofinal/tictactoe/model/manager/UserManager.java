@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserManager {
     public boolean findUser(Connection con, String player_name, String password);
 
+    List rankingNumGame(Connection con) throws SQLException;
+
     public MySQLConnector getConnector();
 
     public int insertUser(Connection con, String player_name, String password);

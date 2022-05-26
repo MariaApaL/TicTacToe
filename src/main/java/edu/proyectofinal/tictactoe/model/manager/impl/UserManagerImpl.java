@@ -4,15 +4,13 @@ import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 import edu.proyectofinal.tictactoe.model.dao.UserDao;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
-import javafx.collections.ArrayChangeListener;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserManagerImpl implements UserManager {
+
 
     public boolean findUser(Connection con, String player_name, String password) {
         //prepare SQL statement
@@ -110,7 +108,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public List ranking(Connection con) throws SQLException {
-        String sql = "select player_name, num_game  from PLAYER  order  by  num_game desc limit 10";
+        String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
         try(Statement stmt=con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
             result.beforeFirst();
@@ -122,7 +120,7 @@ public class UserManagerImpl implements UserManager {
                 players.add(String.valueOf((result)));
 
             }
-
+            App.setRankingNumGame(players);
             return players;
 
         }catch(SQLException e) {
@@ -130,6 +128,31 @@ public class UserManagerImpl implements UserManager {
             return null;
         }
     }
+
+    @Override
+    public List rankingNumGame(Connection con) throws SQLException {
+        String sql = "select num_game  from PLAYER  order  by  num_game desc limit 10";
+        try(Statement stmt=con.createStatement()){
+            ResultSet result = stmt.executeQuery(sql);
+            result.beforeFirst();
+
+            List numGame = new ArrayList();
+
+            while (result.next()) {
+                int a=0;
+                numGame.add(String.valueOf((result)));
+
+            }
+            App.setRankingName(numGame);
+            return numGame;
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 
     @Override
     public MySQLConnector getConnector() {

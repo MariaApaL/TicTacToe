@@ -61,4 +61,10 @@ public class UserService {
         }
     }
 
+    public List rankingNumGame() throws SQLException, ClassNotFoundException{
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.rankingNumGame(con);
+        }
+    }
+
     }

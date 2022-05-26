@@ -77,6 +77,18 @@ public class RankingController implements Initializable {
         userService.ranking();
     }
 
+    public void rankingTable(){
+
+        for(int i=1; i<10;i++ ){
+
+
+
+
+        }
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
