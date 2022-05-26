@@ -40,29 +40,15 @@ public class ViewLoginController implements Initializable {
     @FXML
     private TextField userRegister;
 
-
-
-
-
-
-
-
-
-
     @FXML
     private PasswordField txtPassword;
     @FXML
     private PasswordField PasswordRegister;
 
-
-
-    //@FXML
-    //private Label message;
-
     @FXML
-    private Button btnLogin;
+    private TextField textJoin;
     @FXML
-    private Button btnRegister;
+    private TextField textLogin;
 
 
 
@@ -74,11 +60,18 @@ public class ViewLoginController implements Initializable {
     private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
+        textLogin.setText("Insert your user name");
+
+
         if( userService.validateUser(player_name, password)){
             userService.newGame(player_name);
             App.setNamePlayer(player_name);
+            textLogin.setText("CORRECT USER");
             App.setStage("prueba");
 
+
+        }else{
+            textLogin.setText("INCORRECT USER");
         }
 
     }
@@ -87,6 +80,7 @@ public class ViewLoginController implements Initializable {
     private void eventKeyRegister(ActionEvent event) throws exception, IOException{
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
+        textJoin.setText("Insert a user name");
 
 
         try {
@@ -94,12 +88,15 @@ public class ViewLoginController implements Initializable {
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
                 userService.newGame(player_name);
+                textJoin.setText("Insert a user name");
                 App.setStage("tictactoe");
 
 
 
 
             } else {
+
+                textJoin.setText("User not registered correctly");
                System.out.println("user not registered correctly");
             }
         } catch ( ClassNotFoundException | SQLException e) {
