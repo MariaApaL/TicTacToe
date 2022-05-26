@@ -117,7 +117,7 @@ public class UserManagerImpl implements UserManager {
 
             while (result.next()) {
                 int a=0;
-                players.add(String.valueOf((result)));
+                players.add((result));
 
             }
 
