@@ -2,6 +2,7 @@ package edu.proyectofinal.tictactoe.model.manager.impl;
 
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
+//import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.dao.UserDao;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 

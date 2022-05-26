@@ -36,8 +36,6 @@ public class RankingController implements Initializable {
     @FXML
     private
 
-    @FXML
-    private Button playAgain;
 
    private TableView table = new TableView();
 
