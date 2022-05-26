@@ -1,5 +1,7 @@
 package edu.proyectofinal.tictactoe.model.manager;
 
+import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.excepciones.exception;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 
 import java.sql.Connection;
@@ -24,6 +26,10 @@ public interface UserManager {
     public int numGame(Connection con)throws SQLException;
 
     public boolean updateSuggestions (Connection con, String suggestions);
+
+    public boolean updatePassword(Connection con, String contraseña) throws SQLException, exception;
+
+    public boolean validatePassword(Connection con, String password) throws SQLException;
 
 }
 

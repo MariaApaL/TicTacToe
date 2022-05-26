@@ -73,5 +73,11 @@ public class UserService {
             return userManager.updateSuggestions(con, suggestion);
         }
     }
+    public boolean updatePassword( String contraseña) throws SQLException, ClassNotFoundException, exception {
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.updatePassword(con, contraseña);
+        }
 
     }
+
+}

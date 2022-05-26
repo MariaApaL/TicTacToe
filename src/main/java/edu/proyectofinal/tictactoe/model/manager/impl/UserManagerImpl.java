@@ -2,7 +2,9 @@ package edu.proyectofinal.tictactoe.model.manager.impl;
 
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
-import edu.proyectofinal.tictactoe.model.dao.UserDao;
+import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.excepciones.exception;
+
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.*;
@@ -32,7 +34,7 @@ public class UserManagerImpl implements UserManager {
             result.beforeFirst();
 
             // Initialize variable
-            UserDao user = null;
+            Player user = null;
 
             return result.next();
 
@@ -156,7 +158,52 @@ public class UserManagerImpl implements UserManager {
         return false;
         }
     }
+    @Override
+    public boolean updatePassword(Connection con, String contraseña) throws SQLException, exception {
+        String sql="Update player set num_game= (num_game +1)where player_name=?";
+        try {
+            validatePassword(con, contraseña);
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
 
+
+                stmt.setString(1, contraseña);
+                return stmt.executeUpdate() > 0;
+
+            } }  catch (SQLException e) {
+                return false;
+
+        }
+
+    }
+    public boolean validatePassword(Connection con, String password) throws SQLException{
+        //prepare SQL statement
+        String sql = "select password "
+                + "from PLAYER "
+                + "where PLAYER_NAME = ? and passaword=?";
+
+        // Create general statement
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            //Add Parameters
+            stmt.setString(1, App.getNamePlayer());
+            stmt.setString(1, password);
+
+            // Queries the DB
+            ResultSet result = stmt.executeQuery();
+            // Set before first registry before going through it.
+            result.beforeFirst();
+
+            // Initialize variable
+            Player user = null;
+
+
+
+            return result.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
     @Override
