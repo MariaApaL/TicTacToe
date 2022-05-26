@@ -36,8 +36,6 @@ public class RankingController implements Initializable {
     @FXML
     private
 
-    @FXML
-    private Button playAgain;
 
    private TableView table = new TableView();
 
@@ -76,8 +74,6 @@ public class RankingController implements Initializable {
 
         userService.ranking();
     }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

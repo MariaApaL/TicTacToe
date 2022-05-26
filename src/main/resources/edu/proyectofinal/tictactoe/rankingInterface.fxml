@@ -12,15 +12,14 @@
    <children>
       <FlowPane fx:id="buttonBoard" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="223.0">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="223.0">
               <columns>
                 <TableColumn fx:id="rank" prefWidth="75.0" text="Rank" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                  <TableColumn prefWidth="75.0" text="Wins" />
+                  <TableColumn fx:id="wins" prefWidth="75.0" text="Wins" />
               </columns>
             </TableView>
-         </children>
-      </FlowPane>
+         </children></FlowPane>
       <Text fontSmoothingType="LCD" layoutX="84.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RANKING" textAlignment="CENTER" wrappingWidth="460.66668701171875">
          <font>
             <Font name="System Bold" size="36.0" />

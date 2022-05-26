@@ -14,11 +14,12 @@
             <Image url="@../../../static/img/tictactoe.png" />
          </image>
       </ImageView>
-      <Text layoutX="38.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRESS THE BUTTON START" wrappingWidth="479.04486083984375">
+      <Text layoutX="49.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO TICTACTOE" wrappingWidth="479.04486083984375">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="startButton" layoutX="197.0" layoutY="333.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="65.0" text="Start" />
+      <Button fx:id="startButton" layoutX="147.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="65.0" text="Log in" />
+      <Button fx:id="registerButton" layoutX="266.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="25.0" prefWidth="65.0" text="Register" />
    </children>
 </AnchorPane>

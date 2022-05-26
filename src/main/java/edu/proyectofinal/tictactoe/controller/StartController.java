@@ -17,4 +17,9 @@ public class StartController {
         App.setStage("loginInterface");
 
     }
+
+    public void switchToRegister(ActionEvent event) throws IOException {
+        App.setStage("registerInterface");
+
+    }
 }
