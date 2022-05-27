@@ -42,6 +42,9 @@ public class PruebaController implements Initializable {
     public void switchToSecondMenu(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
     }
+    public void switchToAI(ActionEvent event) throws IOException{
+        App.setStage("tictactoeAI");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

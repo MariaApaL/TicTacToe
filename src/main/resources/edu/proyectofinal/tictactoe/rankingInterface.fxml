@@ -16,7 +16,7 @@
               <columns>
                 <TableColumn fx:id="rank" prefWidth="75.0" text="Rank" />
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="wins" prefWidth="75.0" text="Wins" />
+                  <TableColumn fx:id="games" prefWidth="75.0" text="Games" />
               </columns>
             </TableView>
          </children></FlowPane>

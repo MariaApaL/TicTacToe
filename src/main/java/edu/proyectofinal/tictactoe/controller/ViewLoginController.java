@@ -2,7 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.excepciones.exception;
-import edu.proyectofinal.tictactoe.model.dao.UserDao;
+
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.application.Platform;

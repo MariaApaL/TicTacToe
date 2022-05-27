@@ -2,16 +2,17 @@ package edu.proyectofinal.tictactoe.model.manager.impl;
 
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
-//import edu.proyectofinal.tictactoe.model.dao.Player;
-import edu.proyectofinal.tictactoe.model.dao.UserDao;
+import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
+import javafx.collections.ArrayChangeListener;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserManagerImpl implements UserManager {
-
 
     public boolean findUser(Connection con, String player_name, String password) {
         //prepare SQL statement
@@ -33,7 +34,7 @@ public class UserManagerImpl implements UserManager {
             result.beforeFirst();
 
             // Initialize variable
-            UserDao user = null;
+            Player user = null;
 
             return result.next();
 
@@ -80,7 +81,7 @@ public class UserManagerImpl implements UserManager {
 
         }
     }
-    @Override
+
     public boolean updateNumGame(Connection con, String name) throws SQLException{
         String sql="Update player set num_game= (num_game +1)where player_name=?";
 
@@ -88,8 +89,8 @@ public class UserManagerImpl implements UserManager {
             stmt.setString(1, name);
             return stmt.executeUpdate() > 0;
 
-        }catch(SQLException e){
-        return false;}
+        }catch(SQLException e){}
+        return false;
 
     }
 
@@ -118,7 +119,7 @@ public class UserManagerImpl implements UserManager {
 
             while (result.next()) {
                 int a=0;
-                players.add((result));
+                players.add(String.valueOf((result)));
 
             }
 
@@ -130,35 +131,15 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    @Override
     public int numGame(Connection con) throws SQLException {
-        String sql = "select num_game  from PLAYER  where player_name=?";
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
-            stmt.setString(1, App.getNamePlayer());
-            ResultSet result = stmt.executeQuery(sql);
-            result.beforeFirst();
-
-            return result.getInt(1);
-
-        }catch(SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
+        return 0;
     }
 
-    public boolean updateSuggestions (Connection con, String suggestions){
-        String sql="Update player set quejas= ? where player_name=?";
-
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
-            stmt.setString(1, suggestions);
-            stmt.setString(2, App.getNamePlayer() );
-            return stmt.executeUpdate() > 0;
-
-        }catch(SQLException e){
+    @Override
+    public boolean updateSuggestions(Connection con, String suggestions) {
         return false;
-        }
     }
-
-
 
     @Override
     public MySQLConnector getConnector() {

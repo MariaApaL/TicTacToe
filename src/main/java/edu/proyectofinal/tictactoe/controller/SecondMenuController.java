@@ -35,29 +35,27 @@ public class SecondMenuController implements Initializable {
         Stage stage;
 
         if(alert.showAndWait().get() == ButtonType.OK){
+            userService.deleteUser();
             stage = (Stage) anchorPane.getScene().getWindow();
             System.out.println("You successfully deleted it!");
             stage.close();
         }
-        // userService.deleteUser();
+
 
     }
 
-    public void logoutUser(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void logoutUser(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Log out");
         alert.setHeaderText("You're about to log out");
         alert.setContentText("ARE YOU SURE MAH BRU?");
 
-        Stage stage;
 
         if(alert.showAndWait().get() == ButtonType.OK){
-            stage = (Stage) anchorPane.getScene().getWindow();
             System.out.println("You successfully logged out!");
-            stage.close();
+            App.setStage("start");
         }
-        // userService.deleteUser();
 
     }
 

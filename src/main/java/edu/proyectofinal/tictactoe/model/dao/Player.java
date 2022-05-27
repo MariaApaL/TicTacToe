@@ -1,16 +1,11 @@
 package edu.proyectofinal.tictactoe.model.dao;
 
-import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.swing.*;
-import java.awt.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 @Getter
 @Setter
