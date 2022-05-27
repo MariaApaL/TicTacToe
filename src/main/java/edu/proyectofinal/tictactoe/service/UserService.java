@@ -79,5 +79,11 @@ public class UserService {
         }
 
     }
+    public boolean validatePassword( String password) throws SQLException, ClassNotFoundException {
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.validatePassword(con, password);
+        }
+
+    }
 
 }
