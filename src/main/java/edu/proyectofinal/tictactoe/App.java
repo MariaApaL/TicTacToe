@@ -66,12 +66,15 @@ public class App extends Application {
 
         //para probar las interfaces , simplemente cambiar el nombre del fxml
 
+
+
         login.setTitle("TicTacToe");
         this.stage = login;
         setStage("start");
 
 
     }
+
 
     public static void setStage(String text) throws IOException {
 
