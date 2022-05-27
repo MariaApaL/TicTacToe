@@ -29,9 +29,9 @@ public class UserService {
 
     }
 
-    public int insertUserReg(String username, String password) throws SQLException,ClassNotFoundException{
+    public int insertUserReg(String username, String password, String mail) throws SQLException,ClassNotFoundException{
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.insertUser(con, username, password);
+            return userManager.insertUser(con, username, password, mail);
 
 
         }

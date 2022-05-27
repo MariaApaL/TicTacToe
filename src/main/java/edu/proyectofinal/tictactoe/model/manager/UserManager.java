@@ -15,7 +15,7 @@ public interface UserManager {
 
     public MySQLConnector getConnector();
 
-    public int insertUser(Connection con, String player_name, String password)throws SQLException;
+    public int insertUser(Connection con, String player_name, String password, String mail)throws SQLException;
 
     public boolean updateNumGame(Connection con, String name)throws SQLException;
 

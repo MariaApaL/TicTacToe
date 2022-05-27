@@ -59,7 +59,7 @@ public class ViewLoginController implements Initializable {
 
         if( userService.validateUser(player_name, password)){
             userService.newGame(player_name);
-            App.setNamePlayer(player_name);
+
            textLogin.setText("CORRECT USER");
             App.setStage("prueba");
 

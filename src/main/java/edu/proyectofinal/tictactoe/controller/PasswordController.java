@@ -29,6 +29,8 @@ public class PasswordController implements Initializable {
 
     @FXML
     private Button doneButton;
+    @FXML
+    private Button back;
 
 
     private UserService userService;
@@ -61,7 +63,10 @@ public class PasswordController implements Initializable {
         }
 
     }
+    public void back(ActionEvent event) throws IOException {
+        App.setStage("secondmenuInterface");
 
+    }
 
 
 

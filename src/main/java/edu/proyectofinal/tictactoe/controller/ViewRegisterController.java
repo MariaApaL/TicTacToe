@@ -24,6 +24,9 @@ public class ViewRegisterController implements Initializable {
     private Text textJoin;
 
     @FXML
+    private TextField mail;
+
+    @FXML
     private TextField userRegister;
 
     private UserService userService;
@@ -32,14 +35,15 @@ public class ViewRegisterController implements Initializable {
     private void eventKeyRegister(ActionEvent event) throws exception, IOException {
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
+        String email= mail.getText();
         textJoin.setText("Insert a user name");
 
 
         try {
-            int createdUser = userService.insertUserReg(player_name, password);
+            int createdUser = userService.insertUserReg(player_name, password, email);
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
-                userService.newGame(player_name);
+
                 textJoin.setText("Insert an user name");
                 App.setStage("prueba");
 

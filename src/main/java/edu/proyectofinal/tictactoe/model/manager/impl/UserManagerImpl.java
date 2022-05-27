@@ -44,9 +44,9 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
-    public int insertUser(Connection con, String player_name, String password) {
+    public int insertUser(Connection con, String player_name, String password, String mail) {
         //prepare SQL statement
-        String sql = "Insert into player (PLAYER_NAME, PASSWORD, NUM_GAME ) VALUES (?,?,0)";
+        String sql = "Insert into player (PLAYER_NAME, PASSWORD, NUM_GAME , correo) VALUES (?,?, 0,?)";
 
 
         // Create general statement
@@ -54,6 +54,7 @@ public class UserManagerImpl implements UserManager {
             //Add Parameters
             stmt.setString(1, player_name);
             stmt.setString(2, password);
+            stmt.setString(3, mail);
             int affectedRows = stmt.executeUpdate();
             if(affectedRows<=0){
                 return 0;
@@ -96,7 +97,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public boolean deleteUser(Connection con) throws SQLException {
-        String sql = "DELETE player WHERE player_name = ?";
+        String sql = "DELETE from player WHERE player_name = ?";
         try (PreparedStatement stmt= con.prepareStatement(sql)){
 
             stmt.setString(1, App.getNamePlayer());
