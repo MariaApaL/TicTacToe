@@ -16,6 +16,13 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Register Class.
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
+
 public class ViewRegisterController implements Initializable {
     @FXML
     private PasswordField PasswordRegister;
@@ -31,6 +38,10 @@ public class ViewRegisterController implements Initializable {
 
     private UserService userService;
 
+    /**
+     * Register the user and login
+     * @throws {@code IOException}
+     */
     @FXML
     private void eventKeyRegister(ActionEvent event) throws IOException {
         String player_name = userRegister.getText();
@@ -56,7 +67,9 @@ public class ViewRegisterController implements Initializable {
             System.out.println("Error");
         }
     }
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService=new UserService(new UserManagerImpl());

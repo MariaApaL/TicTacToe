@@ -30,6 +30,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+/**
+ * Register Class.
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
 
 public class ViewLoginController implements Initializable {
 
@@ -48,7 +54,10 @@ public class ViewLoginController implements Initializable {
     private UserService userService;
 
 
-
+    /**
+     * Validate the user and login
+     * @throws {@code IOException, SQLException, ClassNotFoundException}
+     */
     @FXML
     private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
@@ -57,7 +66,7 @@ public class ViewLoginController implements Initializable {
 
 
         if( userService.validateUser(player_name, password)){
-            userService.newGame(player_name);
+
 
            textLogin.setText("CORRECT USER");
             App.setStage("prueba");
