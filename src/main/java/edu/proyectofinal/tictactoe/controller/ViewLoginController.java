@@ -1,7 +1,6 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
-import edu.proyectofinal.tictactoe.excepciones.exception;
 
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
@@ -51,7 +50,7 @@ public class ViewLoginController implements Initializable {
 
 
     @FXML
-    private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
+    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
        textLogin.setText("Insert your user name");

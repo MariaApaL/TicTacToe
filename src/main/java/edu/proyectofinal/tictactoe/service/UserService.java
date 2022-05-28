@@ -1,6 +1,6 @@
 package edu.proyectofinal.tictactoe.service;
 
-import edu.proyectofinal.tictactoe.excepciones.exception;
+
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.Connection;
@@ -73,7 +73,7 @@ public class UserService {
             return userManager.updateSuggestions(con, suggestion);
         }
     }
-    public boolean updatePassword( String contraseña) throws SQLException, ClassNotFoundException, exception {
+    public boolean updatePassword( String contraseña) throws SQLException, ClassNotFoundException {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
             return userManager.updatePassword(con, contraseña);
         }

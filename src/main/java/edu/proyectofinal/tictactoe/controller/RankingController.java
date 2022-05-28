@@ -33,8 +33,7 @@ public class RankingController implements Initializable {
     @FXML
     private TableColumn<?,?> name;
 
-    @FXML
-    private
+
 
 
    private TableView table = new TableView();

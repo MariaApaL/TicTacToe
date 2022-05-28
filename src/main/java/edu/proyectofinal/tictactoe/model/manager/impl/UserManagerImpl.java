@@ -3,7 +3,7 @@ package edu.proyectofinal.tictactoe.model.manager.impl;
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 import edu.proyectofinal.tictactoe.model.dao.Player;
-import edu.proyectofinal.tictactoe.excepciones.exception;
+
 
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
@@ -160,7 +160,7 @@ public class UserManagerImpl implements UserManager {
         }
     }
     @Override
-    public boolean updatePassword(Connection con, String contraseña) throws SQLException, exception {
+    public boolean updatePassword(Connection con, String contraseña) throws SQLException {
         String sql="Update player set password= ?where player_name=?";
         try {
             validatePassword(con, contraseña);
