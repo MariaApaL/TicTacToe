@@ -4,6 +4,7 @@ module edu.proyectofinal.tictactoe {
     requires java.desktop;
     requires java.sql;
     requires lombok;
+    requires jakarta.ws.rs;
 
     opens edu.proyectofinal.tictactoe to javafx.fxml;
     exports edu.proyectofinal.tictactoe;

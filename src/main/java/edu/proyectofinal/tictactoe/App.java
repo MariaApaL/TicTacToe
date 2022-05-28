@@ -84,7 +84,9 @@ public class App extends Application {
         stage.setScene(new Scene(root));
         stage.show();
 
-       // Image image = new Image(src/main/resources/static/img/icon.png);
+       Image image = new Image("/static/img/icon.png");
+       stage.getIcons().add(image);
+
 
     }
 

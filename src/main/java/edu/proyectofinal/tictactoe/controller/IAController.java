@@ -19,26 +19,25 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * IA Controller Class.
+ *
+ */
+
 public class IAController implements Initializable {
 
-    // Añadimos los botones del 1 al 9
+    // Add 9 buttons
     @FXML
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
 
     @FXML
-    private Button newGame;
-
-    @FXML
-    private Button backButton;
-
-    @FXML
     private FlowPane buttonBoard;
 
-    // Este texto irá cambiando entre el título y la victoria de uno de los jugadores.
+    // Changing test. It'll change depending on the winners.
     @FXML
     private Text changingText;
 
-    // Estos dos textos nos informa de los jugadores.
+    // Player text
     @FXML
     private Text playerX;
 
@@ -48,28 +47,35 @@ public class IAController implements Initializable {
     Random random = new Random();
 
 
-    // Inicializamos el turno.
+    //players turns.
     private int turn = 0;
 
-    //Inicializamos dos contadores de partidas ganadas de jugadores.
-    //ESTO HABRIA QUE PONERLO COMO UN TEXTO Y QUE TE TRANSFORMARA EL TEXTO EN NUMERO. BICHEAR.
+    //Counter for wins.
     private int pX = 0;
     private int pO = 0;
 
-    //Creamos un ArrayList con los botones
+    //Add buttons in an ArrayList
     ArrayList<Button> buttons;
 
+    //Initialize an ArtificialIntelligence object
     ArtificialIntelligence AI = new ArtificialIntelligence();
 
+    //UserService object
     private UserService userService;
 
 
+    /**
+     * switch to second menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException {
         App.setStage("prueba");
     }
 
-
-
+    /**
+     * Setting up buttons.
+     *
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttons = new ArrayList<>();
@@ -83,7 +89,6 @@ public class IAController implements Initializable {
         buttons.add(b8);
         buttons.add(b9);
 
-        //Con esto hacemos los botones clickeables
         buttons.forEach(button -> {
             setupButton(button);
             button.setFocusTraversable(false);
@@ -94,12 +99,19 @@ public class IAController implements Initializable {
     }
 
 
+    /**
+     * Method for make AI moves.
+     *
+     */
     public void makeAIMove(){
         int move = AI.minMaxDecision(getBoardState());
         pickButton(move);
     }
 
-
+    /**
+     * Method for restart game
+     * @param event make possible to realize restart action.
+     */
     @FXML
     public void restartGame(ActionEvent event) throws SQLException, ClassNotFoundException {
         buttons.forEach(this::restartButton);
@@ -110,6 +122,11 @@ public class IAController implements Initializable {
 
     }
 
+    /**
+     * Method for reset buttons.
+     * @param button Set text to " " to start over.
+     */
+
     public void restartButton(Button button) {
         button.setDisable(false);
         button.setText("");
@@ -117,6 +134,11 @@ public class IAController implements Initializable {
 
 
     }
+
+    /**
+     * Method for setting up buttons.
+     * @param button Set up text "O" when it is player's turn.
+     */
 
     private void setupButton(Button button) {
         button.setOnMouseClicked(mouseEvent -> {
@@ -128,11 +150,19 @@ public class IAController implements Initializable {
         });
     }
 
+    /**
+     * Method for AI moves.
+     * @param index Get button number to put "X" in.
+     */
     private void pickButton(int index) {
         buttons.get(index).setText("X");
         buttons.get(index).setDisable(true);
     }
 
+    /**
+     * Method for AI random moves.
+     * @return State object.
+     */
     public State getBoardState(){
         String[] board = new String[9];
 
@@ -143,16 +173,10 @@ public class IAController implements Initializable {
         return new State(0,board);
     }
 
-    public void choosePlayer(Button button) {
-        if (turn % 2 == 0) {
-            button.setText("X");
-            turn = 1;
-        } else {
-            button.setText("O");
-            turn = 0;
-        }
-    }
-
+    /**
+     * Method for decide who wins.
+     * @param button Set "X" or "O".
+     */
     public void checkGame(Button button) {
         for (int i = 0; i < 8; i++) {
             String line = switch (i) {
@@ -169,7 +193,7 @@ public class IAController implements Initializable {
 
 
             if (line.equals("XXX")) {
-                changingText.setText("PLAYER X WON");
+                changingText.setText("AI WON");
                 pX++;
                 playerX.setText("Player(X): " + pX);
                 buttonBoard.setDisable(true);
@@ -178,7 +202,7 @@ public class IAController implements Initializable {
 
 
             else if (line.equals("OOO")) {
-                changingText.setText("AI WON");
+                changingText.setText("PLAYER O WON");
                 pO++;
                 playerO.setText("Player(O): " + pO);
                 buttonBoard.setDisable(true);
