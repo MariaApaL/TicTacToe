@@ -24,24 +24,19 @@ import java.util.ResourceBundle;
 
 public class TicTacToeController implements Initializable {
 
-    // Añadimos los botones del 1 al 9
+    // Add 9 buttons
     @FXML
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
 
-    @FXML
-    private Button newGame;
-
-    @FXML
-    private Button backButton;
 
     @FXML
     private FlowPane buttonBoard;
 
-    // Este texto irá cambiando entre el título y la victoria de uno de los jugadores.
+    // Changing test. It'll change depending on the winners.
     @FXML
     private Text changingText;
 
-    // Estos dos textos nos informa de los jugadores.
+    // Player text
     @FXML
     private Text playerX;
 
@@ -49,15 +44,14 @@ public class TicTacToeController implements Initializable {
     private Text playerO;
 
 
-    // Inicializamos el turno.
+    //Players turn.
     private int turn = 0;
 
-    //Inicializamos dos contadores de partidas ganadas de jugadores.
-    //ESTO HABRIA QUE PONERLO COMO UN TEXTO Y QUE TE TRANSFORMARA EL TEXTO EN NUMERO. BICHEAR.
+    //Counter for wins.
+
     private int pX = 0;
     private int pO = 0;
 
-    //Creamos un ArrayList con los botones
     ArrayList<Button> buttons;
 
 
@@ -65,15 +59,13 @@ public class TicTacToeController implements Initializable {
     private UserService userService;
 
 
+    /**
+     * switch to second menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException{
         App.setStage("prueba");
     }
-
-
-
-
-
-
 
 
 
