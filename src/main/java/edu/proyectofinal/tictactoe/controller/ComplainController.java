@@ -1,7 +1,9 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.model.manager.impl.SuggestionsManagerImpl;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
+import edu.proyectofinal.tictactoe.service.SuggestionsService;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class ComplainController implements Initializable {
     private UserService userService;
+    private SuggestionsService suggestionsService;
 
     @FXML
     private TextField text;
@@ -29,10 +32,11 @@ public class ComplainController implements Initializable {
 
     public void submitSuggestions(ActionEvent event) throws IOException {
 
-        String suggestions=text.getText();
+        String queja=text.getText();
 
         try{
-            if(userService.updateSuggestions(suggestions)){
+            int createSuggestion= suggestionsService.insertSuggestion(queja);
+            if(createSuggestion  > 0){
             App.setStage("secondmenuInterface");
             }
 
@@ -62,5 +66,7 @@ public class ComplainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService=new UserService(new UserManagerImpl());
+        suggestionsService=new SuggestionsService(new SuggestionsManagerImpl());
+
     }
 }

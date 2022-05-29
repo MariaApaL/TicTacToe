@@ -1,7 +1,7 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
-import edu.proyectofinal.tictactoe.excepciones.exception;
+
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -48,8 +48,10 @@ public class PasswordController implements Initializable {
                      App.setStage("secondmenuInterface");
                      App.setPassword(password2);
 
-                 } } catch (exception e) {
+                 }
+              }catch(SQLException e){
                   e.printStackTrace();
+
               }
 
 

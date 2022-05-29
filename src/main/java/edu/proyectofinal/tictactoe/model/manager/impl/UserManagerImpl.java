@@ -73,11 +73,6 @@ public class UserManagerImpl implements UserManager {
             e.printStackTrace();
             return 0;
 
-
-
-
-
-
         }
     }
     @Override
