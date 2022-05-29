@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 /**
  * IA Controller Class.
  *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
  */
 
 public class IAController implements Initializable {
@@ -76,6 +79,7 @@ public class IAController implements Initializable {
      * Setting up buttons.
      *
      */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttons = new ArrayList<>();
@@ -175,7 +179,7 @@ public class IAController implements Initializable {
 
     /**
      * Method for decide who wins.
-     * @param button Set "X" or "O".
+     * @param button Set "X" or "O" and choose winner
      */
     public void checkGame(Button button) {
         for (int i = 0; i < 8; i++) {

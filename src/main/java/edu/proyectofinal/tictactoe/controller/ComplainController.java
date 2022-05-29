@@ -11,8 +11,11 @@ import java.util.ResourceBundle;
 /**
  * Complain Controller Class.
  *
+ * Register Class.
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
  */
-
 public class ComplainController implements Initializable {
 
 

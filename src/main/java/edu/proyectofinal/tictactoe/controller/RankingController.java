@@ -24,7 +24,15 @@ import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-
+/**
+ *
+ * Ranking class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
 public class RankingController implements Initializable {
 
 
@@ -75,12 +83,18 @@ public class RankingController implements Initializable {
     }
 
 
-
+    /**
+     * switch to login interface.
+     * @throws {@code IOException}
+     */
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
     }
 
-
+    /**
+     * switch to menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException{
         App.setStage("prueba");
     }

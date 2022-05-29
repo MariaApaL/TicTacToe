@@ -16,17 +16,37 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
+/**
+ *
+ * Second Menu controller class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
+
 public class SecondMenuController implements Initializable {
 
+    //Anchor pane Object
     @FXML
     private AnchorPane anchorPane;
+
+    //UserService Object
 
     private UserService userService;
 
 
 
+    /**
+     *
+     *  Method for delete an user
+     *  @param event make possible to delete an user
+     */
     public void deleteUser(ActionEvent event) throws SQLException, ClassNotFoundException {
 
+        //create an alert to confirm if you want to delete the user.
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete User");
         alert.setHeaderText("You're about to delete your user");
@@ -44,8 +64,14 @@ public class SecondMenuController implements Initializable {
 
     }
 
+    /**
+     *
+     *  Method for log out an user
+     *  @param event make possible to log out an user
+     */
     public void logoutUser(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 
+        //create an alert to confirm the log out.
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Log out");
         alert.setHeaderText("You're about to log out");
@@ -59,18 +85,29 @@ public class SecondMenuController implements Initializable {
 
     }
 
-
+    /**
+     * switch to menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException {
         App.setStage("prueba");
     }
 
+    /**
+     * switch to complain interface
+     * @throws {@code IOException}
+     */
     public void switchToComplain(ActionEvent event) throws IOException {
         App.setStage("complainInterface");
     }
-
+    /**
+     * switch to password interface
+     * @throws {@code IOException}
+     */
     public void switchToPassword(ActionEvent event) throws IOException {
         App.setStage("passwordInterface");
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -16,17 +16,38 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ *
+ * Register class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
+
 public class ViewRegisterController implements Initializable {
+
+   //PasswordField object
     @FXML
     private PasswordField PasswordRegister;
 
+    //Text object
     @FXML
     private Text textJoin;
 
+    //TextField object
     @FXML
     private TextField userRegister;
 
+    //User service object
     private UserService userService;
+
+
+    /**
+     * Method for register a new user
+     * @param event make possible to realize register action.
+     */
 
     @FXML
     private void eventKeyRegister(ActionEvent event) throws exception, IOException {

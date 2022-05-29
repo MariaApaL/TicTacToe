@@ -32,24 +32,42 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
+/**
+ *
+ * Login class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
 public class ViewLoginController implements Initializable {
 
 
-
     @FXML
-    private  TextField txtUser;
+     static TextField txtUser;
 
+
+    //PasswordField object
     @FXML
     private PasswordField txtPassword;
 
+    //Text object
     @FXML
     private Text textLogin;
 
 
+    //User Service object
     private UserService userService;
 
 
 
+
+    /**
+     * Method for log in an user
+     * @param event make possible to realize log in action.
+     */
     @FXML
     private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();

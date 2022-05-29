@@ -5,6 +5,9 @@ module edu.proyectofinal.tictactoe {
     requires java.sql;
     requires lombok;
     requires jakarta.ws.rs;
+    requires java.mail;
+    requires activation;
+    requires itextpdf;
 
     opens edu.proyectofinal.tictactoe to javafx.fxml;
     exports edu.proyectofinal.tictactoe;
