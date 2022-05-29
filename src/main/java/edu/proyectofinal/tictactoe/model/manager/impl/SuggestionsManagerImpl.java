@@ -6,10 +6,20 @@ import edu.proyectofinal.tictactoe.model.manager.SuggestionsManager;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.*;
+import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
+import edu.proyectofinal.tictactoe.model.dao.Player;
+
+
+import edu.proyectofinal.tictactoe.model.manager.UserManager;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuggestionsManagerImpl implements SuggestionsManager {
     @Override
-    public int insertSuggestion(Connection con, String text) throws SQLException {
+    public int insertSuggestion(Connection con,String name, String text) throws SQLException {
         //prepare SQL statement
         String sql = "Insert into Suggestions (PLAYER_NAME, suggestion) VALUES (?,?)";
 
@@ -17,7 +27,7 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //Add Parameters
-            stmt.setString(1, App.getNamePlayer());
+            stmt.setString(1, name);
             stmt.setString(2, text);
 
             int affectedRows = stmt.executeUpdate();
@@ -41,7 +51,7 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
         }
     }
     @Override
-    public MySQLConnector getConnectorSuggestion() {
+    public MySQLConnector getConnector() {
         return new MySQLConnector();
     }
 }

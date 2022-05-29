@@ -8,18 +8,18 @@ import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 
 public class SuggestionsService {
 
-    private final SuggestionsManager suggestionManager;
+    private final SuggestionsManager suggestionsManager;
 
 
     public SuggestionsService(SuggestionsManager suggestionManager) {
-        this.suggestionManager = suggestionManager;
+        this.suggestionsManager = suggestionManager;
     }
 
 
-    public int insertSuggestion( String text) throws SQLException,ClassNotFoundException{
-        SuggestionsManager.getConnectorSuggestion();
-        try (Connection con = MySQLConnector.getMySQLConnection()) {
-            return suggestionManager.insertSuggestion(con, text);
+    public int insertSuggestion( String name, String text) throws SQLException,ClassNotFoundException{
+
+        try (Connection con = suggestionsManager.getConnector().getMySQLConnection()) {
+            return suggestionsManager.insertSuggestion(con,name, text);
 
 
         }

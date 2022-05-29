@@ -33,9 +33,10 @@ public class ComplainController implements Initializable {
     public void submitSuggestions(ActionEvent event) throws IOException {
 
         String queja=text.getText();
+        String nombre= App.getNamePlayer();
 
         try{
-            int createSuggestion= suggestionsService.insertSuggestion(queja);
+            int createSuggestion= suggestionsService.insertSuggestion(nombre,queja);
             if(createSuggestion  > 0){
             App.setStage("secondmenuInterface");
             }

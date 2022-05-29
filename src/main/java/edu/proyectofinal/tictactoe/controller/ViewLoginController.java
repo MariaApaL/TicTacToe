@@ -70,6 +70,7 @@ public class ViewLoginController implements Initializable {
 
            textLogin.setText("CORRECT USER");
             App.setStage("prueba");
+            App.setNamePlayer(player_name);
 
 
         }else{

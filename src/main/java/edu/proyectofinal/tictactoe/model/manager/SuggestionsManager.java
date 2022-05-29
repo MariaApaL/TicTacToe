@@ -11,14 +11,14 @@ import edu.proyectofinal.tictactoe.App;
 
 public interface SuggestionsManager {
     /**
-     * Insert a new user on DB
+     * Insert a new suggestion on DB
      *
      * @param con DB connection
      * @param text the suggestion to insert
      * @return a {@link Boolean}
      */
-    public int insertSuggestion(Connection con, String text)throws SQLException;
+    public int insertSuggestion(Connection con, String name, String text)throws SQLException;
 
-    public MySQLConnector getConnectorSuggestion();
+    public MySQLConnector getConnector();
 
 }
