@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.excepciones.exception;
 
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
@@ -30,12 +31,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-/**
- * Register Class.
- * @author MariaApa
- * @author Valentina
- * @author Julia
- */
 
 public class ViewLoginController implements Initializable {
 
@@ -54,20 +49,17 @@ public class ViewLoginController implements Initializable {
     private UserService userService;
 
 
-    /**
-     * Validate the user and login
-     * @throws {@code IOException, SQLException, ClassNotFoundException}
-     */
+
     @FXML
-    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+    private void eventKey(ActionEvent event) throws exception, IOException, SQLException, ClassNotFoundException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
        textLogin.setText("Insert your user name");
 
 
         if( userService.validateUser(player_name, password)){
-
-
+            userService.newGame(player_name);
+            App.setNamePlayer(player_name);
            textLogin.setText("CORRECT USER");
             App.setStage("prueba");
 
@@ -83,8 +75,7 @@ public class ViewLoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        userService=new UserService(new UserManagerImpl());
+            userService=new UserService(new UserManagerImpl());
     }
 
 

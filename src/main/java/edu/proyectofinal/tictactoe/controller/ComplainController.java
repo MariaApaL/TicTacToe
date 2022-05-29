@@ -8,10 +8,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Complain Controller Class.
+ *
+ */
 
 public class ComplainController implements Initializable {
 
 
+
+    /**
+     * switch to second menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToSecondMenu(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
     }
