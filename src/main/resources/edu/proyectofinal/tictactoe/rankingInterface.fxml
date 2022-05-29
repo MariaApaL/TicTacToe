@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.RankingController">
    <children>
-      <FlowPane fx:id="buttonBoard" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="223.0">
-              <columns>
-                <TableColumn fx:id="rank" prefWidth="75.0" text="Rank" />
-                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="games" prefWidth="75.0" text="Games" />
-              </columns>
-            </TableView>
-         </children></FlowPane>
       <Text fontSmoothingType="LCD" layoutX="84.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RANKING" textAlignment="CENTER" wrappingWidth="460.66668701171875">
          <font>
             <Font name="System Bold" size="36.0" />
@@ -27,5 +14,15 @@
       </Text>
       <Button fx:id="backMenu" layoutX="200.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="25.0" prefWidth="72.0" text="Back" textAlignment="CENTER" />
       <Button layoutX="349.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="72.0" text="Log out" />
+      <Text fx:id="txt1" layoutX="62.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="484.80332946777344" />
+      <Text fx:id="txt2" layoutX="62.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="460.6666870117188" />
+      <Text fx:id="txt3" layoutX="58.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="491.46998596191406" />
+      <Text fx:id="txt4" layoutX="213.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt5" layoutX="213.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt6" layoutX="213.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt7" layoutX="213.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt8" layoutX="212.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt9" layoutX="212.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+      <Text fx:id="txt10" layoutX="212.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
    </children>
 </AnchorPane>

@@ -14,8 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,10 +42,42 @@ public class RankingController implements Initializable {
     @FXML
     private TableView <LineItem> table;
 
+    @FXML
+    private Text txt1;
+
+    @FXML
+    private Text txt2;
+
+    @FXML
+    private Text txt3;
+
+    @FXML
+    private Text txt4;
+
+    @FXML
+    private Text txt5;
+
+    @FXML
+    private Text txt6;
+
+    @FXML
+    private Text txt7;
+
+    @FXML
+    private Text txt8;
+
+    @FXML
+    private Text txt9;
+
+    @FXML
+    private Text txt10;
+
+    ArrayList<Text> text;
+
     private UserService userService;
 
-    private List<Map<String, String>> getDatabaseObject() throws SQLException, ClassNotFoundException {
-        List<Player> users = userService.ranking();
+   /*  private List<Map<String, String>> getDatabaseObject() throws SQLException, ClassNotFoundException {
+       List<Player> users = userService.ranking();
 
         List<Map<String, String>> mappedValues = new ArrayList<>();
 
@@ -58,13 +93,16 @@ public class RankingController implements Initializable {
 
         });
         return mappedValues;
-    }
+    }*/
 
 
     public void rankingUsers() throws SQLException, ClassNotFoundException {
 
 
-        table = new TableView<>();
+
+
+
+      /*  table = new TableView<>();
 
         List<Map<String, String>> databaseObject = getDatabaseObject();
 
@@ -79,7 +117,7 @@ public class RankingController implements Initializable {
         LineItem sequence1 = new LineItem(databaseObject.get(0));
         data.add(sequence1);
 
-
+*/
     }
 
 
@@ -100,16 +138,34 @@ public class RankingController implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
 
-        try {
-            getDatabaseObject();
-            rankingUsers();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+        text = new ArrayList<>(Arrays.asList(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9,txt10));
 
+
+        try {
+            txt1.setText((String) userService.ranking().get(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+       /* text.forEach(txt ->{
+            int cont=0;
+            try {
+                txt.setText((String) userService.ranking().get(cont));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        });*/
     }
-}
+
+
+    }
+

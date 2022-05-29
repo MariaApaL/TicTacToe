@@ -110,7 +110,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public List ranking(Connection con) throws SQLException {
-        String sql = "select *  from PLAYER  order  by  num_game desc limit 10";
+      /*  String sql = "select *  from PLAYER  order  by  num_game desc limit 10";
         try(Statement stmt=con.createStatement()){
             ResultSet result = stmt.executeQuery(sql);
             result.beforeFirst();
@@ -128,8 +128,36 @@ public class UserManagerImpl implements UserManager {
         }catch(SQLException e) {
             e.printStackTrace();
             return null;
+        }*/
+
+            //prepare SQL statement
+            String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
+            // Create general statement
+            try(Statement stmt=con.createStatement()){
+                // Queries the DB
+                ResultSet result = stmt.executeQuery(sql);
+                // Set before first registry before going through it
+                result.beforeFirst();
+                // Initialize variable
+                List players = new ArrayList();
+                // Run through each result
+                while (result.next()) {
+   /* int a=1;
+   String player=result;
+    String aux= String.valueOf(a);
+    */
+                    // Initializes a player per result
+                    players.add(result);
+
+                }
+
+                return players;
+            }catch(SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
-    }
+
 
     @Override
     public int numGame(Connection con) throws SQLException {
