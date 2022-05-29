@@ -46,7 +46,7 @@ public class ViewLoginController implements Initializable {
 
 
     @FXML
-     static TextField txtUser;
+     private TextField txtUser;
 
 
     //PasswordField object
