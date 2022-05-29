@@ -199,7 +199,7 @@ public class IAController implements Initializable {
             if (line.equals("XXX")) {
                 changingText.setText("AI WON");
                 pX++;
-                playerX.setText("Player(X): " + pX);
+                playerX.setText("AI(X): " + pX);
                 buttonBoard.setDisable(true);
 
             }
@@ -208,7 +208,7 @@ public class IAController implements Initializable {
             else if (line.equals("OOO")) {
                 changingText.setText("PLAYER O WON");
                 pO++;
-                playerO.setText("Player(O): " + pO);
+                playerO.setText(App.getNamePlayer()+"(O): " + pO);
                 buttonBoard.setDisable(true);
 
 

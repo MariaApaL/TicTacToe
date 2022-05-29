@@ -76,16 +76,16 @@ public class PruebaController implements Initializable {
     }
 
 
-    public void welcomeText(String text){
-        text = App.getNamePlayer();
 
-        changingText.setText("WELCOME "+ text);
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
+
+        changingText.setText("WELCOME "+ App.getNamePlayer());
+
+    }
     }
 
 
-}
+

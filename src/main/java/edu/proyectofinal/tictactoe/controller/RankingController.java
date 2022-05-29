@@ -53,7 +53,7 @@ public class RankingController implements Initializable {
             Map<String, String> record = new HashMap<>();
             record.put("Rank", String.valueOf(counter));
             record.put("Name", user.getPlayerName());
-            record.put("Games", String.valueOf(user.getNumGame()));
+          //  record.put("Games", String.valueOf(user.getNumGame()));
             mappedValues.add(record);
 
         });
@@ -103,5 +103,13 @@ public class RankingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
+
+        try {
+            getDatabaseObject();
+            rankingUsers();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+
+        }
     }
 }
