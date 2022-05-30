@@ -32,11 +32,10 @@ public class PdfCreator {
          */
         public void createPDF(String fileName, String text, String user, String password) throws IOException, DocumentException, URISyntaxException {
 
-            Path path = Paths.get(ClassLoader.getSystemResource("SQLIcon.png").toURI());
+            Path path = Paths.get(ClassLoader.getSystemResource("icon.png").toURI());
 
             Document document = new Document();
             PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
-            pdfWriter.setEncryption(user.getBytes(), password.getBytes(), PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_256);
 
             document.open();
             Paragraph paragraph = createParagraph(text);

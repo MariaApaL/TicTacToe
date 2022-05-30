@@ -81,8 +81,9 @@ public class PruebaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
-
-        changingText.setText("WELCOME "+ App.getNamePlayer());
+        String name = App.getNamePlayer();
+        name.toUpperCase();
+        changingText.setText("WELCOME "+ name.toUpperCase());
 
     }
     }
