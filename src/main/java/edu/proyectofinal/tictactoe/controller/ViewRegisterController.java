@@ -1,7 +1,7 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
-import edu.proyectofinal.tictactoe.excepciones.exception;
+
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -16,6 +16,13 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Register Class.
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
+
 public class ViewRegisterController implements Initializable {
     @FXML
     private PasswordField PasswordRegister;
@@ -24,22 +31,30 @@ public class ViewRegisterController implements Initializable {
     private Text textJoin;
 
     @FXML
+    private TextField mail;
+
+    @FXML
     private TextField userRegister;
 
     private UserService userService;
 
+    /**
+     * Register the user and login
+     * @throws {@code IOException}
+     */
     @FXML
-    private void eventKeyRegister(ActionEvent event) throws exception, IOException {
+    private void eventKeyRegister(ActionEvent event) throws IOException {
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
+        String email= mail.getText();
         textJoin.setText("Insert a user name");
 
 
         try {
-            int createdUser = userService.insertUserReg(player_name, password);
+            int createdUser = userService.insertUserReg(player_name, password, email);
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
-                userService.newGame(player_name);
+
                 textJoin.setText("Insert an user name");
                 App.setStage("prueba");
 
@@ -52,7 +67,9 @@ public class ViewRegisterController implements Initializable {
             System.out.println("Error");
         }
     }
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService=new UserService(new UserManagerImpl());

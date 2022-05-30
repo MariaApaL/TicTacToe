@@ -24,6 +24,14 @@ public class App extends Application {
 
 
 
+
+    public static String mail;
+
+
+
+    public static String suggestion;
+
+
     private static List RankingName;
     private static List RankingNumGame;
 
@@ -43,13 +51,25 @@ public class App extends Application {
     }
 
 
+    public static String getMail() {
+        return mail;
+    }
 
+    public static void setMail(String mail) {
+        App.mail = mail;
+    }
     public static String getNamePlayer(){
 
         return namePlayer;
     }
     public static void setNamePlayer(String name){
         namePlayer=name;
+    }
+    public static String getSuggestion() {
+        return suggestion;
+    }
+    public static void setSuggestion(String suggestion) {
+        App.suggestion = suggestion;
     }
 
     public static String getPassword(){
