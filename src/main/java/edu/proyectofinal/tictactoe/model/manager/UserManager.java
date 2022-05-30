@@ -10,14 +10,13 @@ import java.util.List;
 
 public interface UserManager {
     /**
-     * Validates that the user exist an entity
+     * Validates that the user exist.
      *
      * @param con DB connection
      * @param player_name The entity to check
-     * @param password The entity to create
      * @return a {@link Boolean}
      */
-    public boolean findUser(Connection con, String player_name, String password);
+    public boolean findUser(Connection con, String player_name);
 
 
 

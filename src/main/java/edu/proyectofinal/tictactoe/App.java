@@ -19,36 +19,15 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage stage;
+
     private static String namePlayer;
     private static String password;
 
-
-
-
     public static String mail;
-
-
-
     public static String suggestion;
 
 
-    private static List RankingName;
-    private static List RankingNumGame;
 
-    public static List getRankingName() {
-        return RankingName;
-    }
-
-    public static List getRankingNumGame() {
-        return RankingNumGame;
-    }
-    public static void setRankingName(List rankingName) {
-        RankingName = rankingName;
-    }
-
-    public static void setRankingNumGame(List rankingNumGame) {
-        RankingNumGame = rankingNumGame;
-    }
 
 
     public static String getMail() {

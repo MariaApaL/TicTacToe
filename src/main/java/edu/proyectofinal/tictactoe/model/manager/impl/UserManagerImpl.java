@@ -14,17 +14,17 @@ import java.util.List;
 public class UserManagerImpl implements UserManager {
 
     @Override
-    public boolean findUser(Connection con, String player_name, String password) {
+    public boolean findUser(Connection con, String player_name) {
         //prepare SQL statement
         String sql = "select * "
                 + "from PLAYER "
-                + "where PLAYER_NAME = ? and PASSWORD = ?";
+                + "where PLAYER_NAME = ?";
 
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             //Add Parameters
             stmt.setString(1, player_name);
-            stmt.setString(2, password);
+
 
 
 

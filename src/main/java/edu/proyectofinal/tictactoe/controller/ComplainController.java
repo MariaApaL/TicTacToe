@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,6 +34,8 @@ public class ComplainController implements Initializable {
 
     @FXML
     private Button submit;
+    @FXML
+    private TextField text1;
 
 
 

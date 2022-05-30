@@ -51,7 +51,7 @@ public class ViewRegisterController implements Initializable {
 
 
         try {
-            if(!(userService.validateUser(player_name, password))){
+            if(!(userService.validateUser(player_name))){
             int createdUser = userService.insertUserReg(player_name, password, email);
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
