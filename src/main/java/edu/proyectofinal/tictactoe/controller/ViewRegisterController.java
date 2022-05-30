@@ -67,6 +67,10 @@ public class ViewRegisterController implements Initializable {
             System.out.println("Error");
         }
     }
+
+    public void switchToStart(ActionEvent event) throws IOException{
+        App.setStage("start");
+    }
     /**
      * Initializes the controller class.
      */

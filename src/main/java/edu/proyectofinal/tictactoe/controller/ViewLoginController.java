@@ -73,8 +73,9 @@ public class ViewLoginController implements Initializable {
     }
 
 
+
     public void switchToStart(ActionEvent event) throws IOException{
-        App.setStage("prueba");
+        App.setStage("start");
     }
 
     /**
