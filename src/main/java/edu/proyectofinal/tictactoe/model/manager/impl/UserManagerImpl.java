@@ -139,7 +139,7 @@ public class UserManagerImpl implements UserManager {
 
 
                 // Initializes a player per result
-                players.add(result);
+                players.add(result.getString(1));
 
             }
 

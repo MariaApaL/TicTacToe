@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
@@ -12,13 +10,16 @@
    <children>
       <FlowPane fx:id="buttonBoard" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="223.0">
-              <columns>
-                <TableColumn fx:id="rank" prefWidth="75.0" text="Rank" />
-                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                  <TableColumn fx:id="games" prefWidth="75.0" text="Games" />
-              </columns>
-            </TableView>
+            <Text fx:id="uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="203.47010803222656" />
+            <Text fx:id="numeroDos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="207.47010803222656" />
+            <Text fx:id="numeroTres" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="208.13673400878906" />
+            <Text fx:id="numeroCuatro" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="227.4700469970703" />
+            <Text fx:id="numeroCinco" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+            <Text fx:id="ranking1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+            <Text fx:id="ranking2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+            <Text fx:id="ranking3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+            <Text fx:id="ranking4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+            <Text fx:id="ranking5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
          </children></FlowPane>
       <Text fontSmoothingType="LCD" layoutX="84.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RANKING" textAlignment="CENTER" wrappingWidth="460.66668701171875">
          <font>
