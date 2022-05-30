@@ -118,7 +118,7 @@ public class UserManagerImpl implements UserManager {
     @Override
     public List ranking(Connection con) throws SQLException {
         //prepare SQL statement
-        String sql = "select player_name, num_game  from PLAYER  order  by  num_game desc limit 10";
+        String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
 
         // Create general statement
         try(Statement stmt=con.createStatement()){
@@ -132,9 +132,14 @@ public class UserManagerImpl implements UserManager {
 
             // Run through each result
             while (result.next()) {
-                int a=0;
+               /* int a=1;
+               String player=result;
+                String aux= String.valueOf(a);
+                */
+
+
                 // Initializes a player per result
-                players.add((result));
+                players.add(result);
 
             }
 
@@ -247,6 +252,32 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    @Override
+    public String getMail(Connection con) throws SQLException{
+
+        //prepare SQL statement
+        String sql = "select correo  from PLAYER  where player_name=?";
+
+        // Create general statement
+        try(PreparedStatement stmt=con.prepareStatement(sql)){
+
+            //Add Parameters
+            stmt.setString(1, App.getNamePlayer());
+
+            // Queries the DB
+            ResultSet result = stmt.executeQuery(sql);
+            // Set before first registry before going through it
+            result.beforeFirst();
+
+            // Queries the DB
+            return result.getString(1);
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
     @Override
     public MySQLConnector getConnector() {

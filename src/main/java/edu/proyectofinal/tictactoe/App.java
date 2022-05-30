@@ -24,6 +24,10 @@ public class App extends Application {
 
 
 
+    public static String mail;
+
+
+
     private static List RankingName;
     private static List RankingNumGame;
 
@@ -43,7 +47,13 @@ public class App extends Application {
     }
 
 
+    public static String getMail() {
+        return mail;
+    }
 
+    public static void setMail(String mail) {
+        App.mail = mail;
+    }
     public static String getNamePlayer(){
 
         return namePlayer;

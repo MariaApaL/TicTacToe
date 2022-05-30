@@ -87,5 +87,13 @@ public interface UserManager {
      */
     public boolean validatePassword(Connection con, String password) throws SQLException;
 
+    /**
+     * Get mail.
+     *
+     * @param con DB connection
+     * @return a {@link String}
+     */
+    public String getMail(Connection con) throws SQLException;
+
 }
 
