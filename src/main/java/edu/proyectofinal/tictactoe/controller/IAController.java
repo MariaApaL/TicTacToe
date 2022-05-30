@@ -82,6 +82,12 @@ public class IAController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String name= App.getNamePlayer();
+        playerO.setText(name+"(O): ");
+        playerX.setText("AI(X): ");
+
+
         buttons = new ArrayList<>();
         buttons.add(b1);
         buttons.add(b2);

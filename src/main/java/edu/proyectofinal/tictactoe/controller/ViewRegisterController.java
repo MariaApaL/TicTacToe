@@ -2,6 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.excepciones.exception;
+import edu.proyectofinal.tictactoe.excepciones.exception;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -50,7 +51,7 @@ public class ViewRegisterController implements Initializable {
      */
 
     @FXML
-    private void eventKeyRegister(ActionEvent event) throws exception, IOException {
+    private void eventKeyRegister(ActionEvent event) throws  IOException {
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
         textJoin.setText("Insert a user name");

@@ -75,6 +75,15 @@ public class TicTacToeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userService= new UserService(new UserManagerImpl());
+        String name= App.getNamePlayer();
+
+        playerX.setText(name+"(X): ");
+
+
+
+
+
         buttons = new ArrayList<>();
         buttons.add(b1);
         buttons.add(b2);
@@ -92,7 +101,7 @@ public class TicTacToeController implements Initializable {
             button.setFocusTraversable(false);
         });
 
-        userService= new UserService(new UserManagerImpl());
+
 
     }
 
@@ -174,7 +183,8 @@ public class TicTacToeController implements Initializable {
             if (line.equals("XXX")) {
                 changingText.setText("PLAYER X WON");
                 pX++;
-                playerX.setText("Player(X): " + pX);
+                String name = App.getNamePlayer();
+               playerX.setText(name+"(X): " + pX);
                 buttonBoard.setDisable(true);
 
             }

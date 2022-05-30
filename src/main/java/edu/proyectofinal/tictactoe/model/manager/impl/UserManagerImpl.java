@@ -27,7 +27,6 @@ public class UserManagerImpl implements UserManager {
             stmt.setString(2, password);
 
 
-
             // Queries the DB
             ResultSet result = stmt.executeQuery();
             // Set before first registry before going through it.
@@ -55,7 +54,7 @@ public class UserManagerImpl implements UserManager {
             stmt.setString(1, player_name);
             stmt.setString(2, password);
             int affectedRows = stmt.executeUpdate();
-            if(affectedRows<=0){
+            if (affectedRows <= 0) {
                 return 0;
             }
 
@@ -82,24 +81,29 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
-    public boolean updateNumGame(Connection con, String name) throws SQLException{
-        String sql="Update player set num_game= (num_game +1)where player_name=?";
+    public boolean updateNumGame(Connection con, String name) throws SQLException {
+        String sql = "Update player set num_game= (num_game +1)where player_name=?";
 
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, name);
             return stmt.executeUpdate() > 0;
 
-        }catch(SQLException e){}
+        } catch (SQLException e) {
+        }
         return false;
 
     }
 
     @Override
     public boolean deleteUser(Connection con) throws SQLException {
-        String sql = "DELETE player WHERE player_name = ?";
+        //prepare SQL statement
+        String sql = "DELETE from player WHERE player_name = ?";
+        // Create general statement
         try (PreparedStatement stmt= con.prepareStatement(sql)){
 
+            //Add Parameters
             stmt.setString(1, App.getNamePlayer());
+            // Queries the DB
             return stmt.executeUpdate() > 0;
         }catch(SQLException e){
             e.printStackTrace();
@@ -130,33 +134,33 @@ public class UserManagerImpl implements UserManager {
             return null;
         }*/
 
-            //prepare SQL statement
-            String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
-            // Create general statement
-            try(Statement stmt=con.createStatement()){
-                // Queries the DB
-                ResultSet result = stmt.executeQuery(sql);
-                // Set before first registry before going through it
-                result.beforeFirst();
-                // Initialize variable
-                List players = new ArrayList();
-                // Run through each result
-                while (result.next()) {
+        //prepare SQL statement
+        String sql = "select player_name  from PLAYER  order  by  num_game desc limit 10";
+        // Create general statement
+        try (Statement stmt = con.createStatement()) {
+            // Queries the DB
+            ResultSet result = stmt.executeQuery(sql);
+            // Set before first registry before going through it
+            result.beforeFirst();
+            // Initialize variable
+            List players = new ArrayList();
+            // Run through each result
+            while (result.next()) {
    /* int a=1;
    String player=result;
     String aux= String.valueOf(a);
     */
-                    // Initializes a player per result
-                    players.add(result);
+                // Initializes a player per result
+                players.add(result);
 
-                }
-
-                return players;
-            }catch(SQLException e) {
-                e.printStackTrace();
-                return null;
             }
+
+            return players;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
+    }
 
 
     @Override
@@ -169,18 +173,25 @@ public class UserManagerImpl implements UserManager {
         return false;
     }
 
+   /* @Override
+    public boolean updatePassword(Connection con, String contraseña) throws SQLException {
+        return false;
+    }*/
+
+  /*  @Override
+    public boolean validatePassword(Connection con, String password) throws SQLException {
+        return false;
+    }*/
+
     @Override
     public MySQLConnector getConnector() {
         return new MySQLConnector();
     }
-
-
-
-
-
-
-
-
-
-
 }
+
+   /* @Override
+    public int insertUser(Connection con, String player_name, String password, String mail) throws SQLException {
+        return 0;
+    }*/
+
+
