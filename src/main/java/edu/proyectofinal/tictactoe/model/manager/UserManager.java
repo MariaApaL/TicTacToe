@@ -62,14 +62,7 @@ public interface UserManager {
      * @return a {@link int}
      */
     public int numGame(Connection con)throws SQLException;
-    /**
-     * Upsate suggestion on DB.
-     *
-     * @param con DB connection
-     * @param suggestions Entities quejas to update.
-     * @return a {@link Boolean}
-     */
-    public boolean updateSuggestions (Connection con, String suggestions);
+
     /**
      * Update password on DB.
      *

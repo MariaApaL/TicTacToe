@@ -174,25 +174,7 @@ public class UserManagerImpl implements UserManager {
             return 0;
         }
     }
-    @Override
-    public boolean updateSuggestions (Connection con, String suggestions){
-        //prepare SQL statement
-        String sql="Update player set quejas= ? where player_name=?";
 
-        // Create general statement
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
-
-            //Add Parameters
-            stmt.setString(1, suggestions);
-            stmt.setString(2, App.getNamePlayer() );
-
-            // Queries the DB
-            return stmt.executeUpdate() > 0;
-
-        }catch(SQLException e){
-        return false;
-        }
-    }
     @Override
     public boolean updatePassword(Connection con, String contraseña) throws SQLException {
         //prepare SQL statement

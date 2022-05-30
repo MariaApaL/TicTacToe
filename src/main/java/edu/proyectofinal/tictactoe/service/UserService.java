@@ -67,12 +67,7 @@ public class UserService {
         }
     }
 
-    public boolean updateSuggestions(String suggestion) throws SQLException, ClassNotFoundException {
 
-        try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.updateSuggestions(con, suggestion);
-        }
-    }
     public boolean updatePassword( String contraseña) throws SQLException, ClassNotFoundException {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
             return userManager.updatePassword(con, contraseña);
@@ -82,6 +77,13 @@ public class UserService {
     public boolean validatePassword( String password) throws SQLException, ClassNotFoundException {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
             return userManager.validatePassword(con, password);
+        }
+
+    }
+
+    public String getMail() throws SQLException, ClassNotFoundException {
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.getMail(con);
         }
 
     }

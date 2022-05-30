@@ -51,6 +51,7 @@ public class ViewRegisterController implements Initializable {
 
 
         try {
+            if(!(userService.validateUser(player_name, password))){
             int createdUser = userService.insertUserReg(player_name, password, email);
             if (createdUser > 0) {
                 App.setNamePlayer(player_name);
@@ -64,7 +65,9 @@ public class ViewRegisterController implements Initializable {
                 textJoin.setText("User not registered correctly");
                 System.out.println("user not registered correctly");
             }
-        } catch ( ClassNotFoundException | SQLException e) {
+        }textJoin.setText("user already registered");
+
+        }catch ( ClassNotFoundException | SQLException e) {
             System.out.println("Error");
         }
     }
