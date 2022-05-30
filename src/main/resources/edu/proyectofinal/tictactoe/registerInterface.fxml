@@ -36,7 +36,8 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="joinButton" layoutX="140.0" layoutY="355.0" mnemonicParsing="false" onAction="#eventKeyRegister" text="Register" />
+      <Button fx:id="joinButton" layoutX="62.0" layoutY="359.0" mnemonicParsing="false" onAction="#eventKeyRegister" text="Register" />
       <PasswordField fx:id="PasswordRegister" layoutX="92.0" layoutY="242.0" />
+      <Button fx:id="backButton" layoutX="218.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="25.0" prefWidth="49.0" text="Back" />
    </children>
 </AnchorPane>

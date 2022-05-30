@@ -75,6 +75,10 @@ public class ViewRegisterController implements Initializable {
         }
     }
 
+    public void switchToStart(ActionEvent event) throws IOException{
+        App.setStage("prueba");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService=new UserService(new UserManagerImpl());
