@@ -69,8 +69,21 @@ public class TicTacToeController implements Initializable {
 
 
 
+    /**
+     * Setting up buttons.
+     *
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userService= new UserService(new UserManagerImpl());
+        String name= App.getNamePlayer();
+
+        playerX.setText(name+"(X): ");
+
+
+
+
+
         buttons = new ArrayList<>();
         buttons.add(b1);
         buttons.add(b2);
@@ -88,26 +101,29 @@ public class TicTacToeController implements Initializable {
             button.setFocusTraversable(false);
         });
 
-        userService= new UserService(new UserManagerImpl());
+
 
     }
 
 
+    /**
+     * Method for restart game
+     * @param event make possible to realize restart action.
+     */
     @FXML
     public void restartGame(ActionEvent event) throws SQLException, ClassNotFoundException {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
         String playerName=App.getNamePlayer();
         userService.newGame(playerName);
-               /* if(usuario.getTxtUser()!=null) {
-                    playerName = usuario.getUser();
-                }if(usuario.getUserRegister()!=null){playerName=usuario.getUserRegister();}
-
-      */
 
 
     }
 
+    /**
+     * Method for reset buttons.
+     * @param button Set text to " " to start over.
+     */
     public void restartButton(Button button) {
         button.setDisable(false);
         button.setText("");
@@ -116,6 +132,10 @@ public class TicTacToeController implements Initializable {
 
     }
 
+    /**
+     * Method for setting up buttons.
+     * @param button Set up text "O" or "X" when it is player's turn.
+     */
     private void setupButton(Button button) {
         button.setOnMouseClicked(mouseEvent -> {
             choosePlayer(button);
@@ -125,6 +145,10 @@ public class TicTacToeController implements Initializable {
     }
 
 
+    /**
+     * Method for choosing player.
+     * @param button Decice "O" or "X" when it is player's turn.
+     */
     public void choosePlayer(Button button) {
         if (turn % 2 == 0) {
             button.setText("X");
@@ -135,6 +159,11 @@ public class TicTacToeController implements Initializable {
         }
     }
 
+
+    /**
+     * Method for decide who wins.
+     * @param button Set "X" or "O" and choose winner
+     */
     public void checkGame(Button button) {
         for (int i = 0; i < 8; i++) {
             String line = switch (i) {
@@ -150,10 +179,12 @@ public class TicTacToeController implements Initializable {
             };
 
 
+
             if (line.equals("XXX")) {
                 changingText.setText("PLAYER X WON");
                 pX++;
-                playerX.setText("Player(X): " + pX);
+                String name = App.getNamePlayer();
+               playerX.setText(name+"(X): " + pX);
                 buttonBoard.setDisable(true);
 
             }

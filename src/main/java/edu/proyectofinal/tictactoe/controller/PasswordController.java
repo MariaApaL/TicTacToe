@@ -2,6 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
+import edu.proyectofinal.tictactoe.excepciones.exceptionIncorrectPassword;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -43,16 +44,11 @@ public class PasswordController implements Initializable {
         try{
           if( userService.validatePassword(password)){
               if(password2.equalsIgnoreCase(password3)){
-              try{
-                 if( userService.updatePassword(password2)) {
-                     App.setStage("secondmenuInterface");
-                     App.setPassword(password2);
+                  if( userService.updatePassword(password2)) {
+                      App.setStage("secondmenuInterface");
+                      App.setPassword(password2);
 
-                 }
-              }catch(SQLException e){
-                  e.printStackTrace();
-
-              }
+                  }
 
 
               }}

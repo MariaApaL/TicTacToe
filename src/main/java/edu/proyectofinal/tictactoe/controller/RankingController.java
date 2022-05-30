@@ -14,7 +14,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,6 +23,7 @@ import java.util.ResourceBundle;
 public class RankingController implements Initializable {
 
     private UserService userService;
+
 
     // Añadimos el boton 1
     @FXML
@@ -57,28 +57,8 @@ public class RankingController implements Initializable {
     private Text ranking5;
 
 
-   private TableView table = new TableView();
+    private TableView table = new TableView();
 
-
-    public void start(Stage primaryStage) {
-
-        Group group = new Group();
-
-        TableColumn rank = new TableColumn("rank");
-        TableColumn name = new TableColumn("Name");
-        TableColumn wins = new TableColumn("Wins");
-
-        table.getColumns().addAll(rank,name,wins);
-
-        Scene scene = new Scene(group, 300,250);
-
-        ((Group)scene.getRoot()).getChildren().add(table);
-
-        primaryStage.setTitle("");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-    }
 
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
@@ -89,11 +69,6 @@ public class RankingController implements Initializable {
         App.setStage("prueba");
     }
 
-    public void rankingUsers () throws SQLException, ClassNotFoundException {
-
-
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -119,7 +94,7 @@ public class RankingController implements Initializable {
             ranking3.setText(ocho);
             ranking4.setText(nueve);
             ranking5.setText(diez);
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
