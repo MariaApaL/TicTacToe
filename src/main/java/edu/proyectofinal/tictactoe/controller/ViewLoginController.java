@@ -65,8 +65,7 @@ public class ViewLoginController implements Initializable {
        textLogin.setText("Insert your user name");
 try{
 
-    if (txtUser.equals(null) | password.equals(null)){
-
+    if (txtUser!=null && password!=null){
         if (userService.validateUser(player_name)) {
 
             if (userService.validatePassword(player_name)) {
@@ -83,23 +82,13 @@ try{
 
             }
 
-
         } else {
-
             textLogin.setText("Unregistered user");
         }
-
-             }else{
-        textLogin.setText("You have to fill in all the fields");}
-
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void switchToStart(ActionEvent event) throws IOException {
-        App.setStage("start");
+    }else{textLogin.setText("You have to fill in all the fields");}
+}catch(SQLException e){
+    e.printStackTrace();
+}
 
     }
 
