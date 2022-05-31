@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 /**
  * <p>PdfCreator class.</p>
  *
- * @author : Ismael Orellana Bello / Pablo Salvador Del Río Vergara
+ *
  * @version : 1.0
  * Class that creates the pdf
  */
@@ -24,24 +24,24 @@ public class PdfCreator {
          *
          * @param fileName - String
          * @param text     - String
-         * @param user     - String
-         * @param password - String
          * @throws java.io.IOException - in some circunstancies
          * @throws com.itextpdf.text.DocumentException - in some circunstancies
          * @throws java.net.URISyntaxException - in some circunstancies
          */
-        public void createPDF(String fileName, String text, String user, String password) throws IOException, DocumentException, URISyntaxException {
+        public void createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
 
-            Path path = Paths.get(ClassLoader.getSystemResource("icon.png").toURI());
+            Path path = Paths.get(ClassLoader.getSystemResource("static/img/icon.png").toURI());
 
             Document document = new Document();
             PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
 
             document.open();
             Paragraph paragraph = createParagraph(text);
+            Paragraph comment = createParagraph(suggestion);
             Image image = createImage(path);
 
             document.add(paragraph);
+            document.add(comment);
             document.add(image);
             document.close();
 
@@ -68,7 +68,7 @@ public class PdfCreator {
          * @return paragraph - Paragraph
          */
         private Paragraph createParagraph(String text) {
-            Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.RED);
+            Font font = FontFactory.getFont(FontFactory.HELVETICA, 16, BaseColor.BLACK);
             Paragraph paragraph = new Paragraph(text, font);
             paragraph.setSpacingAfter(25f);
             return paragraph;
