@@ -1,9 +1,9 @@
 package edu.proyectofinal.tictactoe.excepciones;
 
-public class exceptionIncorrectPassword extends Throwable{
+public class exceptions extends Throwable{
     public static final String MESSAGE="Exception: ";
 
-    public exceptionIncorrectPassword(String message){
+    public exceptions (String message){
         super(MESSAGE+ message);
     }
 }

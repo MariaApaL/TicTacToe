@@ -88,4 +88,11 @@ public class UserService {
 
     }
 
+
+    public String getMail() throws SQLException, ClassNotFoundException {
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.getMail(con);
+        }
+
+    }
 }
