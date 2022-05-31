@@ -67,14 +67,14 @@ try{
 
     if (!(player_name.equals("") | password.equals(""))){
         if (userService.validateUser(player_name)) {
+            App.setNamePlayer(player_name);
 
-            if (userService.validatePassword(player_name)) {
+            if (userService.validatePassword(password)) {
 
-
+                App.setMail(userService.getMail());
                 textLogin.setText("CORRECT USER");
                 App.setStage("prueba");
-                App.setNamePlayer(player_name);
-                App.setMail(userService.getMail());
+
 
 
             } else {

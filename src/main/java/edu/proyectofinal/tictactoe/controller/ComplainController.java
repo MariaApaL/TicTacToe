@@ -43,7 +43,7 @@ public class ComplainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         suggestionsService=new SuggestionsService(new SuggestionsManagerImpl());
         userService = new UserService(new UserManagerImpl());
-        String mail= App.getMail();
+
 
     }
 
@@ -51,9 +51,9 @@ public class ComplainController implements Initializable {
 
         String queja=text.getText();
         String nombre= App.getNamePlayer();
-        //String mail= App.getMail();
+        String mail= App.getMail();
         try{
-            String mail= App.getMail();
+
             int createSuggestion= suggestionsService.insertSuggestion(nombre,queja);
             if(createSuggestion  > 0){
                 // App.setStage("secondmenuInterface");

@@ -242,18 +242,22 @@ public class UserManagerImpl implements UserManager {
     public String getMail(Connection con) throws SQLException{
 
         //prepare SQL statement
-        String sql = "select correo  from PLAYER  where player_name=?";
+        String sql = "select correo  from player  where player_name = ?";
         // Create general statement
         try(PreparedStatement stmt=con.prepareStatement(sql)){
 
             //Add Parameters
-            stmt.setString(1, App.getNamePlayer());
+            stmt.setString( 1, App.getNamePlayer());
             // Queries the DB
-            ResultSet result = stmt.executeQuery(sql);
+            ResultSet result = stmt.executeQuery();
             // Set before first registry before going through it
             result.beforeFirst();
+            String resultado=null;
+            if(result.next()){
+                resultado = result.getString(1);
+            }
             // Queries the DB
-            return result.getString(1);
+            return resultado;
         }catch(SQLException e) {
             e.printStackTrace();
             return null;
