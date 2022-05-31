@@ -65,7 +65,7 @@ public class ViewLoginController implements Initializable {
        textLogin.setText("Insert your user name");
 try{
 
-    if (txtUser!=null && password!=null){
+    if (!(player_name.equals("") | password.equals(""))){
         if (userService.validateUser(player_name)) {
 
             if (userService.validatePassword(player_name)) {
@@ -91,6 +91,11 @@ try{
 }
 
     }
+
+    public void switchToStart(ActionEvent event) throws IOException{
+        App.setStage("start");
+    }
+
 
     /**
      * Initializes the controller class.
