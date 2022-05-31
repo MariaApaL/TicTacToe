@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe.email;
 
 import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -19,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import edu.proyectofinal.tictactoe.pdfcreator.PdfCreator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -82,6 +85,7 @@ public class Senders {
             message.setContent(content, "text/html");
 
             Transport.send(message);
+
             return true;
         } catch (MessagingException e) {
             e.printStackTrace();

@@ -11,11 +11,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * <p>PdfCreator class.</p>
  *
+ * PDF creator class
  *
- * @version : 1.0
- * Class that creates the pdf
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
  */
 public class PdfCreator {
 
