@@ -78,6 +78,7 @@ public class ComplainController implements Initializable {
                     "pdf with your suggestions write down");
         } catch (Exception e) {
             System.out.println("Error, email not found");
+            e.printStackTrace();
         }
     }
 
