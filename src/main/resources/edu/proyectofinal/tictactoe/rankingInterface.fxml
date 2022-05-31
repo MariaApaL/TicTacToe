@@ -8,25 +8,55 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.RankingController">
     <children>
-        <FlowPane fx:id="buttonBoard" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+        <FlowPane fx:id="buttonBoard" layoutX="132.0" layoutY="87.0" prefHeight="240.0" prefWidth="349.0">
             <children>
-                <Text fx:id="uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="203.47010803222656" />
-                <Text fx:id="numeroDos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="207.47010803222656" />
-                <Text fx:id="numeroTres" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="208.13673400878906" />
-                <Text fx:id="numeroCuatro" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="227.4700469970703" />
-                <Text fx:id="numeroCinco" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
-                <Text fx:id="ranking1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
-                <Text fx:id="ranking2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
-                <Text fx:id="ranking3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
-                <Text fx:id="ranking4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
-                <Text fx:id="ranking5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="201.4700469970703" />
+                <Text fx:id="uno" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="359.47007751464844">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="numeroDos" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="360.1367645263672">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="numeroTres" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="361.4700164794922">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="numeroCuatro" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="363.46998596191406">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="numeroCinco" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="363.4700164794922">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="ranking1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="363.4700469970703">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="ranking2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="362.80335998535156">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="ranking3" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="364.13673400878906">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="ranking4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="366.1366729736328">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+                <Text fx:id="ranking5" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="366.8034210205078">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
             </children></FlowPane>
         <Text fontSmoothingType="LCD" layoutX="84.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RANKING" textAlignment="CENTER" wrappingWidth="460.66668701171875">
             <font>
                 <Font name="System Bold" size="36.0" />
             </font>
         </Text>
-        <Button fx:id="backMenu" layoutX="200.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="25.0" prefWidth="72.0" text="Back" textAlignment="CENTER" />
-        <Button layoutX="349.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="72.0" text="Log out" />
+        <Button fx:id="backMenu" layoutX="200.0" layoutY="351.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="25.0" prefWidth="72.0" text="Back" textAlignment="CENTER" />
+        <Button layoutX="349.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="72.0" text="Log out" />
     </children>
 </AnchorPane>

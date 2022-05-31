@@ -13,9 +13,9 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Text>
-      <Text layoutX="108.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let us know in the box bellow!" />
+      <Text fx:id="complainTxt" layoutX="114.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let us know in the box bellow!" />
       <Button fx:id="backButton" layoutX="308.0" layoutY="403.0" mnemonicParsing="false" onAction="#switchToSecondMenu" prefHeight="25.0" prefWidth="63.0" text="Back" />
       <Button fx:id="Submit" layoutX="163.0" layoutY="359.0" mnemonicParsing="false" onAction="#submitSuggestions" prefHeight="25.0" prefWidth="63.0" text="Submit" />
-      <TextField fx:id="text" layoutX="70.0" layoutY="209.0" prefHeight="128.0" prefWidth="280.0" />
+      <TextField fx:id="text" alignment="TOP_LEFT" layoutX="62.0" layoutY="209.0" prefHeight="128.0" prefWidth="280.0" />
    </children>
 </AnchorPane>
