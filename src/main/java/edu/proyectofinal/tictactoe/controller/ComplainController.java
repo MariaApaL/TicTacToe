@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -32,6 +33,9 @@ public class ComplainController implements Initializable {
 
     @FXML
     private Button submit;
+
+    @FXML
+    private Text status;
 
     public void switchToSecondMenu(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
@@ -57,7 +61,7 @@ public class ComplainController implements Initializable {
             int createSuggestion= suggestionsService.insertSuggestion(nombre,queja);
             if(createSuggestion  > 0){
                 // App.setStage("secondmenuInterface");
-                text.setText("");
+                status.setText("");
                 App.setSuggestion(queja);
              String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
                 email(mail,namePdf);
