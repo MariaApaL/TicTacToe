@@ -1,16 +1,21 @@
 package edu.proyectofinal.tictactoe.model.dao;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import lombok.ToString;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
-@Getter
-@Setter
+
 @ToString
 public class Player {
+
+
+    public Player() {
+
+    }
+
     public int getIdPlayer() {
         return idPlayer;
     }
@@ -33,14 +38,6 @@ public class Player {
      int numGame;
 
 
-
-
-
-
-
-
-
-
     public Player(ResultSet result) {
         try {
             this.idPlayer = result.getInt("idplayer");
@@ -50,6 +47,35 @@ public class Player {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setNumGame(int numGame) {
+        this.numGame = numGame;
+    }
+
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return idPlayer == player.idPlayer && numGame == player.numGame && playerName.equals(player.playerName) && password.equals(player.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPlayer, playerName, password, numGame);
     }
 /*
     public UserDao( String username, String password) {

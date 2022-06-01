@@ -1,21 +1,9 @@
 package edu.proyectofinal.tictactoe.model.manager.impl;
 
-import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
 import edu.proyectofinal.tictactoe.model.manager.SuggestionsManager;
-import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.*;
-import edu.proyectofinal.tictactoe.App;
-import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
-import edu.proyectofinal.tictactoe.model.dao.Player;
-
-
-import edu.proyectofinal.tictactoe.model.manager.UserManager;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SuggestionsManagerImpl implements SuggestionsManager {
     @Override

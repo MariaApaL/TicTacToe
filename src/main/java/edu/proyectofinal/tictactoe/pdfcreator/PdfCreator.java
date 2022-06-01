@@ -29,8 +29,9 @@ public class PdfCreator {
          * @throws java.io.IOException - in some circunstancies
          * @throws com.itextpdf.text.DocumentException - in some circunstancies
          * @throws java.net.URISyntaxException - in some circunstancies
+         * @return
          */
-        public void createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
+        public String createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
 
             Path path = Paths.get(ClassLoader.getSystemResource("static/img/icon.png").toURI());
 
@@ -47,6 +48,7 @@ public class PdfCreator {
             document.add(image);
             document.close();
 
+            return fileName;
         }
 
         /**

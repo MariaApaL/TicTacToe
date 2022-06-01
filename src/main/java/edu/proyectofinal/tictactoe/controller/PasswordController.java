@@ -2,7 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.exceptions;
+import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -40,7 +40,7 @@ public class PasswordController implements Initializable {
 
     private UserService userService;
 
-    public void changePassword(ActionEvent event) throws IOException, exceptions {
+    public void changePassword(ActionEvent event) throws IOException, Exceptions {
         String password = ActualPassword.getText();
         String password2 = newPassword.getText();
         String password3 = repeatPassword.getText();
@@ -56,21 +56,21 @@ public class PasswordController implements Initializable {
                             App.setPassword(password2);
 
                         }else{statusPassword.setText("Password could not be updated");
-                            throw new exceptions("Password could not be updated");
+                            throw new Exceptions("Password could not be updated");
 
                         }
                     }else{
                         statusPassword.setText("New passwords do not match");
-                        throw new exceptions("New passwords do not match");
+                        throw new Exceptions("New passwords do not match");
                     }
                 }else{
                     statusPassword.setText("Incorrect password");
-                    throw new exceptions("Incorrect password");
+                    throw new Exceptions("Incorrect password");
                 }
 
 
             }else{  statusPassword.setText("You have to fill in all the fields");
-                throw new exceptions("You have to fill in all the fields");}
+                throw new Exceptions("You have to fill in all the fields");}
         }catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

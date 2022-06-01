@@ -94,6 +94,54 @@ public class Senders {
 
     }
 
+    public boolean send(String from, String to, String subject, String text, String content) throws FileNotFoundException, IOException {
+        // Get the Session object.// and pass username and password
+        Session session = createSession();
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            // Set Subject: header field
+            message.setSubject(subject);
+
+            // Attach a file.
+            //First Part of the body: text
+            BodyPart texto = new MimeBodyPart();
+            texto.setContent(text,"text/html");
+
+            //Second Part of the body: project properties file.
+            File file = new File(content);
+
+
+            MimeBodyPart fichero = new MimeBodyPart();
+
+            fichero.attachFile(new File(content));
+            //Group all part in a object
+            Multipart multiPart = new MimeMultipart();
+            multiPart.addBodyPart(texto);
+            multiPart.addBodyPart(fichero);
+
+            //Set Message Content
+            message.setContent(multiPart);
+
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+            return true;
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+            return false;
+        }
+
+    }
+
     /**
      * Method that creates the session for send the email
      *
