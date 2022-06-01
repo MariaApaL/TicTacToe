@@ -59,8 +59,9 @@ public class ComplainController implements Initializable {
                 // App.setStage("secondmenuInterface");
                 text.setText("");
                 App.setSuggestion(queja);
-                email(mail);
                 new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
+                email(mail);
+
 
             }else{}
 
