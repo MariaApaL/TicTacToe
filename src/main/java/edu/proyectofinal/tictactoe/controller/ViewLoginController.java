@@ -2,29 +2,15 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.exceptions;
+import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
-
-import javax.swing.*;
 
 
 import java.io.IOException;
@@ -60,7 +46,7 @@ public class ViewLoginController implements Initializable {
      * @throws {@code IOException, SQLException, ClassNotFoundException}
      */
     @FXML
-    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException, exceptions {
+    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException, Exceptions {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
        textLogin.setText("Insert your user name");
@@ -80,15 +66,15 @@ try{
 
             } else {
                 textLogin.setText("Incorrect Password");
-                throw new exceptions("Incorrect Password");
+                throw new Exceptions("Incorrect Password");
             }
 
         } else {
             textLogin.setText("Unregistered user");
-            throw new exceptions("Unregistered user");
+            throw new Exceptions("Unregistered user");
         }
     }else{textLogin.setText("You have to fill in all the fields");
-        throw new exceptions("You have to fill in all the fields");}
+        throw new Exceptions("You have to fill in all the fields");}
 }catch(SQLException e){
     e.printStackTrace();
 }

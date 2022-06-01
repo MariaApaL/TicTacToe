@@ -1,9 +1,9 @@
 package edu.proyectofinal.tictactoe.excepciones;
 
-public class exceptions extends Throwable{
+public class Exceptions extends Throwable{
     public static final String MESSAGE="Exception: ";
 
-    public exceptions (String message){
+    public Exceptions(String message){
         super(MESSAGE+ message);
     }
 }

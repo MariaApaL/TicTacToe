@@ -3,7 +3,7 @@ package edu.proyectofinal.tictactoe.controller;
 import com.itextpdf.text.DocumentException;
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.email.Senders;
-import edu.proyectofinal.tictactoe.excepciones.exceptions;
+import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.SuggestionsManagerImpl;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.pdfcreator.PdfCreator;
@@ -52,7 +52,7 @@ public class ComplainController implements Initializable {
 
     }
 
-    public void submitSuggestions(ActionEvent event) throws IOException, exceptions {
+    public void submitSuggestions(ActionEvent event) throws IOException, Exceptions {
 
         String queja=text.getText();
         String nombre= App.getNamePlayer();
@@ -73,11 +73,11 @@ public class ComplainController implements Initializable {
 
             }else{
                 status.setText("Could not load suggestion");
-                throw new exceptions("Could not load suggestion");
+                throw new Exceptions("Could not load suggestion");
             }
             }else{
                 status.setText("You have to fill in all the fields");
-                throw new exceptions("You have to fill in all the fields");}
+                throw new Exceptions("You have to fill in all the fields");}
 
         } catch (SQLException | ClassNotFoundException | DocumentException | URISyntaxException e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class ComplainController implements Initializable {
 
     }
 
-    public void email(String to) throws exceptions {
+    public void email(String to) throws Exceptions {
 
         try {
             new Senders().send("tictactoecustomservice@gmail.com", to, "Hey! Check your comment suggestions", "Thanks for your comments! This help us a lot to improve our game! Here you have an" +

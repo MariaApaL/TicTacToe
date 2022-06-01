@@ -2,7 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.exceptions;
+import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -44,7 +44,7 @@ public class ViewRegisterController implements Initializable {
      * @throws {@code IOException}
      */
     @FXML
-    private void eventKeyRegister(ActionEvent event) throws IOException, exceptions {
+    private void eventKeyRegister(ActionEvent event) throws IOException, Exceptions {
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
         String email= mail.getText();
@@ -67,15 +67,15 @@ public class ViewRegisterController implements Initializable {
                     } else {
 
                         textJoin.setText("User not registered correctly");
-                        throw new exceptions("user not registered correctly");
+                        throw new Exceptions("user not registered correctly");
                     }
                 }else {
                     textJoin.setText("user already registered");
-                    throw new exceptions("user already registered");
+                    throw new Exceptions("user already registered");
                 }
             }else{
                 textJoin.setText("You have to fill in all the fields");
-                throw new exceptions("You have to fill in all the fields");
+                throw new Exceptions("You have to fill in all the fields");
             }
 
         }catch ( ClassNotFoundException | SQLException e) {
