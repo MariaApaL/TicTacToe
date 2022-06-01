@@ -36,7 +36,8 @@ public class PdfCreator {
             Path path = Paths.get(ClassLoader.getSystemResource("static/img/icon.png").toURI());
 
             Document document = new Document();
-            PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
+            String namePdf = "C:\\Temp\\" + fileName + ".pdf";
+            PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(namePdf));
 
             document.open();
             Paragraph paragraph = createParagraph(text);
@@ -48,7 +49,7 @@ public class PdfCreator {
             document.add(image);
             document.close();
 
-            return fileName;
+            return namePdf;
         }
 
         /**
