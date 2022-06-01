@@ -1,33 +1,37 @@
 package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
-
+import edu.proyectofinal.tictactoe.IA.ArtificialIntelligence;
+import edu.proyectofinal.tictactoe.IA.State;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
-public class TicTacToeController implements Initializable {
+/**
+ * IA Controller Class.
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
+
+public class IAController implements Initializable {
 
     // Add 9 buttons
     @FXML
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
-
 
     @FXML
     private FlowPane buttonBoard;
@@ -43,19 +47,23 @@ public class TicTacToeController implements Initializable {
     @FXML
     private Text playerO;
 
+    Random random = new Random();
 
-    //Players turn.
+
+    //players turns.
     private int turn = 0;
 
     //Counter for wins.
-
     private int pX = 0;
     private int pO = 0;
 
+    //Add buttons in an ArrayList
     ArrayList<Button> buttons;
 
+    //Initialize an ArtificialIntelligence object
+    ArtificialIntelligence AI = new ArtificialIntelligence();
 
-
+    //UserService object
     private UserService userService;
 
 
@@ -63,25 +71,21 @@ public class TicTacToeController implements Initializable {
      * switch to second menu interface.
      * @throws {@code IOException}
      */
-    public void switchToMenu(ActionEvent event) throws IOException{
+    public void switchToMenu(ActionEvent event) throws IOException {
         App.setStage("prueba");
     }
-
-
 
     /**
      * Setting up buttons.
      *
      */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userService= new UserService(new UserManagerImpl());
+
         String name= App.getNamePlayer();
-
-        playerX.setText(name+"(X): ");
-
-
-
+        playerO.setText(name+"(O): ");
+        playerX.setText("AI(X): ");
 
 
         buttons = new ArrayList<>();
@@ -95,16 +99,24 @@ public class TicTacToeController implements Initializable {
         buttons.add(b8);
         buttons.add(b9);
 
-        //Con esto hacemos los botones clickeables
         buttons.forEach(button -> {
             setupButton(button);
             button.setFocusTraversable(false);
         });
 
-
-
+        userService= new UserService(new UserManagerImpl());
+        pickButton(random.nextInt(9));
     }
 
+
+    /**
+     * Method for make AI moves.
+     *
+     */
+    public void makeAIMove(){
+        int move = AI.minMaxDecision(getBoardState());
+        pickButton(move);
+    }
 
     /**
      * Method for restart game
@@ -116,7 +128,7 @@ public class TicTacToeController implements Initializable {
         changingText.setText("TIC TAC TOE");
         String playerName=App.getNamePlayer();
         userService.newGame(playerName);
-
+        pickButton(random.nextInt(9));
 
     }
 
@@ -124,6 +136,7 @@ public class TicTacToeController implements Initializable {
      * Method for reset buttons.
      * @param button Set text to " " to start over.
      */
+
     public void restartButton(Button button) {
         button.setDisable(false);
         button.setText("");
@@ -134,31 +147,41 @@ public class TicTacToeController implements Initializable {
 
     /**
      * Method for setting up buttons.
-     * @param button Set up text "O" or "X" when it is player's turn.
+     * @param button Set up text "O" when it is player's turn.
      */
+
     private void setupButton(Button button) {
         button.setOnMouseClicked(mouseEvent -> {
-            choosePlayer(button);
+
+            button.setText("O");
             button.setDisable(true);
+            makeAIMove();
             checkGame(button);
         });
     }
 
-
     /**
-     * Method for choosing player.
-     * @param button Decice "O" or "X" when it is player's turn.
+     * Method for AI moves.
+     * @param index Get button number to put "X" in.
      */
-    public void choosePlayer(Button button) {
-        if (turn % 2 == 0) {
-            button.setText("X");
-            turn = 1;
-        } else {
-            button.setText("O");
-            turn = 0;
-        }
+    private void pickButton(int index) {
+        buttons.get(index).setText("X");
+        buttons.get(index).setDisable(true);
     }
 
+    /**
+     * Method for AI random moves.
+     * @return State object.
+     */
+    public State getBoardState(){
+        String[] board = new String[9];
+
+        for (int i = 0; i < buttons.size(); i++) {
+            board[i] = buttons.get(i).getText();
+        }
+
+        return new State(0,board);
+    }
 
     /**
      * Method for decide who wins.
@@ -179,12 +202,10 @@ public class TicTacToeController implements Initializable {
             };
 
 
-
             if (line.equals("XXX")) {
-                changingText.setText("PLAYER X WON");
+                changingText.setText("AI WON");
                 pX++;
-                String name = App.getNamePlayer();
-               playerX.setText(name+"(X): " + pX);
+                playerX.setText("AI(X): " + pX);
                 buttonBoard.setDisable(true);
 
             }
@@ -193,7 +214,7 @@ public class TicTacToeController implements Initializable {
             else if (line.equals("OOO")) {
                 changingText.setText("PLAYER O WON");
                 pO++;
-                playerO.setText("Player(O): " + pO);
+                playerO.setText(App.getNamePlayer()+"(O): " + pO);
                 buttonBoard.setDisable(true);
 
 
@@ -201,16 +222,4 @@ public class TicTacToeController implements Initializable {
         }
     }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-

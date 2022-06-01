@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.ComplainController">
+   <children>
+      <Text layoutX="34.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANY COMPLAINS?" textAlignment="CENTER" wrappingWidth="313.171875">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <Text fx:id="complainTxt" layoutX="114.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let us know in the box bellow!" />
+      <Button fx:id="backButton" layoutX="308.0" layoutY="403.0" mnemonicParsing="false" onAction="#switchToSecondMenu" prefHeight="25.0" prefWidth="63.0" text="Back" />
+      <Button fx:id="Submit" layoutX="163.0" layoutY="359.0" mnemonicParsing="false" onAction="#submitSuggestions" prefHeight="25.0" prefWidth="63.0" text="Submit" />
+      <TextField fx:id="text" alignment="TOP_LEFT" layoutX="62.0" layoutY="209.0" prefHeight="128.0" prefWidth="280.0" />
+   </children>
+</AnchorPane>
