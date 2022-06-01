@@ -30,12 +30,13 @@ public class PdfCreator {
          * @throws com.itextpdf.text.DocumentException - in some circunstancies
          * @throws java.net.URISyntaxException - in some circunstancies
          */
-        public void createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
+        public String createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
 
             Path path = Paths.get(ClassLoader.getSystemResource("static/img/icon.png").toURI());
 
             Document document = new Document();
-            PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
+            String namePdf = "C:\\Temp\\" + fileName + ".pdf";
+            PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(namePdf));
 
             document.open();
             Paragraph paragraph = createParagraph(text);
@@ -47,6 +48,7 @@ public class PdfCreator {
             document.add(image);
             document.close();
 
+            return namePdf;
         }
 
         /**
