@@ -166,12 +166,17 @@ public class UserManagerImpl implements UserManager {
             stmt.setString(1, App.getNamePlayer());
 
             // Queries the DB
-            ResultSet result = stmt.executeQuery(sql);
+            ResultSet result = stmt.executeQuery();
             // Set before first registry before going through it
             result.beforeFirst();
-
+            int resultado = 0;
+            if(result.next()){
+                resultado = result.getInt(1);
+            }
             // Queries the DB
-            return result.getInt(1);
+            return resultado;
+
+
 
         }catch(SQLException e) {
             e.printStackTrace();

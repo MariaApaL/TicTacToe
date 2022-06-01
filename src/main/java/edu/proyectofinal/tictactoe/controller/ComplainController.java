@@ -62,7 +62,7 @@ public class ComplainController implements Initializable {
                 email(mail);
                 new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
 
-            }
+            }else{}
 
         } catch (SQLException | ClassNotFoundException | DocumentException | URISyntaxException e) {
             e.printStackTrace();
