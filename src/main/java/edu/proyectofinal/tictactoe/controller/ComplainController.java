@@ -47,7 +47,7 @@ public class ComplainController implements Initializable {
 
     }
 
-    public void submitSuggestions(ActionEvent event) throws IOException {
+    public void submitSuggestions(ActionEvent event) {
 
         String queja=text.getText();
         String nombre= App.getNamePlayer();
@@ -65,14 +65,14 @@ public class ComplainController implements Initializable {
 
             }
 
-        } catch (SQLException | ClassNotFoundException | DocumentException | URISyntaxException e) {
+        } catch (SQLException | ClassNotFoundException | DocumentException | URISyntaxException | IOException e) {
             e.printStackTrace();
         }
 
 
     }
 
-    public void email(String to) {
+    public void email(String to)  {
 
         try {
             new Senders().send("tictactoecustomservice@gmail.com", to, "Hey! Check your comment suggestions", "Thanks for your comments! This help us a lot to improve our game! Here you have an" +
