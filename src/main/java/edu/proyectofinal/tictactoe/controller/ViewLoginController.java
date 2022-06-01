@@ -95,6 +95,10 @@ try{
 
     }
 
+    /**
+     * switch to menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToStart(ActionEvent event) throws IOException{
         App.setStage("start");
     }

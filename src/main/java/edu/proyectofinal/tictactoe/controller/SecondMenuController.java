@@ -111,7 +111,9 @@ public class SecondMenuController implements Initializable {
         App.setStage("passwordInterface");
     }
 
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());

@@ -19,7 +19,15 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
+/**
+ *
+ * Ranking controller class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
 public class RankingController implements Initializable {
 
     private UserService userService;
@@ -57,19 +65,27 @@ public class RankingController implements Initializable {
     private Text ranking5;
 
 
-    private TableView table = new TableView();
 
 
+    /**
+     * switch to Login interface.
+     * @throws {@code IOException}
+     */
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
     }
 
-
+    /**
+     * switch to menu interface.
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException{
         App.setStage("prueba");
     }
 
-
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
