@@ -67,8 +67,9 @@ public class ComplainController implements Initializable {
                 // App.setStage("secondmenuInterface");
                 text.setText("");
                 App.setSuggestion(queja);
-                new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
-                email(mail);
+                String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
+                email(mail,namePdf);
+
 
 
             }else{
@@ -86,12 +87,12 @@ public class ComplainController implements Initializable {
 
     }
 
-    public void email(String to) throws Exceptions {
+    public void email(String to, String pdf)  {
 
         try {
-            new Senders().send("tictactoecustomservice@gmail.com", to, "Hey! Check your comment suggestions", "Thanks for your comments! This help us a lot to improve our game! Here you have an" +
-                    "pdf with your suggestions write down");
+            new Senders().send("tictactoecustomservice",to,"Hey! Check your suggestions!","Thanks for your comments! This help us a lot to improve our game! Here you have an pdf with your suggestions write down",pdf);
         } catch (Exception e) {
+            System.out.println("Error, email not found");
             e.printStackTrace();
         }
     }
