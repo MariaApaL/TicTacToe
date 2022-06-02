@@ -8,7 +8,7 @@ import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.PasswordField;
 
 import java.io.IOException;
@@ -16,25 +16,40 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Menu class.
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
+
 public class PasswordController implements Initializable {
 
+
+    // Password field for actual password
     @FXML
     private PasswordField ActualPassword;
 
+    // Password field for new password
 
     @FXML
     private PasswordField newPassword;
 
+    // Password field for repeat new password
     @FXML
     private PasswordField repeatPassword;
 
-    @FXML
-    private Button doneButton;
-    @FXML
-    private Button back;
 
-
+    // UserService object
     private UserService userService;
+
+    /**
+     * Method for change a password
+     * @param event
+     *
+     */
+
 
     public void changePassword(ActionEvent event) throws IOException {
         String password = ActualPassword.getText();
@@ -60,7 +75,13 @@ public class PasswordController implements Initializable {
             e.printStackTrace();
         }
 
+
     }
+    /**
+     * Switch to second menu interface
+     * @param event
+     *
+     */
     public void back(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
 

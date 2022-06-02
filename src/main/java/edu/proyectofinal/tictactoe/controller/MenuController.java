@@ -7,11 +7,7 @@ import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +21,7 @@ import java.util.ResourceBundle;
  * @author Valentina
  * @author Julia
  */
-public class PruebaController implements Initializable {
+public class MenuController implements Initializable {
 
     @FXML
     private Text changingText;

@@ -58,7 +58,7 @@ public class ViewRegisterController implements Initializable {
                 App.setMail(email);
 
                 textJoin.setText("Insert an user name");
-                App.setStage("prueba");
+                App.setStage("menuInterface");
 
             } else {
 

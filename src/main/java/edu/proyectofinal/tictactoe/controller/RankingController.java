@@ -20,20 +20,20 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
+/**
+ * Ranking class.
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ */
+
 public class RankingController implements Initializable {
 
     private UserService userService;
 
 
-    // Añadimos el boton 1
-    @FXML
-    private Button b1;
-
-    @FXML
-    private TableColumn<?,?> rank;
-
-    @FXML
-    private TableColumn<?,?> name;
+    // Ranking text to be fill
 
     @FXML
     private Text uno;
@@ -57,19 +57,30 @@ public class RankingController implements Initializable {
     private Text ranking5;
 
 
-    private TableView table = new TableView();
 
-
+    /**
+     * switch to login interface.
+     * @param event
+     * @throws {@code IOException}
+     */
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
     }
 
-
+    /**
+     * switch to menu interface.
+     * @param event
+     * @throws {@code IOException}
+     */
     public void switchToMenu(ActionEvent event) throws IOException{
-        App.setStage("prueba");
+        App.setStage("menuInterface");
     }
 
 
+    /**
+     * Method for inicialize and fill text to make a ranking
+     *
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
