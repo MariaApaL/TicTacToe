@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="369.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.PruebaController">
+<AnchorPane fx:id="anchorPane" prefHeight="369.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.proyectofinal.tictactoe.controller.MenuController">
    <children>
       <Text fx:id="changingText" fontSmoothingType="LCD" layoutX="46.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE AN OPTION" textAlignment="CENTER" wrappingWidth="397.4700164794922">
          <font>

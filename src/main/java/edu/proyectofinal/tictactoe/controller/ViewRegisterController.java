@@ -2,7 +2,6 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -44,7 +43,7 @@ public class ViewRegisterController implements Initializable {
      * @throws {@code IOException}
      */
     @FXML
-    private void eventKeyRegister(ActionEvent event) throws IOException, Exceptions {
+    private void eventKeyRegister(ActionEvent event) throws IOException {
         String player_name = userRegister.getText();
         String password = PasswordRegister.getText();
         String email= mail.getText();
@@ -52,31 +51,21 @@ public class ViewRegisterController implements Initializable {
 
 
         try {
+            if(!(userService.validateUser(player_name))){
+            int createdUser = userService.insertUserReg(player_name, password, email);
+            if (createdUser > 0) {
+                App.setNamePlayer(player_name);
+                App.setMail(email);
 
-            if (!(player_name.equals("") | password.equals("") | email.equals(""))) {
+                textJoin.setText("Insert an user name");
+                App.setStage("prueba");
 
-                if (!(userService.validateUser(player_name))) {
-                    int createdUser = userService.insertUserReg(player_name, password, email);
-                    if (createdUser > 0) {
-                        App.setNamePlayer(player_name);
-                        App.setMail(email);
+            } else {
 
-                        textJoin.setText("Insert an user name");
-                        App.setStage("prueba");
-
-                    } else {
-
-                        textJoin.setText("User not registered correctly");
-                        throw new Exceptions("user not registered correctly");
-                    }
-                }else {
-                    textJoin.setText("user already registered");
-                    throw new Exceptions("user already registered");
-                }
-            }else{
-                textJoin.setText("You have to fill in all the fields");
-                throw new Exceptions("You have to fill in all the fields");
+                textJoin.setText("User not registered correctly");
+                System.out.println("user not registered correctly");
             }
+        }textJoin.setText("user already registered");
 
         }catch ( ClassNotFoundException | SQLException e) {
             System.out.println("Error");

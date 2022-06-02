@@ -72,7 +72,7 @@ public class IAController implements Initializable {
      * @throws {@code IOException}
      */
     public void switchToMenu(ActionEvent event) throws IOException {
-        App.setStage("prueba");
+        App.setStage("menuInterface");
     }
 
     /**

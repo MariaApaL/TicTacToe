@@ -60,7 +60,7 @@ try{
 
                 App.setMail(userService.getMail());
                 textLogin.setText("CORRECT USER");
-                App.setStage("prueba");
+                App.setStage("menuInterface");
 
 
 
