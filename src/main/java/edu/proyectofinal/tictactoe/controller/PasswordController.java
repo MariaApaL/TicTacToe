@@ -28,23 +28,29 @@ import java.util.ResourceBundle;
 public class PasswordController implements Initializable {
 
 
+    // Password field for actual password
     @FXML
     private PasswordField ActualPassword;
 
+    // Password field for new password
 
     @FXML
     private PasswordField newPassword;
 
+    // Password field for repeat new password
     @FXML
     private PasswordField repeatPassword;
 
-    @FXML
-    private Button doneButton;
-    @FXML
-    private Button back;
 
-
+    // UserService object
     private UserService userService;
+
+    /**
+     * Method for change a password
+     * @param event
+     *
+     */
+
 
     public void changePassword(ActionEvent event) throws IOException {
         String password = ActualPassword.getText();
@@ -52,16 +58,16 @@ public class PasswordController implements Initializable {
         String password3 = repeatPassword.getText();
 
         try{
-          if( userService.validatePassword(password)){
-              if(password2.equalsIgnoreCase(password3)){
-                  if( userService.updatePassword(password2)) {
-                      App.setStage("secondmenuInterface");
-                      App.setPassword(password2);
+            if( userService.validatePassword(password)){
+                if(password2.equalsIgnoreCase(password3)){
+                    if( userService.updatePassword(password2)) {
+                        App.setStage("secondmenuInterface");
+                        App.setPassword(password2);
 
-                  }
+                    }
 
 
-              }}
+                }}
 
 
         } catch (SQLException e) {
@@ -70,7 +76,13 @@ public class PasswordController implements Initializable {
             e.printStackTrace();
         }
 
+
     }
+    /**
+     * Switch to second menu interface
+     * @param event
+     *
+     */
     public void back(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
 
