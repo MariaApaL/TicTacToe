@@ -66,7 +66,7 @@ public class RankingController implements Initializable {
 
 
     public void switchToMenu(ActionEvent event) throws IOException{
-        App.setStage("prueba");
+        App.setStage("menuInterface");
     }
 
 

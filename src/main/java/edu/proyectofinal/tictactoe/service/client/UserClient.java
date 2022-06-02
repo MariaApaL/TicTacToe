@@ -17,27 +17,31 @@ public class UserClient {
             Client client = ClientBuilder.newClient();
             this.webTarget = client.target("http://localhost:8080/webservice/api/");
         }
-        public Player getUserId(String id) {
-            return webTarget.path("user/get/"+id)
+        public Player FindUser(String name) {
+            return webTarget.path("user/"+name)
                     .request(MediaType.APPLICATION_JSON)
                     .get(Player.class);
         }
-        public Player getUserName(String id, String name) {
-            return webTarget.path("user/get/"+id+"/name")
-                    .queryParam("name", name)
+        public Player validateUser(Player player) {
+            return webTarget.path("user/player")
                     .request(MediaType.APPLICATION_JSON)
-                    .get(Player.class);
+                    .post(Entity.entity(player,MediaType.APPLICATION_JSON), Player.class);
         }
-        public Player putUser(String id, String name) {
-            return webTarget.path("user/get/"+id+"/"+name)
-                    .queryParam("name", name)
+        public Player deleteUser(Player player) {
+            return webTarget.path("user/player")
+                    .request(MediaType.APPLICATION_JSON)
+                    .delete(Player.class);
+        }
+        public Player insertUserReg(Player player) {
+            return webTarget.path("user")
+                    .request(MediaType.APPLICATION_JSON)
+                    .post(Entity.entity(player,MediaType.APPLICATION_JSON), Player.class);
+        }
+
+        public Player updatePassword(Player player){
+            return webTarget.path("user")
                     .request(MediaType.APPLICATION_JSON)
                     .put(Entity.entity("",MediaType.APPLICATION_JSON), Player.class);
-        }
-        public Player postUser(Player user) {
-            return webTarget.path("user/post")
-                    .request(MediaType.APPLICATION_JSON)
-                    .post(Entity.entity(user,MediaType.APPLICATION_JSON), Player.class);
         }
     }
 
