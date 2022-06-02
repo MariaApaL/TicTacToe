@@ -14,17 +14,17 @@ import java.util.List;
 public class UserManagerImpl implements UserManager {
 
     @Override
-    public boolean findUser(Connection con, String player_name) {
+    public boolean findUser(Connection con, String player_name, String password) {
         //prepare SQL statement
         String sql = "select * "
                 + "from PLAYER "
-                + "where PLAYER_NAME = ?";
+                + "where PLAYER_NAME = ? and password=?";
 
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             //Add Parameters
             stmt.setString(1, player_name);
-
+            stmt.setString(2, password);
 
 
 
@@ -36,7 +36,14 @@ public class UserManagerImpl implements UserManager {
             // Initialize variable
             Player user = null;
 
-            return result.next();
+            while(result.next()){
+                 user=(new Player(result));
+            }
+            if(user!=null){
+                return true;
+            }else{return false;}
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();

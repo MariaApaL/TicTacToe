@@ -16,7 +16,7 @@ public interface UserManager {
      * @param player_name The entity to check
      * @return a {@link Boolean}
      */
-    public boolean findUser(Connection con, String player_name);
+    public boolean findUser(Connection con, String player_name, String password);
 
 
 

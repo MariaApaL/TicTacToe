@@ -52,11 +52,11 @@ public class ViewLoginController implements Initializable {
        textLogin.setText("Insert your user name");
 try{
 
-    if (!(player_name.equals("") | password.equals(""))){
-        if (userService.validateUser(player_name)) {
+    if (!(player_name.equals("") ) && !(password.equals(""))){
+        if ((userService.findUser(player_name, password))) {
             App.setNamePlayer(player_name);
 
-            if (userService.validatePassword(password)) {
+
 
                 App.setMail(userService.getMail());
                 textLogin.setText("CORRECT USER");
@@ -65,14 +65,12 @@ try{
 
 
             } else {
-                textLogin.setText("Incorrect Password");
-                throw new Exceptions("Incorrect Password");
+                textLogin.setText("Incorrect user");
+                throw new Exceptions("Incorrect user");
             }
 
-        } else {
-            textLogin.setText("Unregistered user");
-            throw new Exceptions("Unregistered user");
-        }
+
+
     }else{textLogin.setText("You have to fill in all the fields");
         throw new Exceptions("You have to fill in all the fields");}
 }catch(SQLException e){

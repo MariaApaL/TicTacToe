@@ -16,10 +16,10 @@ public class UserService {
         this.userManager = userManager;
     }
 
-    public boolean validateUser(String username) {
+    public boolean findUser(String username, String password) {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
 
-            return userManager.findUser(con, username);
+            return userManager.findUser(con, username, password);
 
 
         } catch (SQLException | ClassNotFoundException e) {
