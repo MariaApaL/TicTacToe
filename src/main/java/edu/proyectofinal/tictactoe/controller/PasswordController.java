@@ -2,7 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.exceptions;
+import edu.proyectofinal.tictactoe.excepciones.Exceptions;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -16,7 +16,17 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ *
+ * PDF creator class
+ *
+ * @author MariaApa
+ * @author Valentina
+ * @author Julia
+ *
+ */
 public class PasswordController implements Initializable {
+
 
     @FXML
     private PasswordField ActualPassword;

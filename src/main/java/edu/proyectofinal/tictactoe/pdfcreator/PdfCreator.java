@@ -29,7 +29,7 @@ public class PdfCreator {
          * @throws java.io.IOException - in some circunstancies
          * @throws com.itextpdf.text.DocumentException - in some circunstancies
          * @throws java.net.URISyntaxException - in some circunstancies
-         * @return
+         * @return namePdf
          */
         public String createPDF(String fileName, String text, String suggestion) throws IOException, DocumentException, URISyntaxException {
 
