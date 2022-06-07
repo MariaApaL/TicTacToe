@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe.model.dao;
 
 
+import lombok.Builder;
 import lombok.ToString;
 
 import java.sql.ResultSet;
@@ -8,7 +9,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 
-@ToString
+
+
 public class Player {
 
 
