@@ -43,7 +43,7 @@ public class Suggestion {
 
     public Suggestion(ResultSet result) {
         try {
-            this.idSuggestion = result.getInt("idSuggestion");
+            this.idSuggestion = result.getInt("idSuggestions");
             this.player_name = result.getString("player_name");
             this.suggestion = result.getString("suggestion");
         } catch (SQLException e) {
