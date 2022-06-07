@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import edu.proyectofinal.tictactoe.App;
+import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.model.dao.Suggestion;
 
 public interface SuggestionsManager {
     /**
@@ -17,7 +19,9 @@ public interface SuggestionsManager {
      * @param text the suggestion to insert
      * @return a {@link Boolean}
      */
-    public int insertSuggestion(Connection con, String name, String text)throws SQLException;
+    public int insertSuggestion(Connection con, String text)throws SQLException;
+
+    public Suggestion findBySuggestion(Connection con, String queja);
 
     public MySQLConnector getConnector();
 

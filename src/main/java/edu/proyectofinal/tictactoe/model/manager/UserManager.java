@@ -3,6 +3,7 @@ package edu.proyectofinal.tictactoe.model.manager;
 import edu.proyectofinal.tictactoe.App;
 
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
+import edu.proyectofinal.tictactoe.model.dao.Player;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,6 +22,9 @@ public interface UserManager {
 
 
     public MySQLConnector getConnector();
+
+   public Player findByName(Connection con, String player_name);
+
     /**
      * Insert a new user on DB
      *

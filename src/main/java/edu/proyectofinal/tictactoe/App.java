@@ -1,5 +1,7 @@
 package edu.proyectofinal.tictactoe;
 
+import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.model.dao.Suggestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +26,26 @@ public class App extends Application {
     private static String password;
 
     public static String mail;
-    public static String suggestion;
+    public static String queja;
+
+    public static void setUser(Player user) {
+        App.user = user;
+    }
+
+    public static void setSuggestion(Suggestion suggestion) {
+        App.suggestion = suggestion;
+    }
+
+    public static Player getUser() {
+        return user;
+    }
+
+    public static Suggestion getSuggestion() {
+        return suggestion;
+    }
+
+    protected static Player user;
+    protected static Suggestion suggestion;
 
 
 
@@ -44,13 +65,13 @@ public class App extends Application {
         return namePlayer;
     }
     public static void setNamePlayer(String name){
-        namePlayer=name;
+        namePlayer=user.getPlayerName();
     }
-    public static String getSuggestion() {
-        return suggestion;
+    public static String getQueja() {
+        return queja;
     }
-    public static void setSuggestion(String suggestion) {
-        App.suggestion = suggestion;
+    public static void setQueja(String suggestion) {
+        App.queja = queja;
     }
 
     public static String getPassword(){
@@ -59,7 +80,7 @@ public class App extends Application {
     }
     public static void setPassword(String pass){
 
-        password=pass;
+        password=user.getPassword();
     }
 
     @Override
