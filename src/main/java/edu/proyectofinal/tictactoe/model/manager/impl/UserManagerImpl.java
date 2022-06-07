@@ -50,6 +50,36 @@ public class UserManagerImpl implements UserManager {
             return false;
         }
     }
+
+    @Override
+    public Player findByName(Connection con, String player_name) {
+        //prepare SQL statement
+        String sql = "select * "
+                + "from PLAYER "
+                + "where PLAYER_NAME = ?";
+
+        // Create general statement
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            //Add Parameters
+            stmt.setString(1, player_name);
+
+            // Queries the DB
+            ResultSet result = stmt.executeQuery();
+            // Set before first registry before going through it.
+            result.beforeFirst();
+
+            // Initialize variable
+            Player user = null;
+            while(result.next()){
+                user=(new Player(result));
+            }
+            return user;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     @Override
     public int insertUser(Connection con, String player_name, String password, String mail) {
         //prepare SQL statement

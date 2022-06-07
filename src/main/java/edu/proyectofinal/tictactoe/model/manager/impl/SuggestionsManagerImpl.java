@@ -1,13 +1,16 @@
 package edu.proyectofinal.tictactoe.model.manager.impl;
 
+import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.connector.MySQLConnector;
+import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.model.dao.Suggestion;
 import edu.proyectofinal.tictactoe.model.manager.SuggestionsManager;
 
 import java.sql.*;
 
 public class SuggestionsManagerImpl implements SuggestionsManager {
     @Override
-    public int insertSuggestion(Connection con,String name, String text) throws SQLException {
+    public int insertSuggestion(Connection con, String text) throws SQLException {
         //prepare SQL statement
         String sql = "Insert into Suggestions (PLAYER_NAME, suggestion) VALUES (?,?)";
 
@@ -15,7 +18,7 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //Add Parameters
-            stmt.setString(1, name);
+            stmt.setString(1, App.getUser().getPlayerName());
             stmt.setString(2, text);
 
             int affectedRows = stmt.executeUpdate();
@@ -26,7 +29,10 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
             ResultSet resultSet = stmt.getGeneratedKeys();
             // Set before first registry before going through it
             resultSet.beforeFirst();
+
             resultSet.next();
+
+
 
 
             // Queries the DB
@@ -36,6 +42,36 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
             e.printStackTrace();
             return 0;
 
+        }
+    }
+
+    @Override
+    public Suggestion findBySuggestion(Connection con, String queja) {
+        //prepare SQL statement
+        String sql = "select * "
+                + "from suggestions "
+                + "where suggestion = ?";
+
+        // Create general statement
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            //Add Parameters
+            stmt.setString(1,queja);
+
+            // Queries the DB
+            ResultSet result = stmt.executeQuery();
+            // Set before first registry before going through it.
+            result.beforeFirst();
+
+            // Initialize variable
+            Suggestion sugu = null;
+            while(result.next()){
+                sugu=(new Suggestion(result));
+            }
+            return sugu;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
     @Override

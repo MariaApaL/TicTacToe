@@ -83,17 +83,17 @@ public class ComplainController implements Initializable {
     public void submitSuggestions(ActionEvent event) {
 
         String queja=text.getText();
-        String nombre= App.getNamePlayer();
-        String mail= App.getMail();
+        //String nombre= App.getNamePlayer();
+        //String mail= App.getMail();
         try{
 
-            int createSuggestion= suggestionsService.insertSuggestion(nombre,queja);
+            int createSuggestion= suggestionsService.insertSuggestion(queja);
             if(createSuggestion  > 0){
                 // App.setStage("secondmenuInterface");
                 status.setText("");
-                App.setSuggestion(queja);
-                String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion());
-                email(mail,namePdf);
+                App.setSuggestion(suggestionsService.findBySuggestion(queja));
+                String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion().getSuggestion());
+                email(App.getUser().getMail(),namePdf);
 
 
             }

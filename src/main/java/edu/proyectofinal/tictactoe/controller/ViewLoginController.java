@@ -3,6 +3,7 @@ package edu.proyectofinal.tictactoe.controller;
 import edu.proyectofinal.tictactoe.App;
 
 import edu.proyectofinal.tictactoe.excepciones.Exceptions;
+import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -54,11 +55,14 @@ try{
 
     if (!(player_name.equals("") ) && !(password.equals(""))){
         if ((userService.findUser(player_name, password))) {
-            App.setNamePlayer(player_name);
+            App.setUser(userService.findByName(player_name));
+
+
+            //App.setNamePlayer(player_name);
 
 
 
-                App.setMail(userService.getMail());
+               // App.setMail(userService.getMail());
                 textLogin.setText("CORRECT USER");
                 App.setStage("menuInterface");
 

@@ -1,5 +1,7 @@
 package edu.proyectofinal.tictactoe.service;
 
+import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.model.dao.Suggestion;
 import edu.proyectofinal.tictactoe.model.manager.SuggestionsManager;
 
 import java.sql.Connection;
@@ -16,13 +18,24 @@ public class SuggestionsService {
     }
 
 
-    public int insertSuggestion( String name, String text) throws SQLException,ClassNotFoundException{
+    public int insertSuggestion( String text) throws SQLException,ClassNotFoundException{
 
         try (Connection con = suggestionsManager.getConnector().getMySQLConnection()) {
-            return suggestionsManager.insertSuggestion(con,name, text);
+            return suggestionsManager.insertSuggestion(con, text);
 
 
         }
 
     }
+
+    public Suggestion findBySuggestion(String queja)throws SQLException,ClassNotFoundException{
+
+        try (Connection con = suggestionsManager.getConnector().getMySQLConnection()) {
+            return suggestionsManager.findBySuggestion(con,queja);
+
+
+        }
+
+    }
+
 }

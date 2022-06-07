@@ -32,10 +32,17 @@ public class Player {
         return numGame;
     }
 
+    public String getMail() { return mail;}
+
+
     int idPlayer;
      String playerName;
      String password;
      int numGame;
+
+
+
+    String mail;
 
 
     public Player(ResultSet result) {
@@ -44,6 +51,7 @@ public class Player {
             this.playerName = result.getString("player_name");
             this.password = result.getString("password");
             this.numGame=result.getInt("num_game");
+            this.mail=result.getString("correo");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,6 +73,9 @@ public class Player {
         this.idPlayer = idPlayer;
     }
 
+    public void setMail(String mail) { this.mail = mail; }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,66 +88,7 @@ public class Player {
     public int hashCode() {
         return Objects.hash(idPlayer, playerName, password, numGame);
     }
-/*
-    public UserDao( String username, String password) {
 
-        this.player_name=username;
-        this.password=password;
-    }
-    public static int login(String user, String password){
-
-        Connection connection = null;
-        PreparedStatement pst;
-        ResultSet rs;
-        int state = -1;
-
-        try{
-
-            connection = MySQLConnector.getMySQLConnection();
-
-            if(connection!=null){
-
-                String sql = "SELECT * FROM player WHERE playername=? AND password=?";
-
-                pst = connection.prepareStatement(sql);
-                pst.setString(1, user);
-                pst.setString(2, password);
-
-                rs = pst.executeQuery();
-
-                if(rs.next()){
-                    state = 1;
-                }else{
-                    state = 0;
-                }
-
-            }else{
-                JOptionPane.showMessageDialog(null, "Hubo un error al conectarse con la base de datos", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-
-        }catch(HeadlessException | SQLException ex){
-            JOptionPane.showMessageDialog(null, "Hubo un error de ejecución, posibles errores:\n"
-                    + ex.getMessage());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally{
-
-            try{
-                if(connection != null){
-                    connection.close();
-
-                }
-            }catch(SQLException ex){
-                System.err.println(ex.getMessage());
-            }
-
-        }
-
-
-        return state;
-
-    }
-    */
 
 
 }

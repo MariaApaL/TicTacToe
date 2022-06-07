@@ -86,7 +86,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
-        String name = App.getNamePlayer();
+        String name = App.getUser().getPlayerName();
         name.toUpperCase();
         changingText.setText("WELCOME "+ name.toUpperCase());
 

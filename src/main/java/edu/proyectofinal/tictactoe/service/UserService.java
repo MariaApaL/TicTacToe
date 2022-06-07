@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe.service;
 
 
+import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
 import java.sql.Connection;
@@ -86,6 +87,13 @@ public class UserService {
             return userManager.getMail(con);
         }
 
+    }
+
+    public Player findByName( String player_name) throws SQLException, ClassNotFoundException {
+
+        try (Connection con = userManager.getConnector().getMySQLConnection()) {
+            return userManager.findByName(con, player_name);
+        }
     }
 
 
