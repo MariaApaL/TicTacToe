@@ -90,7 +90,8 @@ public class SecondMenuController implements Initializable {
 
     /**
      * switch to menu interface.
-     * @throws {@code IOException}
+     * @param event switch to menu interface.
+     * @throws IOException
      */
     public void switchToMenu(ActionEvent event) throws IOException {
         App.setStage("menuInterface");
@@ -98,14 +99,18 @@ public class SecondMenuController implements Initializable {
 
     /**
      * switch to complain interface
-     * @throws {@code IOException}
+     * @param event switch to complain interface
+     * @throws IOException
      */
     public void switchToComplain(ActionEvent event) throws IOException {
         App.setStage("complainInterface");
     }
+
     /**
      * switch to password interface
-     * @throws {@code IOException}
+     *
+     * @param event switch to password interface
+     * @throws IOException
      */
     public void switchToPassword(ActionEvent event) throws IOException {
         App.setStage("passwordInterface");

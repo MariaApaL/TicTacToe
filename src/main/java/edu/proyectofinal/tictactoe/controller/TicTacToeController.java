@@ -61,7 +61,8 @@ public class TicTacToeController implements Initializable {
 
     /**
      * switch to menu interface.
-     * @throws {@code IOException}
+     * @param event  switch to menu interface.
+     * @throws IOException
      */
     public void switchToMenu(ActionEvent event) throws IOException{
         App.setStage("menuInterface");

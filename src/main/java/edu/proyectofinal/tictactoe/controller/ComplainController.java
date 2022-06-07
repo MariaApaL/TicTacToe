@@ -50,7 +50,7 @@ public class ComplainController implements Initializable {
     /**
      * switch to second menu interface.
      * @param event change interfaces
-     * @throws {@code IOException}
+     *
      */
 
     public void switchToSecondMenu(ActionEvent event) throws IOException {

@@ -60,17 +60,17 @@ public class RankingController implements Initializable {
 
     /**
      * switch to login interface.
-     * @param event
-     * @throws {@code IOException}
+     * @param event login interface
+     *
      */
     public void switchToLogin(ActionEvent event) throws IOException{
         App.setStage("loginInterface");
     }
 
     /**
-     * switch to menu interface.
-     * @param event
-     * @throws {@code IOException}
+     * switch to menu interface
+     * @param event switch to menu interface
+     *
      */
     public void switchToMenu(ActionEvent event) throws IOException{
         App.setStage("menuInterface");

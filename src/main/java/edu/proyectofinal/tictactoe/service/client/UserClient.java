@@ -38,7 +38,14 @@ public class UserClient {
                     .post(Entity.entity(player,MediaType.APPLICATION_JSON), Player.class);
         }
 
-        public Player updatePassword(Player player){
+    public Player findbyId(int id) {
+
+        return webTarget.path("user/"+id)
+                .request(MediaType.APPLICATION_JSON)
+                .get(Player.class);
+    }
+
+    public Player updatePassword(Player player){
             return webTarget.path("user")
                     .request(MediaType.APPLICATION_JSON)
                     .put(Entity.entity("",MediaType.APPLICATION_JSON), Player.class);

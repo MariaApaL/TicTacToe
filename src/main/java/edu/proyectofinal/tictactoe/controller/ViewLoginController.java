@@ -81,7 +81,8 @@ try{
 
     /**
      * switch to menu interface.
-     * @throws {@code IOException}
+     * @param event switch to menu interface.
+     *
      */
     public void switchToStart(ActionEvent event) throws IOException{
         App.setStage("start");

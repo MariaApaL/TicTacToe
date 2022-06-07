@@ -30,7 +30,10 @@ public class MenuController implements Initializable {
 
     /**
      * switch to tictactoe interface.
-     * @throws {@code IOException}
+     * @param event switch to tictactoe interface.
+     * @throws IOException
+     * @throws SQLException
+     * @throws ClassNotFoundException
      */
     public void switchToTictactoe(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String playerName=App.getNamePlayer();
@@ -41,7 +44,8 @@ public class MenuController implements Initializable {
 
     /**
      * switch to start interface.
-     * @throws {@code IOException}
+     * @param event switch to start interface.
+     * @throws IOException
      */
     public void switchToStart(ActionEvent event) throws IOException{
         App.setStage("start");
@@ -49,15 +53,17 @@ public class MenuController implements Initializable {
 
     /**
      * switch to ranking interface.
-     * @throws {@code IOException}
+     * @param event switch to ranking interface.
+     * @throws IOException
      */
     public void switchToRanking(ActionEvent event) throws IOException{
         App.setStage("rankingInterface");
     }
 
     /**
-     * switch to second menu interface.
-     * @throws {@code IOException}
+     * switch to second menu interface
+     * @param event switch to second menu interface
+     * @throws IOException
      */
     public void switchToSecondMenu(ActionEvent event) throws IOException {
         App.setStage("secondmenuInterface");
@@ -65,7 +71,8 @@ public class MenuController implements Initializable {
 
     /**
      * switch to AI interface.
-     * @throws {@code IOException}
+     * @param event switch to AI interface.
+     * @throws IOException
      */
     public void switchToAI(ActionEvent event) throws IOException{
         App.setStage("tictactoeAI");

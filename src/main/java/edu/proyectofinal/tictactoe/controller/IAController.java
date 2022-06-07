@@ -69,15 +69,17 @@ public class IAController implements Initializable {
 
     /**
      * switch to second menu interface.
-     * @throws {@code IOException}
+     * @param event switch to second menu interface.
+     * @throws IOException
      */
     public void switchToMenu(ActionEvent event) throws IOException {
         App.setStage("menuInterface");
     }
 
     /**
-     * Setting up buttons.
-     *
+     * Setting in buttons
+     * @param url
+     * @param resourceBundle
      */
 
     @Override
