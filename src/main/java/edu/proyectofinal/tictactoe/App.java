@@ -6,27 +6,21 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
+
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private static Scene scene;
+
     private static Stage stage;
 
-    private static String namePlayer;
-    private static String password;
-
-    public static String mail;
-    public static String queja;
 
     public static void setUser(Player user) {
         App.user = user;
@@ -51,37 +45,6 @@ public class App extends Application {
 
 
 
-    public static String getMail() {
-
-        return mail;
-    }
-
-    public static void setMail(String mail) {
-
-        App.mail = mail;
-    }
-    public static String getNamePlayer(){
-
-        return namePlayer;
-    }
-    public static void setNamePlayer(String name){
-        namePlayer=user.getPlayerName();
-    }
-    public static String getQueja() {
-        return queja;
-    }
-    public static void setQueja(String suggestion) {
-        App.queja = queja;
-    }
-
-    public static String getPassword(){
-
-        return password;
-    }
-    public static void setPassword(String pass){
-
-        password=user.getPassword();
-    }
 
     @Override
     public void start(Stage login) throws IOException {

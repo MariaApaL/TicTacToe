@@ -33,17 +33,7 @@ public class UserManagerImpl implements UserManager {
             // Set before first registry before going through it.
             result.beforeFirst();
 
-            // Initialize variable
-            Player user = null;
-
-            while(result.next()){
-                 user=(new Player(result));
-            }
-            if(user!=null){
-                return true;
-            }else{return false;}
-
-
+            return result.next();
 
         } catch (SQLException e) {
             e.printStackTrace();
