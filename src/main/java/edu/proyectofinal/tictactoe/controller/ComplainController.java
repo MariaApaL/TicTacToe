@@ -86,12 +86,12 @@ public class ComplainController implements Initializable {
         //String nombre= App.getNamePlayer();
         //String mail= App.getMail();
         try{
+            App.setSuggestion(suggestionsService.insertSuggestion(queja));
 
-            int createSuggestion= suggestionsService.insertSuggestion(queja);
-            if(createSuggestion  > 0){
+            if(App.getSuggestion()!=null){
                 // App.setStage("secondmenuInterface");
                 status.setText("");
-                App.setSuggestion(suggestionsService.findBySuggestion(queja));
+
                 String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion().getSuggestion());
                 email(App.getUser().getMail(),namePdf);
 

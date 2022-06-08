@@ -56,11 +56,13 @@ public class PasswordController implements Initializable {
         String password3 = repeatPassword.getText();
 
         try{
-            if( userService.validatePassword(password)){
+            if(password.equalsIgnoreCase(App.getUser().getPassword())){
                 if(password2.equalsIgnoreCase(password3)){
-                    if( userService.updatePassword(password2)) {
+                   App.setUser(userService.updatePassword(password2));
+
+                    if( App.getUser()!=null) {
                         App.setStage("secondmenuInterface");
-                        App.setPassword(password2);
+
 
                     }
 

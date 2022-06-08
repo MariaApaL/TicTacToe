@@ -38,10 +38,9 @@ public interface UserManager {
      * player update num_game on DB
      *
      * @param con DB connection
-     * @param name Entities name to use when player plays a new game.
      * @return a {@link Boolean}
      */
-    public boolean updateNumGame(Connection con, String name)throws SQLException;
+    public Player updateNumGame(Connection con)throws SQLException;
     /**
      * Delete a user using their names.
      *
@@ -57,14 +56,7 @@ public interface UserManager {
      * @return a {@link List}
      */
     public List ranking(Connection con) throws SQLException;
-    /**
-     * method to know how many games player has played
-     *
-     * @param con DB connection
-     * Using the name who is conected
-     * @return a {@link int}
-     */
-    public int numGame(Connection con)throws SQLException;
+
 
     /**
      * Update password on DB.
@@ -73,23 +65,10 @@ public interface UserManager {
      * @param contraseña Entities password to delete.
      * @return a {@link Boolean}
      */
-    public boolean updatePassword(Connection con, String contraseña) throws SQLException;
-    /**
-     * Validate that the password is correct.
-     *
-     * @param con DB connection
-     * @param password Entities id to delete.
-     * @return a {@link Boolean}
-     */
-    public boolean validatePassword(Connection con, String password) throws SQLException;
+    public Player updatePassword(Connection con, String contraseña) throws SQLException;
 
-    /**
-     * Get mail.
-     *
-     * @param con DB connection
-     * @return a {@link String}
-     */
-    public String getMail(Connection con) throws SQLException;
+
+
 
 }
 

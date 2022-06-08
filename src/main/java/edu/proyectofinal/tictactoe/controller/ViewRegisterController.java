@@ -56,14 +56,14 @@ public class ViewRegisterController implements Initializable {
             if (!(player_name.equals("") | password.equals("") | email.equals(""))) {
 
                 if (!(userService.findUser(player_name, password))) {
-                    int createdUser = userService.insertUserReg(player_name, password, email);
-                    if (createdUser > 0) {
+                    App.setUser(userService.insertUserReg(player_name, password, email));
+                    if (App.getUser()!=null) {
                         //App.setNamePlayer(player_name);
                        // App.setMail(email);
-                        App.setUser(userService.findByName(player_name));
+
 
                         textJoin.setText("Insert an user name");
-                        App.setStage("prueba");
+                        App.setStage("menuInterface");
 
                     } else {
 

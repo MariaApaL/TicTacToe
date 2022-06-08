@@ -36,8 +36,8 @@ public class MenuController implements Initializable {
      * @throws ClassNotFoundException
      */
     public void switchToTictactoe(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        String playerName=App.getNamePlayer();
-        userService.newGame(playerName);
+
+        App.setUser(userService.newGame());
         App.setStage("tictactoe");
 
     }
