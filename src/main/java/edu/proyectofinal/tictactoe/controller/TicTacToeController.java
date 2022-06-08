@@ -115,7 +115,7 @@ public class TicTacToeController implements Initializable {
     public void restartGame(ActionEvent event) throws SQLException, ClassNotFoundException {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
-        String playerName=App.getNamePlayer();
+        String playerName=App.getUser().getPlayerName();
         App.setUser(userService.newGame());
 
 
@@ -184,7 +184,7 @@ public class TicTacToeController implements Initializable {
             if (line.equals("XXX")) {
                 changingText.setText("PLAYER X WON");
                 pX++;
-                String name = App.getNamePlayer();
+                String name = App.getUser().getPlayerName();
                playerX.setText(name+"(X): " + pX);
                 buttonBoard.setDisable(true);
 

@@ -58,11 +58,7 @@ try{
             App.setUser(userService.findByName(player_name));
 
 
-            //App.setNamePlayer(player_name);
 
-
-
-               // App.setMail(userService.getMail());
                 textLogin.setText("CORRECT USER");
                 App.setStage("menuInterface");
 

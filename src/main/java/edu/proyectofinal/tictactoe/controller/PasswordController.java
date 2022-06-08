@@ -2,6 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
+import edu.proyectofinal.tictactoe.excepciones.TicTacToeException;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
 import javafx.event.ActionEvent;
@@ -54,7 +55,7 @@ public class PasswordController implements Initializable {
      */
 
 
-    public void changePassword(ActionEvent event) throws IOException {
+    public void changePassword(ActionEvent event) throws IOException, TicTacToeException {
         String password = ActualPassword.getText();
         String password2 = newPassword.getText();
         String password3 = repeatPassword.getText();
@@ -68,10 +69,18 @@ public class PasswordController implements Initializable {
                         App.setStage("secondmenuInterface");
 
 
+                    }else{
+                        status.setText("Password cant change");
+                    throw new TicTacToeException("Password cant change");
                     }
-
-
-                }}
+                }else{
+                    status.setText("new passwords do not match ");
+                    throw new TicTacToeException("new passwords do not match");
+                }
+            }else{
+                status.setText("Wrong password");
+                throw new TicTacToeException("Wrong password");
+            }
 
 
         } catch (SQLException e) {

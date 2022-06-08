@@ -3,6 +3,7 @@ package edu.proyectofinal.tictactoe.controller;
 import com.itextpdf.text.DocumentException;
 import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.email.Senders;
+import edu.proyectofinal.tictactoe.excepciones.TicTacToeException;
 import edu.proyectofinal.tictactoe.model.manager.impl.SuggestionsManagerImpl;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.pdfcreator.PdfCreator;
@@ -80,21 +81,26 @@ public class ComplainController implements Initializable {
      *
      */
 
-    public void submitSuggestions(ActionEvent event) {
+    public void submitSuggestions(ActionEvent event) throws TicTacToeException {
 
         String queja=text.getText();
         //String nombre= App.getNamePlayer();
         //String mail= App.getMail();
         try{
-            App.setSuggestion(suggestionsService.insertSuggestion(queja));
 
-            if(App.getSuggestion()!=null){
-                // App.setStage("secondmenuInterface");
+
+            if(!(queja.equalsIgnoreCase(""))){
+                App.setSuggestion(suggestionsService.insertSuggestion(queja));
+                 App.setStage("secondmenuInterface");
                 status.setText("");
 
                 String namePdf= new PdfCreator().createPDF("Suggestions","Thank you for your suggestions. You can see a copy below: ",App.getSuggestion().getSuggestion());
                 email(App.getUser().getMail(),namePdf);
 
+
+            }else{
+                status.setText("Field shouldn't be empty");
+                throw new TicTacToeException("Field shouldn't be empty");
 
             }
 

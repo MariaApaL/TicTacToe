@@ -85,7 +85,7 @@ public class IAController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String name= App.getNamePlayer();
+        String name= App.getUser().getPlayerName();
         playerO.setText(name+"(O): ");
         playerX.setText("AI(X): ");
 
@@ -128,7 +128,7 @@ public class IAController implements Initializable {
     public void restartGame(ActionEvent event) throws SQLException, ClassNotFoundException {
         buttons.forEach(this::restartButton);
         changingText.setText("TIC TAC TOE");
-        String playerName=App.getNamePlayer();
+        String playerName=App.getUser().getPlayerName();
        App.setUser( userService.newGame());
         pickButton(random.nextInt(9));
 
@@ -216,7 +216,7 @@ public class IAController implements Initializable {
             else if (line.equals("OOO")) {
                 changingText.setText("PLAYER O WON");
                 pO++;
-                playerO.setText(App.getNamePlayer()+"(O): " + pO);
+                playerO.setText(App.getUser().getPlayerName()+"(O): " + pO);
                 buttonBoard.setDisable(true);
 
 
