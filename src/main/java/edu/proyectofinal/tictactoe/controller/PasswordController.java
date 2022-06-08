@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +39,9 @@ public class PasswordController implements Initializable {
     // Password field for repeat new password
     @FXML
     private PasswordField repeatPassword;
+
+    @FXML
+    private Text status;
 
 
     // UserService object
