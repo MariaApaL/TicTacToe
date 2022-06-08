@@ -17,22 +17,22 @@ public class UserClient {
             Client client = ClientBuilder.newClient();
             this.webTarget = client.target("http://localhost:8080/webservice/api/");
         }
-        public Player FindUser(String name) {
+        public Player FindByName(String name) {
             return webTarget.path("user/"+name)
                     .request(MediaType.APPLICATION_JSON)
                     .get(Player.class);
         }
-        public Player validateUser(Player player) {
+        public Player validate(Player player) {
             return webTarget.path("user/player")
                     .request(MediaType.APPLICATION_JSON)
                     .post(Entity.entity(player,MediaType.APPLICATION_JSON), Player.class);
         }
-        public Player deleteUser(Player player) {
+        public Player delete(Player player) {
             return webTarget.path("user/player")
                     .request(MediaType.APPLICATION_JSON)
                     .delete(Player.class);
         }
-        public Player insertUserReg(Player player) {
+        public Player insert(Player player) {
             return webTarget.path("user")
                     .request(MediaType.APPLICATION_JSON)
                     .post(Entity.entity(player,MediaType.APPLICATION_JSON), Player.class);
@@ -45,7 +45,7 @@ public class UserClient {
                 .get(Player.class);
     }
 
-    public Player updatePassword(Player player){
+    public Player update(Player player){
             return webTarget.path("user")
                     .request(MediaType.APPLICATION_JSON)
                     .put(Entity.entity("",MediaType.APPLICATION_JSON), Player.class);
