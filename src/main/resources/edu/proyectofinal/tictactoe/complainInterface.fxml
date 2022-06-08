@@ -17,6 +17,6 @@
       <Button fx:id="backButton" layoutX="308.0" layoutY="403.0" mnemonicParsing="false" onAction="#switchToSecondMenu" prefHeight="25.0" prefWidth="63.0" text="Back" />
       <Button fx:id="Submit" layoutX="159.0" layoutY="402.0" mnemonicParsing="false" onAction="#submitSuggestions" prefHeight="25.0" prefWidth="63.0" text="Submit" />
       <TextField fx:id="text" alignment="TOP_LEFT" layoutX="62.0" layoutY="209.0" prefHeight="128.0" prefWidth="280.0" />
-      <Text fx:id="status" layoutX="186.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="status" layoutX="176.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
