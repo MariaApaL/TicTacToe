@@ -56,10 +56,11 @@ public class SecondMenuController implements Initializable {
 
         if(alert.showAndWait().get() == ButtonType.OK){
             userService.deleteUser();
+            App.setUser(null);
             stage = (Stage) anchorPane.getScene().getWindow();
             System.out.println("You successfully deleted it!");
             stage.close();
-            userService.deleteUser();
+
         }else{
 
         }

@@ -30,20 +30,25 @@ public class UserService {
 
     }
 
-    public int insertUserReg(String username, String password, String mail) throws SQLException,ClassNotFoundException{
+    public Player insertUserReg(String username, String password, String mail) throws SQLException,ClassNotFoundException{
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.insertUser(con, username, password, mail);
+           if(userManager.insertUser(con, username, password, mail)>0){
+               return userManager.findByName(con, username);
+
+           }
+            return null;
 
 
-        }
 
-    }
+        }}
 
 
-    public boolean newGame(String name) throws SQLException, ClassNotFoundException{
+
+
+    public Player newGame() throws SQLException, ClassNotFoundException{
 
         try(Connection con=userManager.getConnector().getMySQLConnection()){
-            return userManager.updateNumGame(con, name);
+            return userManager.updateNumGame(con);
         }
 
 
@@ -62,32 +67,18 @@ public class UserService {
         }
     }
 
-    public int numGame() throws SQLException, ClassNotFoundException{
-        try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.numGame(con);
-        }
-    }
 
 
-    public boolean updatePassword( String contraseña) throws SQLException, ClassNotFoundException {
+
+    public Player updatePassword( String contraseña) throws SQLException, ClassNotFoundException {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
             return userManager.updatePassword(con, contraseña);
         }
 
     }
-    public boolean validatePassword( String password) throws SQLException, ClassNotFoundException {
-        try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.validatePassword(con, password);
-        }
 
-    }
 
-    public String getMail() throws SQLException, ClassNotFoundException {
-        try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.getMail(con);
-        }
 
-    }
 
     public Player findByName( String player_name) throws SQLException, ClassNotFoundException {
 

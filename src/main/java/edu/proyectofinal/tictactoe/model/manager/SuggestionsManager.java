@@ -19,7 +19,7 @@ public interface SuggestionsManager {
      * @param text the suggestion to insert
      * @return a {@link Boolean}
      */
-    public int insertSuggestion(Connection con, String text)throws SQLException;
+    public Suggestion insertSuggestion(Connection con, String text)throws SQLException;
 
     public Suggestion findBySuggestion(Connection con, String queja);
 

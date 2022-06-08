@@ -95,17 +95,33 @@ public class UserManagerImpl implements UserManager {
             int affectedRows = stmt.executeUpdate();
             if(affectedRows<=0){
                 return 0;
+            }else {
+                ResultSet resultSet = stmt.getGeneratedKeys();
+                // Set before first registry before going through it
+                resultSet.beforeFirst();
+                resultSet.next();
+
+
+                // Queries the DB
+                return resultSet.getInt(1);
+                /*
+                // Queries the DB
+                ResultSet resultSet = stmt.getGeneratedKeys();
+                // Set before first registry before going through it
+                resultSet.beforeFirst();
+                resultSet.next();
+                Player player=null;
+
+                while(resultSet.next()){player=(new Player(resultSet));
+                }
+                return player;
+                */
+
+
+
+
+
             }
-            // Queries the DB
-            ResultSet resultSet = stmt.getGeneratedKeys();
-            // Set before first registry before going through it
-            resultSet.beforeFirst();
-            resultSet.next();
-
-
-            // Queries the DB
-            return resultSet.getInt(1);
-
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
@@ -118,35 +134,39 @@ public class UserManagerImpl implements UserManager {
         }
     }
     @Override
-    public boolean updateNumGame(Connection con, String name) throws SQLException{
+    public Player updateNumGame(Connection con) throws SQLException{
 
         //prepare SQL statement
-        String sql="Update player set num_game= (num_game +1)where player_name=?";
+        String sql="Update player set num_game= (num_game +1)where idPlayer=?";
 
         //prepare SQL statement
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
+        try(PreparedStatement stmt=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS )){
 
             //Add Parameters
-            stmt.setString(1, name);
+            stmt.setInt(1, App.getUser().getIdPlayer());
+            int affectedRows = stmt.executeUpdate();
+            if(affectedRows<=0){
+                return null;}else{
+
 
             // Queries the DB
-            return stmt.executeUpdate() > 0;
+            return findByName(con, App.getUser().getPlayerName());}
 
         }catch(SQLException e){
-        return false;}
+        return null;}
 
     }
 
     @Override
     public boolean deleteUser(Connection con) throws SQLException {
         //prepare SQL statement
-        String sql = "DELETE from player WHERE player_name = ?";
+        String sql = "DELETE from player WHERE idPlayer = ?";
 
         // Create general statement
-        try (PreparedStatement stmt= con.prepareStatement(sql)){
+        try (PreparedStatement stmt= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
 
             //Add Parameters
-            stmt.setString(1, App.getNamePlayer());
+            stmt.setInt(1, App.getUser().getIdPlayer());
 
             // Queries the DB
             return stmt.executeUpdate() > 0;
@@ -191,121 +211,44 @@ public class UserManagerImpl implements UserManager {
             return null;
         }
     }
-    @Override
-    public int numGame(Connection con) throws SQLException {
-        //prepare SQL statement
-        String sql = "select num_game  from PLAYER  where player_name=?";
 
-        // Create general statement
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
-
-            //Add Parameters
-            stmt.setString(1, App.getNamePlayer());
-
-            // Queries the DB
-            ResultSet result = stmt.executeQuery();
-            // Set before first registry before going through it
-            result.beforeFirst();
-            int resultado = 0;
-            if(result.next()){
-                resultado = result.getInt(1);
-            }
-            // Queries the DB
-            return resultado;
-
-
-
-        }catch(SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
 
     @Override
-    public boolean updatePassword(Connection con, String contraseña) throws SQLException {
+    public Player updatePassword(Connection con, String contraseña) throws SQLException {
         //prepare SQL statement
-        String sql="Update player set password= ?where player_name=?";
+        String sql="Update player set password= ?where idplayer=?";
 
 
         try {
 
             //Validate that the password is correct
-            validatePassword(con, contraseña);
+            findUser(con,App.getUser().getPlayerName(), contraseña);
 
             // Create general statement
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 //Add Parameters
                 stmt.setString(1, contraseña);
-                stmt.setString(2, App.getNamePlayer());
+                stmt.setInt(2, App.getUser().getIdPlayer());
 
                 // Queries the DB
-                return stmt.executeUpdate() > 0;
+
+                int affectedRows = stmt.executeUpdate();
+                if(affectedRows<=0){
+                    return null;}else{
+
+
+                    // Queries the DB
+                    return findByName(con, App.getUser().getPlayerName());}
 
             } }  catch (SQLException e) {
-                return false;
+                return null;
 
         }
 
     }
-    @Override
-    public boolean validatePassword(Connection con, String password) throws SQLException{
-
-        //prepare SQL statement
-        String sql = "select password "
-                + "from PLAYER "
-                + "where PLAYER_NAME = ? and password=?";
-
-        // Create general statement
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
-            //Add Parameters
-            stmt.setString(1, App.getNamePlayer());
-            stmt.setString(2, password);
-
-            // Queries the DB
-            ResultSet result = stmt.executeQuery();
-            // Set before first registry before going through it.
-            result.beforeFirst();
-
-            // Initialize variable
-            Player user = null;
 
 
-
-            return result.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @Override
-    public String getMail(Connection con) throws SQLException{
-
-        //prepare SQL statement
-        String sql = "select correo  from player  where player_name = ?";
-        // Create general statement
-        try(PreparedStatement stmt=con.prepareStatement(sql)){
-
-            //Add Parameters
-            stmt.setString( 1, App.getNamePlayer());
-            // Queries the DB
-            ResultSet result = stmt.executeQuery();
-            // Set before first registry before going through it
-            result.beforeFirst();
-            String resultado=null;
-            if(result.next()){
-                resultado = result.getString(1);
-            }
-            // Queries the DB
-            return resultado;
-        }catch(SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
 
 
     @Override

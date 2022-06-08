@@ -18,7 +18,7 @@ public class SuggestionsService {
     }
 
 
-    public int insertSuggestion( String text) throws SQLException,ClassNotFoundException{
+    public Suggestion insertSuggestion( String text) throws SQLException,ClassNotFoundException{
 
         try (Connection con = suggestionsManager.getConnector().getMySQLConnection()) {
             return suggestionsManager.insertSuggestion(con, text);
