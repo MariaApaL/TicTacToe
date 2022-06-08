@@ -36,7 +36,7 @@ public class SuggestionsManagerImplTest {
     private Connection connection;
 
     @Mock
-    private Statement statement;
+    private Suggestion suggestion;
 
     @Mock
     private PreparedStatement preparedStatement;
@@ -51,15 +51,15 @@ public class SuggestionsManagerImplTest {
     void init() {
         suggestionsManager = new SuggestionsManagerImpl();
     }
-
+/*
     @Test
     void insertSuggestion_ok() throws SQLException {
 
         Suggestion suggestion = new Suggestion();
-        expectedPlayer.setPlayerName("Maria");
-        expectedPlayer.setIdPlayer(526236245);
-        expectedPlayer.setPassword("123456");
-        expectedPlayer.setNumGame(7);
+
+        suggestion.setIdSuggestion(1);
+        suggestion.setPlayer_name("Maria");
+        suggestion.setSuggestion("patata");
 
         when(connection.prepareStatement(any(),eq(1))).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(1);
@@ -67,10 +67,32 @@ public class SuggestionsManagerImplTest {
         when(resultSet.getInt(eq(1))).thenReturn(1);
 
 
-        int player = suggestionsManager.insertSuggestion(connection,"");
+        Suggestion expectedSuggestion = suggestionsManager.insertSuggestion(connection,"");
 
-        MatcherAssert.assertThat(player, Matchers.is(1));
+        MatcherAssert.assertThat(expectedSuggestion, Matchers.is(suggestion));
 
     }
+
+    @Test
+    void findBySuggestion_ok() throws SQLException {
+
+        Suggestion suggestion = new Suggestion();
+
+        suggestion.setIdSuggestion(1);
+        suggestion.setPlayer_name("Maria");
+        suggestion.setSuggestion("patata");
+
+        when(connection.prepareStatement(any())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
+        when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
+
+
+
+        Suggestion expectedSuggestion = suggestionsManager.findBySuggestion(connection,"");
+
+        MatcherAssert.assertThat(expectedSuggestion, Matchers.is(suggestion));
+
+    }
+*/
 }
 
