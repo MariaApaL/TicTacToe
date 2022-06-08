@@ -77,7 +77,7 @@ public class TicTacToeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userService= new UserService(new UserManagerImpl());
-        String name= App.getNamePlayer();
+        String name= App.getUser().getPlayerName();
 
         playerX.setText(name+"(X): ");
 
