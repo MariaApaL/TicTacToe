@@ -61,25 +61,29 @@ public class PasswordController implements Initializable {
         String password3 = repeatPassword.getText();
 
         try{
-            if(password.equalsIgnoreCase(App.getUser().getPassword())){
-                if(password2.equalsIgnoreCase(password3)){
-                   App.setUser(userService.updatePassword(password2));
+            if(password.equalsIgnoreCase(App.getUser().getPassword())) {
+                if (password.equalsIgnoreCase(password2)) {
+                    if (password2.equalsIgnoreCase(password3)) {
+                        App.setUser(userService.updatePassword(password2));
 
-                    if( App.getUser()!=null) {
-                        App.setStage("secondmenuInterface");
+                        if (App.getUser() != null) {
+                            App.setStage("secondmenuInterface");
 
 
-                    }else{
-                        status.setText("Password cant change");
-                    throw new TicTacToeException("Password cant change");
+                        } else {
+                            status.setText("Password cant change");
+                            throw new TicTacToeException("Password cant change");
+                        }
+                    } else {
+                        status.setText("new passwords do not match ");
+                        throw new TicTacToeException("new passwords do not match");
                     }
-                }else{
-                    status.setText("new passwords do not match ");
-                    throw new TicTacToeException("new passwords do not match");
-                }
-            }else{
-                status.setText("Wrong password");
-                throw new TicTacToeException("Wrong password");
+                } else {status.setText("the new password cannot be the same as the old one");
+                    throw new TicTacToeException("the new password cannot be the same as the old one");}
+
+                }else{ status.setText("Wrong password");
+                    throw new TicTacToeException("Wrong password");
+
             }
 
 
