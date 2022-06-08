@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe;
 
 import edu.proyectofinal.tictactoe.model.dao.Player;
+import edu.proyectofinal.tictactoe.model.dao.Suggestion;
 import edu.proyectofinal.tictactoe.model.manager.impl.SuggestionsManagerImpl;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import org.hamcrest.MatcherAssert;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
-/*
+
 
 @ExtendWith({MockitoExtension.class})
 
@@ -44,17 +45,17 @@ public class SuggestionsManagerImplTest {
     private ResultSet resultSet;
 
 
-    private SuggestionsManagerImpl userManager;
+    private SuggestionsManagerImpl suggestionsManager;
 
     @BeforeEach
     void init() {
-        userManager = new SuggestionsManagerImpl();
+        suggestionsManager = new SuggestionsManagerImpl();
     }
 
     @Test
     void insertSuggestion_ok() throws SQLException {
 
-        Player expectedPlayer = new Player();
+        Suggestion suggestion = new Suggestion();
         expectedPlayer.setPlayerName("Maria");
         expectedPlayer.setIdPlayer(526236245);
         expectedPlayer.setPassword("123456");
@@ -66,10 +67,10 @@ public class SuggestionsManagerImplTest {
         when(resultSet.getInt(eq(1))).thenReturn(1);
 
 
-        int player = userManager.insertSuggestion(connection,"","");
+        int player = suggestionsManager.insertSuggestion(connection,"");
 
         MatcherAssert.assertThat(player, Matchers.is(1));
 
     }
 }
-*/
+
