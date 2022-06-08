@@ -25,6 +25,7 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
+/*
 
 @ExtendWith({MockitoExtension.class})
 
@@ -71,3 +72,4 @@ public class SuggestionsManagerImplTest {
 
     }
 }
+*/

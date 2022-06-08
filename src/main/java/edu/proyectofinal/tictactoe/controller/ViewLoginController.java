@@ -2,7 +2,7 @@ package edu.proyectofinal.tictactoe.controller;
 
 import edu.proyectofinal.tictactoe.App;
 
-import edu.proyectofinal.tictactoe.excepciones.Exceptions;
+import edu.proyectofinal.tictactoe.excepciones.TicTacToeException;
 import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.manager.impl.UserManagerImpl;
 import edu.proyectofinal.tictactoe.service.UserService;
@@ -47,7 +47,7 @@ public class ViewLoginController implements Initializable {
      * @throws {@code IOException, SQLException, ClassNotFoundException}
      */
     @FXML
-    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException, Exceptions {
+    private void eventKey(ActionEvent event) throws IOException, SQLException, ClassNotFoundException, TicTacToeException {
         String player_name = txtUser.getText();
         String password = txtPassword.getText();
        textLogin.setText("Insert your user name");
@@ -70,13 +70,13 @@ try{
 
             } else {
                 textLogin.setText("Incorrect user");
-                throw new Exceptions("Incorrect user");
+                throw new TicTacToeException("Incorrect user");
             }
 
 
 
     }else{textLogin.setText("You have to fill in all the fields");
-        throw new Exceptions("You have to fill in all the fields");}
+        throw new TicTacToeException("You have to fill in all the fields");}
 }catch(SQLException e){
     e.printStackTrace();
 }
