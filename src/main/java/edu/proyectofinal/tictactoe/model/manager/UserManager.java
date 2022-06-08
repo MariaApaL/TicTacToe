@@ -36,19 +36,19 @@ public interface UserManager {
     public int insertUser(Connection con, String player_name, String password, String mail)throws SQLException;
     /**
      * player update num_game on DB
-     *
+     * @param player player to update
      * @param con DB connection
      * @return a {@link Boolean}
      */
-    public Player updateNumGame(Connection con)throws SQLException;
+    public Player updateNumGame(Connection con, Player player)throws SQLException;
     /**
      * Delete a user using their names.
-     *
+     *@param player player to update
      * @param con DB connection
      * Using App.getPlayerName to delete.
      * @return a {@link Boolean}
      */
-    public boolean deleteUser(Connection con) throws SQLException;
+    public boolean deleteUser(Connection con, Player player) throws SQLException;
     /**
      * Show the top ten users with the most games played
      *
@@ -60,12 +60,12 @@ public interface UserManager {
 
     /**
      * Update password on DB.
-     *
+     * @param player player to update
      * @param con DB connection
      * @param contraseña Entities password to delete.
      * @return a {@link Boolean}
      */
-    public Player updatePassword(Connection con, String contraseña) throws SQLException;
+    public Player updatePassword(Connection con, Player player,  String contraseña) throws SQLException;
 
 
 

@@ -10,7 +10,7 @@ import java.sql.*;
 
 public class SuggestionsManagerImpl implements SuggestionsManager {
     @Override
-    public Suggestion insertSuggestion(Connection con, String text) throws SQLException {
+    public Suggestion insertSuggestion(Connection con, String text, Player player) throws SQLException {
         //prepare SQL statement
         String sql = "Insert into Suggestions (PLAYER_NAME, suggestion) VALUES (?,?)";
 
@@ -18,7 +18,7 @@ public class SuggestionsManagerImpl implements SuggestionsManager {
         // Create general statement
         try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //Add Parameters
-            stmt.setString(1, App.getUser().getPlayerName());
+            stmt.setString(1, player.getPlayerName());
             stmt.setString(2, text);
 
             int affectedRows = stmt.executeUpdate();

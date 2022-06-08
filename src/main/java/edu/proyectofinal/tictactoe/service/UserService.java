@@ -1,6 +1,7 @@
 package edu.proyectofinal.tictactoe.service;
 
 
+import edu.proyectofinal.tictactoe.App;
 import edu.proyectofinal.tictactoe.model.dao.Player;
 import edu.proyectofinal.tictactoe.model.manager.UserManager;
 
@@ -48,7 +49,7 @@ public class UserService {
     public Player newGame() throws SQLException, ClassNotFoundException{
 
         try(Connection con=userManager.getConnector().getMySQLConnection()){
-            return userManager.updateNumGame(con);
+            return userManager.updateNumGame(con, App.getUser());
         }
 
 
@@ -57,7 +58,7 @@ public class UserService {
     public boolean deleteUser() throws SQLException, ClassNotFoundException {
 
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.deleteUser(con);
+            return userManager.deleteUser(con, App.getUser());
         }
     }
 
@@ -72,7 +73,7 @@ public class UserService {
 
     public Player updatePassword( String contraseña) throws SQLException, ClassNotFoundException {
         try (Connection con = userManager.getConnector().getMySQLConnection()) {
-            return userManager.updatePassword(con, contraseña);
+            return userManager.updatePassword(con, App.getUser(), contraseña);
         }
 
     }

@@ -124,7 +124,7 @@ public class UserManagerImpl implements UserManager {
         }
     }
     @Override
-    public Player updateNumGame(Connection con) throws SQLException{
+    public Player updateNumGame(Connection con, Player player) throws SQLException{
 
         //prepare SQL statement
         String sql="Update player set num_game= (num_game +1)where idPlayer=?";
@@ -133,14 +133,14 @@ public class UserManagerImpl implements UserManager {
         try(PreparedStatement stmt=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS )){
 
             //Add Parameters
-            stmt.setInt(1, App.getUser().getIdPlayer());
+            stmt.setInt(1, player.getIdPlayer());
             int affectedRows = stmt.executeUpdate();
             if(affectedRows<=0){
                 return null;}else{
 
 
             // Queries the DB
-            return findByName(con, App.getUser().getPlayerName());}
+            return findByName(con, player.getPlayerName());}
 
         }catch(SQLException e){
         return null;}
@@ -148,7 +148,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public boolean deleteUser(Connection con) throws SQLException {
+    public boolean deleteUser(Connection con, Player player) throws SQLException {
         //prepare SQL statement
         String sql = "DELETE from player WHERE idPlayer = ?";
 
@@ -156,7 +156,7 @@ public class UserManagerImpl implements UserManager {
         try (PreparedStatement stmt= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
 
             //Add Parameters
-            stmt.setInt(1, App.getUser().getIdPlayer());
+            stmt.setInt(1, player.getIdPlayer());
 
             // Queries the DB
             return stmt.executeUpdate() > 0;
@@ -204,7 +204,7 @@ public class UserManagerImpl implements UserManager {
 
 
     @Override
-    public Player updatePassword(Connection con, String contraseña) throws SQLException {
+    public Player updatePassword(Connection con, Player player, String contraseña ) throws SQLException {
         //prepare SQL statement
         String sql="Update player set password= ?where idplayer=?";
 
@@ -212,14 +212,14 @@ public class UserManagerImpl implements UserManager {
         try {
 
             //Validate that the password is correct
-            findUser(con,App.getUser().getPlayerName(), contraseña);
+            findUser(con,player.getPlayerName(), contraseña);
 
             // Create general statement
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 //Add Parameters
                 stmt.setString(1, contraseña);
-                stmt.setInt(2, App.getUser().getIdPlayer());
+                stmt.setInt(2, player.getIdPlayer());
 
                 // Queries the DB
 
@@ -229,7 +229,7 @@ public class UserManagerImpl implements UserManager {
 
 
                     // Queries the DB
-                    return findByName(con, App.getUser().getPlayerName());}
+                    return findByName(con, player.getPlayerName());}
 
             } }  catch (SQLException e) {
                 return null;

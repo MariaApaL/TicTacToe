@@ -61,15 +61,35 @@ public class SuggestionsManagerImplTest {
         suggestion.setPlayer_name("Maria");
         suggestion.setSuggestion("patata");
 
+        Player expectedPlayer = new Player();
+        expectedPlayer.setPlayerName("Maria");
+        expectedPlayer.setIdPlayer(526236245);
+        expectedPlayer.setPassword("123456");
+        expectedPlayer.setNumGame(7);
+
         when(connection.prepareStatement(any(),eq(1))).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(1);
-        when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
-        when(resultSet.getInt(eq(1))).thenReturn(1);
+        when(connection.prepareStatement(any())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
+        when(resultSet.next()).thenAnswer(new Answer<Boolean>() {
+
+            private int counter = 0;
+
+            @Override
+            public Boolean answer(InvocationOnMock invocationOnMock) throws Throwable {
+                if(counter < 1){
+                    counter++;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
 
-        Suggestion expectedSuggestion = suggestionsManager.insertSuggestion(connection,"");
+        Suggestion expectedSuggestion = suggestionsManager.insertSuggestion(connection,"",expectedPlayer);
 
-        MatcherAssert.assertThat(expectedSuggestion, Matchers.is(suggestion));
+        MatcherAssert.assertThat(suggestion, Matchers.is(expectedSuggestion));
 
     }
 
@@ -85,7 +105,20 @@ public class SuggestionsManagerImplTest {
         when(connection.prepareStatement(any())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
         when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
+        when(resultSet.next()).thenAnswer(new Answer<Boolean>() {
 
+            private int counter = 0;
+
+            @Override
+            public Boolean answer(InvocationOnMock invocationOnMock) throws Throwable {
+                if(counter < 1){
+                    counter++;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
 
         Suggestion expectedSuggestion = suggestionsManager.findBySuggestion(connection,"");
