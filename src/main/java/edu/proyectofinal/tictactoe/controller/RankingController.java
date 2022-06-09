@@ -9,8 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -56,7 +61,15 @@ public class RankingController implements Initializable {
     @FXML
     private Text ranking5;
 
+    @FXML
+    private Pane myPane;
+    @FXML
+    private ColorPicker myColorPicker;
 
+    public void changeColor(ActionEvent event) {
+        Color myColor = myColorPicker.getValue();
+        myPane.setBackground(new Background(new BackgroundFill(myColor, null, null)));
+    }
 
     /**
      * switch to login interface.

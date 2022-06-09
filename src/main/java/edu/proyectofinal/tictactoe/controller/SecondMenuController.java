@@ -8,7 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +43,15 @@ public class SecondMenuController implements Initializable {
     private UserService userService;
 
 
+    @FXML
+    private Pane myPane;
+    @FXML
+    private ColorPicker myColorPicker;
+
+    public void changeColor(ActionEvent event) {
+        Color myColor = myColorPicker.getValue();
+        myPane.setBackground(new Background(new BackgroundFill(myColor, null, null)));
+    }
 
     /**
      *
@@ -57,7 +71,7 @@ public class SecondMenuController implements Initializable {
         if(alert.showAndWait().get() == ButtonType.OK){
             userService.deleteUser();
             App.setUser(null);
-            stage = (Stage) anchorPane.getScene().getWindow();
+            stage = (Stage) myPane.getScene().getWindow();
             System.out.println("You successfully deleted it!");
             stage.close();
 

@@ -12,7 +12,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -59,6 +64,15 @@ public class TicTacToeController implements Initializable {
     private UserService userService;
 
 
+    @FXML
+    private Pane myPane;
+    @FXML
+    private ColorPicker myColorPicker;
+
+    public void changeColor(ActionEvent event) {
+        Color myColor = myColorPicker.getValue();
+        myPane.setBackground(new Background(new BackgroundFill(myColor, null, null)));
+    }
     /**
      * switch to menu interface.
      * @param event  switch to menu interface.
