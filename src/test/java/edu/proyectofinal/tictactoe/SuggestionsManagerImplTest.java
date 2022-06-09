@@ -51,15 +51,9 @@ public class SuggestionsManagerImplTest {
     void init() {
         suggestionsManager = new SuggestionsManagerImpl();
     }
-/*
+
     @Test
     void insertSuggestion_ok() throws SQLException {
-
-        Suggestion suggestion = new Suggestion();
-
-        suggestion.setIdSuggestion(1);
-        suggestion.setPlayer_name("Maria");
-        suggestion.setSuggestion("patata");
 
         Player expectedPlayer = new Player();
         expectedPlayer.setPlayerName("Maria");
@@ -89,22 +83,21 @@ public class SuggestionsManagerImplTest {
 
         Suggestion expectedSuggestion = suggestionsManager.insertSuggestion(connection,"",expectedPlayer);
 
-        MatcherAssert.assertThat(suggestion, Matchers.is(expectedSuggestion));
+        MatcherAssert.assertThat(suggestion.getPlayer_name(), Matchers.is(expectedSuggestion.getPlayer_name()));
 
     }
 
     @Test
     void findBySuggestion_ok() throws SQLException {
 
-        Suggestion suggestion = new Suggestion();
-
-        suggestion.setIdSuggestion(1);
-        suggestion.setPlayer_name("Maria");
-        suggestion.setSuggestion("patata");
+        Player expectedPlayer = new Player();
+        expectedPlayer.setPlayerName("Maria");
+        expectedPlayer.setIdPlayer(526236245);
+        expectedPlayer.setPassword("123456");
+        expectedPlayer.setNumGame(7);
 
         when(connection.prepareStatement(any())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
-        when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
         when(resultSet.next()).thenAnswer(new Answer<Boolean>() {
 
             private int counter = 0;
@@ -123,9 +116,9 @@ public class SuggestionsManagerImplTest {
 
         Suggestion expectedSuggestion = suggestionsManager.findBySuggestion(connection,"");
 
-        MatcherAssert.assertThat(expectedSuggestion, Matchers.is(suggestion));
+        MatcherAssert.assertThat(expectedSuggestion.getPlayer_name(), Matchers.is(suggestion.getPlayer_name()));
 
     }
-*/
+
 }
 

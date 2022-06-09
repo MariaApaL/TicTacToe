@@ -36,6 +36,18 @@ public class Suggestion {
     String suggestion;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Suggestion that = (Suggestion) o;
+        return idSuggestion == that.idSuggestion && player_name.equals(that.player_name) && suggestion.equals(that.suggestion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idSuggestion, player_name, suggestion);
+    }
 
     public Suggestion(){
 
@@ -51,16 +63,4 @@ public class Suggestion {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Suggestion that = (Suggestion) o;
-        return idSuggestion == that.idSuggestion;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idSuggestion);
-    }
 }

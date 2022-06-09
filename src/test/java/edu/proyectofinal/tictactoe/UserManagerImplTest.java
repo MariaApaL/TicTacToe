@@ -248,7 +248,7 @@ public class UserManagerImplTest {
 
 
     }
-/*
+
     @Test
     void ranking_ok() throws SQLException {
 
@@ -277,25 +277,12 @@ public class UserManagerImplTest {
 
 
 
-        when(resultSet.getInt(any())).thenAnswer(new Answer<Integer>() {
-
-            @Override
-            public Integer answer(InvocationOnMock invocationOnMock) throws Throwable {
-
-                if(invocationOnMock.getArgument(0).equals("num_game")){
-                    return expectedPlayer.getNumGame();
-                } else if(invocationOnMock.getArgument(0).equals("idplayer")) {
-                    return expectedPlayer.getIdPlayer();
-                }else{
-                    return null;
-                }
-            }
-        });
+        when(resultSet.getString(eq(1))).thenReturn(expectedPlayer.getPlayerName());
 
 
         List player = userManager.ranking(connection);
 
-        MatcherAssert.assertThat(player, Matchers.is(expectedPlayer));
+        MatcherAssert.assertThat(player.get(0), Matchers.is(expectedPlayer.getPlayerName()));
 
 
     }
@@ -323,7 +310,7 @@ public class UserManagerImplTest {
 
             @Override
             public Boolean answer(InvocationOnMock invocationOnMock) throws Throwable {
-                if(counter < 1){
+                if(counter < 2){
                     counter++;
                     return true;
                 } else {
@@ -372,7 +359,7 @@ public class UserManagerImplTest {
     }
 
 
-*/
+
 
 
 }
